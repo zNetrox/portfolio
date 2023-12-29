@@ -10,20 +10,20 @@
     header {
         position: fixed;
         right: 3%;
-        top: 30px;
+        top: 25px;
         font-size: 20px;
         font-weight: 200;
-        color: var(--white);
+        color: rgb(var(--white));
         mix-blend-mode: difference;
         user-select: none;
         cursor: pointer;
         z-index: 999;
+        transition: .5s var(--bezier);
     }
 
     header.active {
         mix-blend-mode: initial;
     }
-
 </style>
 
 <script>
@@ -33,29 +33,38 @@
     const header = document.querySelector('header')
     const menuBtn = document.querySelector('header p')
 
-    header.style.display = 'none'
-
     menuBtn.addEventListener('click', () => {
         if (nav.className !== 'active') {
-            
-            nav.classList.toggle('active')
+            nav.classList.add('active')
+            // style pour le bouton menu
+            header.style.opacity = '0'
+            header.style.pointerEvents = 'none'
+            header.style.mixBlendMode = 'initial'
+            header.style.color = 'rgb(var(--black))'
             wait(800)
             .then(() => {
-                document.querySelectorAll('nav [class*="slide-"]').forEach(element => {
-                    element.classList.add('anim')
-                })
+                document.querySelectorAll('nav [class*="slide-"]').forEach(element => element.classList.add('anim')) // animation d'entrée des éléments
+                // style pour le bouton menu
+                menuBtn.innerHTML = 'Close'                          //     /!\ innerHTML
+                header.style.color = 'rgb(var(--white))'
+                header.style.opacity = '1'
+                header.style.pointerEvents = 'auto'
             })
         } else {
-            document.querySelectorAll('nav [class*="slide-"]').forEach(element => {
-                element.classList.remove('anim')
-            })
+            header.style.opacity = '0'
+            header.style.pointerEvents = 'none'
+            document.querySelectorAll('nav [class*="slide-"]').forEach(element => element.classList.remove('anim')) // animation de sortie des éléments
             wait(700)
             .then(() => {
-                nav.classList.toggle('active')
-                return wait(900)
+                nav.classList.remove('active')
+                return wait(700)
             })
             .then(() => {
-                header.classList.remove('active')
+                // style pour le bouton menu
+                menuBtn.innerHTML = 'Menu'
+                header.style.opacity = '1'
+                header.style.mixBlendMode = 'difference'
+                header.style.pointerEvents = 'auto'
             })
         }
     })

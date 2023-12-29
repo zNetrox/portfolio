@@ -1,0 +1,47 @@
+---
+
+---
+
+
+<div id="cursor">
+    <div id="inner-cursor"></div>
+</div>
+
+
+<style>
+    
+    #cursor {
+        position: fixed;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+	    z-index: 999;
+        top: 0;
+        left: 0;
+        width: 50px;
+        aspect-ratio: 1 / 1;
+        border: 1px solid rgb(var(--yellow));
+        transition: .4s cubic-bezier(0.16, 1, 0.3, 1);
+        border-radius: 50%;
+        pointer-events: none;
+        user-select: none;
+        will-change: transform;
+        transform: translate(-100%, -100%);
+    }
+
+    @media (max-width: 1023px) {
+    	.cursor {
+    		display: none;
+    	}
+    }
+</style>
+
+<script>
+    const cursor = document.querySelector('#cursor')
+
+    document.addEventListener('mousemove', e => {
+        const x = e.clientX - (cursor.offsetWidth / 2)
+        const y = e.clientY - (cursor.offsetHeight / 2)
+        cursor.style.transform = `translate(${x}px, ${y}px)`
+    })
+</script>

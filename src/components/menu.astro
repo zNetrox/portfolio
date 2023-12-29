@@ -9,8 +9,9 @@
             <a class="slide-up delay-01" href="#">compétences</a>
             <a class="slide-up" href="#">projets</a>
         </div>
-        <div id="contact">
-            <p class="slide-left"><span>contact: </span>enzo.galiano38@gmail.com</p>
+        <div id="infos">
+            <p class="slide-up"><span>contact: </span>enzo.galiano38@gmail.com</p>
+            <p class="slide-left">Téléchager CV</p>
         </div>
     </div>
 </nav>
@@ -22,8 +23,8 @@
         transform: translateY(-100%);
         width: 100vw;
         height: 100vh;
-        background: var(--red);
-        color: var(--white);
+        background: rgb(var(--red));
+        color: rgb(var(--white));
         transition: 1.4s var(--bezier);
     }
 
@@ -49,7 +50,7 @@
     a {
         width: min-content;
         font-weight: 800;
-        font-size: 175px;
+        font-size: clamp(3.125rem, -0.5952rem + 11.9048vw, 10.9375rem);
         color: inherit;
         text-transform: uppercase;
         user-select: none;
@@ -63,15 +64,29 @@
         font-style: oblique;
     }
 
-    #contact {
-        font-size: 20px;
+    #infos {
         position: absolute;
-        bottom: 20px;
-        right: 0;
+        display: flex;
+        justify-content: space-between;
+        bottom: 25px;
+        width: 100%;
+        font-size: 20px;
     }
 
-    #contact span {
+    #infos span {
         font-weight: 800;
+    }
+
+    #infos p:last-child {
+        cursor: pointer;
+    }
+
+    @media (max-width: 700px) {
+        #contact {
+            flex-direction: column-reverse;
+            gap: 10px;
+            font-size: 18px;
+        }
     }
 
 </style>
