@@ -1,0 +1,62 @@
+---
+
+---
+
+<header>
+    <p>Menu</p>
+</header>
+
+<style>
+    header {
+        position: fixed;
+        right: 3%;
+        top: 30px;
+        font-size: 20px;
+        font-weight: 200;
+        color: var(--white);
+        mix-blend-mode: difference;
+        user-select: none;
+        cursor: pointer;
+        z-index: 999;
+    }
+
+    header.active {
+        mix-blend-mode: initial;
+    }
+
+</style>
+
+<script>
+    import { wait } from '../js/libray.js'
+
+    const nav = document.querySelector('nav')
+    const header = document.querySelector('header')
+    const menuBtn = document.querySelector('header p')
+
+    header.style.display = 'none'
+
+    menuBtn.addEventListener('click', () => {
+        if (nav.className !== 'active') {
+            
+            nav.classList.toggle('active')
+            wait(800)
+            .then(() => {
+                document.querySelectorAll('nav [class*="slide-"]').forEach(element => {
+                    element.classList.add('anim')
+                })
+            })
+        } else {
+            document.querySelectorAll('nav [class*="slide-"]').forEach(element => {
+                element.classList.remove('anim')
+            })
+            wait(700)
+            .then(() => {
+                nav.classList.toggle('active')
+                return wait(900)
+            })
+            .then(() => {
+                header.classList.remove('active')
+            })
+        }
+    })
+</script>
