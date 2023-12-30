@@ -5,13 +5,13 @@
 <nav>
     <div class="container">
         <div id="links-list">
-            <a class="slide-up delay-02" href="#">accueil</a>
-            <a class="slide-up delay-01" href="#">compétences</a>
-            <a class="slide-up" href="#">projets</a>
+            <a class="slide-up delay-02 over-link" href="#">accueil</a>
+            <a class="slide-up delay-01 over-link" href="#">compétences</a>
+            <a class="slide-up over-link" href="#">projets</a>
         </div>
         <div id="infos">
             <p class="slide-up"><span>contact: </span>enzo.galiano38@gmail.com</p>
-            <p class="slide-left">Téléchager CV</p>
+            <p class="slide-left over-opacity">Téléchager CV</p>
         </div>
     </div>
 </nav>
@@ -26,6 +26,7 @@
         background: rgb(var(--red));
         color: rgb(var(--white));
         transition: 1.4s var(--bezier);
+        z-index: 100;
     }
 
     nav.active {
@@ -79,14 +80,84 @@
 
     #infos p:last-child {
         cursor: pointer;
+        width: min-content;
+        white-space: nowrap;
     }
 
-    @media (max-width: 700px) {
-        #contact {
+    #infos p:last-child::after {
+        content: '';
+        display: block;
+        width: 100%;
+        transform: scaleX(1);
+        height: 1px;
+        background-color: rgb(var(--white));
+        transform-origin: left;
+        transition: transform 0.2s ease-out;
+    }
+
+    #infos p:last-child:hover::after {
+        transform: scaleX(0);
+        transform-origin: right;
+    }
+
+    @media (max-width: 650px) {
+        #links-list {
+            grid-row-gap: 15px;
+        }
+
+        #infos {
             flex-direction: column-reverse;
             gap: 10px;
             font-size: 18px;
         }
     }
-
 </style>
+
+<script>
+    import { wait } from '../js/libray.js'
+
+    const nav = document.querySelector('nav')
+    const header = document.querySelector('header')
+    const menuBtn = document.querySelector('header p')
+
+    menuBtn.addEventListener('click', () => {
+        if (nav.className !== 'active') {
+            document.querySelectorAll('#links-list a').forEach(element => element.style.pointerEvents = 'auto')
+            document.querySelector("body").style.overflow = 'hidden' // supprime le scroll de la page
+            nav.classList.add('active')
+            // style pour le bouton menu
+            header.style.opacity = '0'
+            header.style.pointerEvents = 'none'
+            header.style.mixBlendMode = 'initial'
+            header.style.color = 'rgb(var(--black))'
+            wait(800)
+            .then(() => {
+                document.querySelectorAll('nav [class*="slide-"]').forEach(element => element.classList.add('anim')) // animation d'entrée des éléments
+                // style pour le bouton menu
+                menuBtn.innerHTML = 'Close'                          //     /!\ innerHTML
+                header.style.color = 'rgb(var(--white))'
+                header.style.opacity = '1'
+                header.style.pointerEvents = 'auto'
+            })
+        } else {
+            document.querySelectorAll('#links-list a').forEach(element => element.style.pointerEvents = 'none')
+            header.style.opacity = '0'
+            header.style.pointerEvents = 'none'
+            document.querySelectorAll('nav [class*="slide-"]').forEach(element => element.classList.remove('anim')) // animation de sortie des éléments
+            wait(700)
+            .then(() => {
+                nav.classList.remove('active')
+                return wait(700)
+            })
+            .then(() => {
+                document.querySelector("body").style.overflow = 'auto' // ajoute le scroll de la page
+                document.querySelectorAll('#links-list a').forEach(element => element.style.pointerEvents = 'auto')
+                // style pour le bouton menu
+                menuBtn.innerHTML = 'Menu'
+                header.style.opacity = '1'
+                header.style.mixBlendMode = 'difference'
+                header.style.pointerEvents = 'auto'
+            })
+        }
+    })
+</script>

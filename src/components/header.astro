@@ -3,7 +3,7 @@
 ---
 
 <header>
-    <p>Menu</p>
+    <p class="over-opacity">Menu</p>
 </header>
 
 <style>
@@ -25,47 +25,3 @@
         mix-blend-mode: initial;
     }
 </style>
-
-<script>
-    import { wait } from '../js/libray.js'
-
-    const nav = document.querySelector('nav')
-    const header = document.querySelector('header')
-    const menuBtn = document.querySelector('header p')
-
-    menuBtn.addEventListener('click', () => {
-        if (nav.className !== 'active') {
-            nav.classList.add('active')
-            // style pour le bouton menu
-            header.style.opacity = '0'
-            header.style.pointerEvents = 'none'
-            header.style.mixBlendMode = 'initial'
-            header.style.color = 'rgb(var(--black))'
-            wait(800)
-            .then(() => {
-                document.querySelectorAll('nav [class*="slide-"]').forEach(element => element.classList.add('anim')) // animation d'entrée des éléments
-                // style pour le bouton menu
-                menuBtn.innerHTML = 'Close'                          //     /!\ innerHTML
-                header.style.color = 'rgb(var(--white))'
-                header.style.opacity = '1'
-                header.style.pointerEvents = 'auto'
-            })
-        } else {
-            header.style.opacity = '0'
-            header.style.pointerEvents = 'none'
-            document.querySelectorAll('nav [class*="slide-"]').forEach(element => element.classList.remove('anim')) // animation de sortie des éléments
-            wait(700)
-            .then(() => {
-                nav.classList.remove('active')
-                return wait(700)
-            })
-            .then(() => {
-                // style pour le bouton menu
-                menuBtn.innerHTML = 'Menu'
-                header.style.opacity = '1'
-                header.style.mixBlendMode = 'difference'
-                header.style.pointerEvents = 'auto'
-            })
-        }
-    })
-</script>

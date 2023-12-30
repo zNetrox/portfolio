@@ -1,0 +1,227 @@
+* {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    background: transparent;
+    list-style: none;
+    text-decoration: none;
+    box-sizing: border-box;
+}
+
+:root {
+    --black: 37, 37, 37;
+    --white: 242, 242, 242;
+    --grey: 136, 136, 136;
+    --red: 229, 37, 47;
+    --yellow: 255, 215, 0;
+
+    --bezier: cubic-bezier(0.16, 1, 0.3, 1);
+    --tile-width: 165px;
+}
+
+html {
+    font-family: 'Telegraf';
+    background: rgb(var(--white));
+    color: rgb(var(--black));
+}
+
+[id*='tiles-'] {
+    position: absolute;
+    display: grid;
+    z-index: -1;
+}
+
+[id*='tiles-'] span {
+    display: block;
+    border-style: solid;
+    border-color: rgb(var(--grey));
+}
+
+@media (max-width: 1600px) {
+    :root {
+        --tile-width: 150px;
+    }
+}
+
+@media (max-height: 850px) {
+    :root {
+        --tile-width: 150px;
+    }
+}
+
+@media (max-width: 1350px) {
+    :root {
+        --tile-width: 125px;
+    }
+}
+
+@media (max-height: 800px) {
+    :root {
+        --tile-width: 125px;
+    }
+}
+
+@media (max-width: 1050px) {
+    :root {
+        --tile-width: 100px;
+    }
+}
+
+@media (max-height: 750px) {
+    :root {
+        --tile-width: 100px;
+    }
+}
+
+@media (max-width: 500px) {
+    :root {
+        --tile-width: 75px;
+    }
+}
+
+@media (max-height: 700px) {
+    :root {
+        --tile-width: 75px;
+    }
+}
+
+/* ---------- animation ---------- */
+
+[class*="slide-"] {
+    transition: 1.4s var(--bezier);
+}
+
+.slide-up {
+    transform: translateY(35px);
+    opacity: 0;
+}
+
+.slide-up.anim {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.slide-left {
+    transform: translateX(-50px);
+    opacity: 0;
+}
+
+.slide-left.anim {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+.slide-up-rotate {
+    opacity: 0;
+    transform: rotate(6deg) translateY(-200px);
+}
+
+.slide-up-rotate.anim {
+    opacity: 1;
+    transform: translateY(0) rotate(0);
+}
+
+.delay-01 {
+    transition-delay: .1s;
+}
+
+.delay-02 {
+    transition-delay: .2s;
+}
+
+.delay-03 {
+    transition-delay: .3s;
+}
+
+.delay-04 {
+    transition-delay: .4s;
+}
+
+.delay-05 {
+    transition-delay: .5s;
+}
+
+.delay-06 {
+    transition-delay: .6s;
+}
+
+.delay-07 {
+    transition-delay: .7s;
+}
+
+.delay-08 {
+    transition-delay: .8s;
+}
+
+.delay-09 {
+    transition-delay: .9s;
+}
+
+.delay-10 {
+    transition-delay: 1s;
+}
+
+/* ---------- font ---------- */
+
+@font-face {
+    font-family: 'Telegraf';
+    src: url('/font/telegraf/PPTelegraf-Ultralight.otf') format('woff');
+    font-weight: 200;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Telegraf';
+    src: url('/font/telegraf/PPTelegraf-UltralightSlanted.otf') format('woff');
+    font-weight: 200;
+    font-style: italic;
+}
+
+@font-face {
+    font-family: 'Telegraf';
+    src: url('/font/telegraf/PPTelegraf-UltralightOblique.otf') format('woff');
+    font-weight: 200;
+    font-style: oblique;
+}
+
+@font-face {
+    font-family: 'Telegraf';
+    src: url('/font/telegraf/PPTelegraf-Regular.otf') format('woff');
+    font-weight: 400;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Telegraf';
+    src: url('/font/telegraf/PPTelegraf-RegularSlanted.otf') format('woff');
+    font-weight: 400;
+    font-style: italic;
+}
+
+@font-face {
+    font-family: 'Telegraf';
+    src: url('/font/telegraf/PPTelegraf-RegularOblique.otf') format('woff');
+    font-weight: 400;
+    font-style: oblique;
+}
+
+@font-face {
+    font-family: 'Telegraf';
+    src: url('/font/telegraf/PPTelegraf-Ultrabold.otf') format('woff');
+    font-weight: 800;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Telegraf';
+    src: url('/font/telegraf/PPTelegraf-UltraboldSlanted.otf') format('woff');
+    font-weight: 800;
+    font-style: italic;
+}
+
+@font-face {
+    font-family: 'Telegraf';
+    src: url('/font/telegraf/PPTelegraf-UltraboldOblique.otf') format('woff');
+    font-weight: 800;
+    font-style: oblique;
+}
