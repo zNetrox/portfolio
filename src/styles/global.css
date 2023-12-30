@@ -87,6 +87,7 @@ html {
 
 /* ---------- animation ---------- */
 
+
 [class*="slide-"] {
     transition: 1.4s var(--bezier);
 }
@@ -120,6 +121,7 @@ html {
     opacity: 1;
     transform: translateY(0) rotate(0);
 }
+
 
 .delay-01 {
     transition-delay: .1s;

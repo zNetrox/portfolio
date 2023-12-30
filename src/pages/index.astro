@@ -12,7 +12,7 @@ import '../styles/global.css';
 	<Header/>
 	<section class="hero-banner">
 		<div class="part-1">
-			<h1>Bonjour, je suis<br><span>Galiano Enzo</span></h1>
+			<h1><span>Bonjour, je suis</span><br><span>Galiano Enzo</span></h1>
 			<span class="line"></span>
 		</div>
 		<div class="part-2">
@@ -31,7 +31,7 @@ import '../styles/global.css';
 				<span></span>
 			</div>
 
-			<p class="box">Je suis actuellement en classe de terminale STI2D avec l'enseignement spécifique "système d'information et numérique (SIN)".</p>
+			<p>Je suis actuellement en classe de terminale STI2D avec l'enseignement spécifique "système d'information et numérique (SIN)".</p>
 		</div>
 	</section>
 	<section class="sec-1">
@@ -95,7 +95,7 @@ import '../styles/global.css';
 	    font-weight: 800;
 	}
 
-	.hero-banner h1 span {
+	.hero-banner h1 span:last-child {
 	    font-style: italic;
 	}
 
@@ -104,6 +104,7 @@ import '../styles/global.css';
 	    width: 100%;
 	    height: 2px;
 	    background: rgb(var(--grey));
+		transform-origin: left;
 	}
 
 	.hero-banner .part-2 {
@@ -319,3 +320,58 @@ import '../styles/global.css';
 	}
 </style>
 
+<script>
+	import { gsap } from "gsap";
+	import { ScrollTrigger } from "gsap/ScrollTrigger";
+	gsap.registerPlugin(ScrollTrigger);
+
+	const animSlide = function(referenciel, start, elementAnim, delay) {
+		gsap.to(referenciel, {
+  			scrollTrigger: {
+    			trigger: referenciel,
+   				start: start,
+    			markers: true,
+				onEnter: () => gsap.to(elementAnim, {
+					x: 0,
+					y: 0,
+      				opacity: 1,
+      				duration: 1.4,
+      				ease: "power4.out",
+					delay: delay
+				})
+  			}
+		});
+	}
+
+	gsap.set('.line', {
+		scaleX: 0
+	})
+
+	gsap.to('.line', {
+  			scrollTrigger: {
+    			trigger: '.line',
+   				start: 'top bottom',
+  			},
+			scaleX: 1,
+			duration: 1.4,
+      		ease: "power4.out"
+		});
+
+
+
+	gsap.set([".text h2", ".text p"], {
+		opacity: 0,
+		x: -100,
+	})
+
+	gsap.set(".hero-banner h1 span", {
+		opacity: 1,
+		y: 100,
+	})
+
+	animSlide('.text', "top 60%",'.text h2', 0)
+	animSlide('.text', "top 60%",'.text p', 0.1)
+	animSlide('.text', "top bottom",'.hero-banner h1 span:first-child', 0)
+	animSlide('.text', "top bottom",'.hero-banner h1 span:last-child', 0.5)
+
+</script>

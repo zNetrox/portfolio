@@ -3,9 +3,7 @@
 ---
 
 
-<div id="cursor">
-    <div id="inner-cursor"></div>
-</div>
+<div id="cursor"></div>
 
 
 <style>
@@ -27,7 +25,7 @@
         will-change: transform;
         transform: translate(-100%, -100%);
     }
-
+    
     #cursor.over-opacity {
         width: 75px;
         opacity: 0;
@@ -36,6 +34,7 @@
     #cursor.over-link{
         width: 75px;
         background: rgb(var(--yellow));
+        opacity: 0.8;
     }
 
     @media (max-width: 1023px) {
@@ -46,7 +45,7 @@
 </style>
 
 <script>
-    const cursor = document.querySelector('#cursor')
+    const cursor = document.querySelector("#cursor");
     const arrowSvg = `<svg width="100%" height="100%" viewBox="0 0 500 500" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" xmlns:serif="http://www.serif.com/" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:1.5;">
                         <g id="arrow" transform="matrix(0.917347,0,0,1.50106,-6842.74,-2157.99)">
                             <g transform="matrix(0.908416,0,0,0.555162,579.647,-2.84217e-14)">
@@ -60,6 +59,7 @@
                         </g>
                     </g>
                 </svg>`
+
 
     document.addEventListener('mousemove', e => {
         const x = e.clientX - (cursor.offsetWidth / 2)
@@ -87,4 +87,17 @@
         })
     })
 
+
+/*
+    document.addEventListener('mousemove', e => {
+        const cursorPosition = {
+            x: e.clientX,
+            y: e.clientY
+        }
+        gsap.set(cursor, {
+            x: cursorPosition.x,
+            y: cursorPosition.y,
+        })
+    })
+*/
 </script>
