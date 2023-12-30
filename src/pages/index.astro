@@ -31,12 +31,45 @@ import '../styles/global.css';
 				<span></span>
 			</div>
 
-			<p>Je suis actuellement en classe de terminale STI2D avec l'enseignement spécifique "système d'information et numérique (SIN)".</p>
+			<p class="box">Je suis actuellement en classe de terminale STI2D avec l'enseignement spécifique "système d'information et numérique (SIN)".</p>
+		</div>
+	</section>
+	<section class="sec-1">
+		<div class="text">
+			<h2>Mes Objectifs</h2>
+			<p>Mon objectif premier est créer une experience web inoubliable en combinant esthétisme et fonctionnalité. Pour cela il me faut donc affiner mes competences en tant que développeur web front-end. Je suis quelqu'un de motiver qui aime apprendre de nouvelles choses.</p>
+		</div>
+
+		<div class="rotating">
+			<div>
+				<svg viewBox="0 0 100 100" width="100" height="100">
+					<defs>
+					  <path id="circle"
+						d="M 50, 50 m -37, 0 a 37,37 0 1,1 74,0 a 37,37 0 1,1 -74,0"/>
+					</defs>
+					<text font-size="14">
+					  <textPath xlink:href="#circle">
+						MES OBJECTIFS - MES OBJECTIFS -
+					  </textPath>
+					</text>
+				  </svg>
+				  <div id="container-star">
+					<div>
+						<div id="star">
+							<span></span>
+							<span></span>
+							<span></span>
+						</div>
+					</div>
+				  </div>
+			</div>
 		</div>
 	</section>
 </Layout>
 
 <style>
+	/* ----------- hero banner ----------- */
+
 	.hero-banner {
 	    display: flex;
 	    flex-direction: column;
@@ -175,4 +208,114 @@ import '../styles/global.css';
         	display: none;
 		}
 	}
+
+	/* ----------- section 1 ----------- */
+
+	.sec-1 {
+		position: relative;
+		height: 90vh;
+		min-height: 530px;
+		background: rgb(var(--black));
+	}
+
+	.sec-1 .text {
+		position: relative;
+		top: 5vw;
+		left: 3vw;
+		width: min-content;
+		color: rgb(var(--white));
+	}
+
+	.sec-1 h2 {
+		white-space: nowrap;
+		margin-bottom: 40px;
+		font-size: clamp(3.125rem, -1.4205rem + 14.5455vw, 8.125rem); /* 130 > 50 */
+		font-weight: 800;
+	}
+	
+	.sec-1 p {
+		font-size: clamp(1.25rem, 0.6818rem + 1.8182vw, 1.875rem); /* 30 > 20 */
+		font-weight: 200;
+	}
+
+	.sec-1 .rotating {
+		position: absolute;
+		bottom: 3vw;
+		right: 5vw;
+		user-select: none;
+	}
+
+	@media (max-width: 700px) {
+		.sec-1 {
+			height: 625px;
+		}
+
+		.sec-1 .rotating {
+			right: auto;
+			left: 3vw;
+		}
+	}
+
+	.sec-1 .rotating > div{
+		position: relative;
+		width: min-content;
+	}
+
+	.sec-1 svg {
+  		fill: currentColor;
+  		height: auto;
+  		transform-origin: center;
+		min-width: 135px;
+		color: rgb(var(--yellow));
+		font-weight: 200;
+		animation: 25s linear infinite fullrotate;
+	}
+
+	.sec-1 #container-star {
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		transform: translate(-50%, -50%);
+		width: 20px;
+		height: 20px;
+	}
+
+	.sec-1 #container-star > div {
+		width: 20px;
+		height: 20px;
+		animation: 10s linear infinite fullrotate;
+	}
+
+	.sec-1 #star {
+		position: relative;
+	}
+
+	.sec-1 #star span {
+		position: absolute;
+		left: 50%;
+		transform: translateX(-50%);
+		display: block;
+		width: 1px;
+		height: 20px;	
+		background: rgb(var(--yellow));
+	}
+
+	.sec-1 #star span:nth-child(2) {
+		transform: rotate(60deg);
+	}
+
+	.sec-1 #star span:nth-child(3) {
+		transform: rotate(-60deg);
+	}
+
+	@keyframes fullrotate {
+		0% {
+			transform: rotate(0);
+		}
+
+		100% {
+			transform: rotate(360deg);
+		}
+	}
 </style>
+
