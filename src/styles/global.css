@@ -35,6 +35,7 @@ html {
     display: block;
     border-style: solid;
     border-color: rgb(var(--grey));
+    border-width: 2px;
 }
 
 @media (max-width: 1600px) {
@@ -87,7 +88,7 @@ html {
 
 /* ---------- animation ---------- */
 
-
+/*
 [class*="slide-"] {
     transition: 1.4s var(--bezier);
 }
@@ -162,7 +163,7 @@ html {
 .delay-10 {
     transition-delay: 1s;
 }
-
+*/
 /* ---------- font ---------- */
 
 @font-face {

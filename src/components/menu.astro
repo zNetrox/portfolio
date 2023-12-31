@@ -5,9 +5,21 @@
 <nav>
     <div class="container">
         <div id="links-list">
-            <a class="slide-up delay-02 over-link" href="#">accueil</a>
-            <a class="slide-up delay-01 over-link" href="#">compétences</a>
-            <a class="slide-up over-link" href="#">projets</a>
+            <a class="over-link" href="#">
+                <div>
+                    <p>accueil</p>
+                </div>
+            </a>
+            <a class="over-link" href="#">
+                <div>
+                    <p>compétences</p>
+                </div>
+            </a>
+            <a class="over-link" href="#">
+                <div>
+                    <p>projets</p>
+                </div>
+            </a>
         </div>
         <div id="infos">
             <p class="slide-up"><span>contact: </span>enzo.galiano38@gmail.com</p>
@@ -35,42 +47,48 @@
 
     .container {
         position: relative;
-        margin: 0 auto;
         display: flex;
-        flex-direction: column;
         justify-content: center;
-        width: 94vw;
+        align-items: end;
         height: 100%;
     }
 
     #links-list {
+        position: absolute;
+        top: 50%;
+        left: 3vw;
+        transform: translateY(-50%);
         display: grid;
         grid-template-rows: 33% 33% 33%;
     }
 
     a {
-        width: min-content;
         font-weight: 800;
         font-size: clamp(3.125rem, -0.5952rem + 11.9048vw, 10.9375rem);
-        color: inherit;
+        color: rgb(var(--white));
         text-transform: uppercase;
         user-select: none;
+        overflow: hidden;
+        width: min-content;
+        padding-right: 2%;
+    }
+
+    #links-list p {
+        /*transform: translateY(10%);*/
+        /*transform: translate(-25% ,35%);*/
     }
 
     a:hover {
         font-style: italic;
     }
 
-    a:hover span {
-        font-style: oblique;
-    }
-
     #infos {
-        position: absolute;
+        margin: 0 auto;
+        margin-bottom: 25px;
         display: flex;
         justify-content: space-between;
+        width: 94vw;
         bottom: 25px;
-        width: 100%;
         font-size: 20px;
     }
 
@@ -120,12 +138,247 @@
 </style>
 
 <script>
+    import { gsap } from "gsap"
     import { wait } from '../js/libray.js'
 
     const nav = document.querySelector('nav')
     const header = document.querySelector('header')
     const menuBtn = document.querySelector('header p')
 
+gsap.set(["#links-list a div", "#infos p"], {
+  opacity: 0,
+})
+
+function animateUpDelay(elements, opacityFrom, opacityTo, yFrom, yTo, delayIncrement) {
+  const links = gsap.utils.toArray(elements);
+  links.forEach((link, index) => {
+    gsap.fromTo(
+      link,
+      {
+        opacity: opacityFrom,
+        y: yFrom,
+      },
+      {
+        opacity: opacityTo,
+        y: yTo,
+        duration: 1.4,
+        ease: "power4.out",
+        delay: 0.3 - index * delayIncrement,
+      }
+    )
+  })
+}
+
+function animateOpacity(elements, opacityFrom, opacityTo, duration, delay) {
+    gsap.fromTo(elements,
+            {
+                opacity: opacityFrom,
+            },
+            {
+                opacity: opacityTo,
+                duration: duration,
+                ease: "power4.out",
+                delay: delay,
+            }
+        )
+    }
+
+
+menuBtn.addEventListener("click", () => {
+    // console.log(document.querySelectorAll("#links-list a"))
+    if (nav.className !== "active") {
+        document.querySelector("body").style.overflow = 'hidden'
+        nav.classList.add("active");
+        animateOpacity("header", 1, 0, 0.3, 0)
+        gsap.set('header', {
+            mixBlendMode: 'initial',
+            pointerEvents: 'none',
+        })
+        wait(650)
+        .then(() => {
+            animateUpDelay("#links-list a div", 1, 1, "106%", "10%", 0.1);
+            animateOpacity("#infos p", 0, 1, 0.8, 0.8)
+            return wait(1000)
+        })
+        .then(() => {
+            animateOpacity("header", 0, 1, 0.2, 0)
+            gsap.set('header', {
+                pointerEvents: 'auto',
+            })
+            menuBtn.innerText = 'Close' 
+        })
+    } else {
+        document.querySelector("body").style.overflow = 'visible'
+        animateUpDelay("#links-list a div", 1, 0, "10%", "106%", 0.1);
+        animateOpacity("#infos p", 1, 0, 0.8, 0)
+        animateOpacity("header", 1, 0, 0.2, 0)
+        gsap.set('header', {
+            mixBlendMode: 'initial',
+            pointerEvents: 'none',
+        })
+        wait(650)
+        .then(() => {
+            nav.classList.remove("active");
+            return wait(1400)
+        })
+        .then(() => {
+            animateOpacity("header", 0, 1, 0.3, 0.1)
+            gsap.set('header', {
+                mixBlendMode: 'difference',
+                pointerEvents: 'auto',
+                delay: 0.1,
+            })
+            menuBtn.innerText = 'Menu'
+        })
+    }
+})
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*
+mix-blend-mode: initial;
+pointer-events: none;
+*/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*
+    gsap.set(["#links-list a", "#infos p"], {
+		opacity: 0,
+	})
+
+    menuBtn.addEventListener('click', () => {
+        if (nav.className !== 'active') {
+            nav.classList.add('active')
+            wait(800)
+            .then(() => {
+                const links = gsap.utils.toArray("#links-list a")
+                links.forEach((link, index) => {
+                    gsap.fromTo(link, {
+                        opacity: 0,
+                        y: 100,
+                    },
+                    {
+                        opacity: 1,
+                        y: 0,
+                        duration: 1.4,
+                        ease: "power4.out",
+                        delay: 0.3 - index * 0.1, // Utilisation de l'index pour incrémenter le délai
+                    }
+                    )
+                })
+                gsap.fromTo("#infos p", {
+                        opacity: 0,
+                    },
+                    {
+                        opacity: 1,
+                        duration: 1.4,
+                        ease: "power4.out",
+                        delay: 0.8, // Utilisation de l'index pour incrémenter le délai
+                    }
+                    )
+            })
+        } else {
+            const links = gsap.utils.toArray("#links-list a")
+                links.forEach((link, index) => {
+                gsap.fromTo(link, {
+                        opacity: 1,
+                        y: 0,
+                    },
+                    {
+                        opacity: 0,
+                        y: 100,
+                        duration: 1.4,
+                        ease: "power4.out",
+                        delay: 0.3 - index * 0.1, // Utilisation de l'index pour incrémenter le délai
+                    }
+                    )
+                })
+                gsap.fromTo("#infos p", {
+                        opacity: 1,
+                    },
+                    {
+                        opacity: 0,
+                        duration: 1.4,
+                        ease: "power4.out",
+                    }
+                    )
+            wait(800)
+            .then(() => {
+                nav.classList.remove('active')
+            })
+        }
+    })
+
+*/
+
+
+
+
+/*
+    gsap.set("#links-list a", {
+		opacity: 0,
+		y: 100,
+	})
+
+    menuBtn.addEventListener('click', () => {
+        if (nav.className !== 'active') {
+            nav.classList.add('active')
+            wait(800)
+            .then(() => {
+                let delay = 0.3
+                document.querySelectorAll('#links-list a').forEach(link => {
+                    gsap.to(link, {
+		                opacity: 1,
+		                y: 0,
+                        duration: 1.4,
+                        ease: "power4.out",
+                        delay: delay
+	                })
+                    delay -= 0.1
+                })
+            })
+        } else {
+            nav.classList.remove('active')
+        }
+    })
+
+*/
+
+
+
+
+
+
+
+
+
+
+    /*
     menuBtn.addEventListener('click', () => {
         if (nav.className !== 'active') {
             document.querySelectorAll('#links-list a').forEach(element => element.style.pointerEvents = 'auto')
@@ -166,4 +419,5 @@
             })
         }
     })
+    */
 </script>
