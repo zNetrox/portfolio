@@ -17,18 +17,18 @@ import '../styles/global.css';
 		</div>
 		<div class="part-2">
 			<div id="tiles-1">
-				<span></span>
-				<span></span>
-				<span></span>
-				<span></span>
-				<span></span>
+				<div><span></span></div>
+				<div><span></span></div>
+				<div><span></span></div>
+				<div><span></span></div>
+				<div><span></span></div>
 			</div>
 			<div id="tiles-2">
-				<span></span>
-				<span></span>
-				<span></span>
-				<span></span>
-				<span></span>
+				<div><span></span></div>
+				<div><span></span></div>
+				<div><span></span></div>
+				<div><span></span></div>
+				<div><span></span></div>
 			</div>
 
 			<p>Je suis actuellement en classe de terminale STI2D avec l'enseignement spécifique "système d'information et numérique (SIN)".</p>
@@ -42,28 +42,38 @@ import '../styles/global.css';
 
 		<div class="rotating">
 			<div>
-				<svg viewBox="0 0 100 100" width="100" height="100">
-					<defs>
-					  <path id="circle"
-						d="M 50, 50 m -37, 0 a 37,37 0 1,1 74,0 a 37,37 0 1,1 -74,0"/>
-					</defs>
-					<text font-size="14">
-					  <textPath xlink:href="#circle">
-						MES OBJECTIFS - MES OBJECTIFS -
-					  </textPath>
-					</text>
-				  </svg>
+				<div class="circle-text">
+					<svg viewBox="0 0 100 100" width="100" height="100">
+						<defs>
+						  <path id="circle"
+							d="M 50, 50 m -37, 0 a 37,37 0 1,1 74,0 a 37,37 0 1,1 -74,0"/>
+						</defs>
+						<text font-size="14">
+						  <textPath xlink:href="#circle">
+							MES OBJECTIFS - MES OBJECTIFS -
+						  </textPath>
+						</text>
+					  </svg>
+				</div>
 				  <div id="container-star">
 					<div>
-						<div id="star">
-							<span></span>
-							<span></span>
-							<span></span>
+						<div>
+							<div id="star">
+								<div>
+									<span></span>
+									<span></span>
+									<span></span>
+								</div>
+							</div>
 						</div>
 					</div>
 				  </div>
 			</div>
 		</div>
+	</section>
+
+	<section class="sec-2">
+
 	</section>
 </Layout>
 
@@ -147,64 +157,42 @@ import '../styles/global.css';
 		left: 0;
 	}
 
-	#tiles-1 span:nth-child(1) {
-		grid-area: 1 / 1 / 2 / 2; 
-		/* border-width: 2px 0 2px 2px;*/
-	}
+	#tiles-1 div:nth-child(1) span { transform: translate(2px, 0); }
+	#tiles-1 div:nth-child(1) { grid-area: 1 / 1 / 2 / 2; }
 
-	#tiles-1 span:nth-child(2) {
-		grid-area: 1 / 2 / 2 / 3;
-		/* border-width: 2px 2px 2px 2px;*/
-	}
+	#tiles-1 div:nth-child(2) { grid-area: 1 / 2 / 2 / 3; }
 
-	#tiles-1 span:nth-child(3) {
-		grid-area: 1 / 3 / 2 / 4;
-		/* border-width: 2px 2px 2px 0;*/
-	}
+	#tiles-1 div:nth-child(3) span { transform: translate(-2px, 0); }
+	#tiles-1 div:nth-child(3) { grid-area: 1 / 3 / 2 / 4; }
 
-	#tiles-1 span:nth-child(4) {
-		grid-area: 2 / 1 / 3 / 2;
-		/* border-width: 0 0 2px 2px;*/
-	}
+	#tiles-1 div:nth-child(4) span { transform: translate(2px, -2px); }
+	#tiles-1 div:nth-child(4) { grid-area: 2 / 1 / 3 / 2; }
 
-	#tiles-1 span:nth-child(5) {
-		grid-area: 2 / 2 / 3 / 3;
-		/* border-width: 0 2px 2px 2px;*/
-	}
+	#tiles-1 div:nth-child(5) span { transform: translate(0, -2px); }
+	#tiles-1 div:nth-child(5) { grid-area: 2 / 2 / 3 / 3; }
 
 	#tiles-2 {
 		grid-template-columns: repeat(3, var(--tile-width));
 		grid-template-rows: repeat(2, var(--tile-width));
+		transform: translateX(2px);
 		bottom: 0;
 		right: 0;
-		transform: translateX(2px);
 	}
 
-	#tiles-2 span:nth-child(1) {
-		grid-area: 1 / 2 / 2 / 3;
-		/*border-width: 2px 0 0 2px;*/
-	}
+	#tiles-2 div:nth-child(1) span { transform: translate(0, 2px); }
+	#tiles-2 div:nth-child(1) { grid-area: 1 / 2 / 2 / 3; }
 
-	#tiles-2 span:nth-child(2) {
-		grid-area: 1 / 3 / 2 / 4;
-		/*border-width: 2px 2px 0 2px;*/
-	}
+	#tiles-2 div:nth-child(2) span { transform: translate(-2px, 2px); }
+	#tiles-2 div:nth-child(2) { grid-area: 1 / 3 / 2 / 4; }
 
-	#tiles-2 span:nth-child(3) {
-		grid-area: 2 / 1 / 3 / 2;
-		/*border-width: 2px 0 2px 2px;*/
-	}
+	#tiles-2 div:nth-child(3) span { transform: translate(2px, 0); }
+	#tiles-2 div:nth-child(3) { grid-area: 2 / 1 / 3 / 2; }
 
-	#tiles-2 span:nth-child(4) {
-		grid-area: 2 / 2 / 3 / 3;
-		/*border-width: 2px 0 2px 2px;*/
-	}
+	#tiles-2 div:nth-child(4) { grid-area: 2 / 2 / 3 / 3; }
 
-	#tiles-2 span:nth-child(5) {
-		grid-area: 2 / 3 / 3 / 4;
-		/*border-width: 2px 2px 2px 2px;*/
-	}
-	
+	#tiles-2 div:nth-child(5) span { transform: translate(-2px, 0); }
+	#tiles-2 div:nth-child(5) { grid-area: 2 / 3 / 3 / 4; }
+
 	@media (max-height: 665px) {
     	#tiles-1, #tiles-2 {
         	display: none;
@@ -263,6 +251,10 @@ import '../styles/global.css';
 		width: min-content;
 	}
 
+	.sec-1 .circle-text {
+		animation: 10s linear infinite fullrotate;
+	}
+
 	.sec-1 svg {
   		fill: currentColor;
   		height: auto;
@@ -270,7 +262,7 @@ import '../styles/global.css';
 		min-width: 135px;
 		color: rgb(var(--yellow));
 		font-weight: 200;
-		animation: 25s linear infinite fullrotate;
+		
 	}
 
 	.sec-1 #container-star {
@@ -285,7 +277,12 @@ import '../styles/global.css';
 	.sec-1 #container-star > div {
 		width: 20px;
 		height: 20px;
-		animation: 10s linear infinite fullrotate;
+	}
+
+	.sec-1 #container-star > div > div {
+		width: 20px;
+		height: 20px;
+		animation: 10s linear infinite negativefullrotate;
 	}
 
 	.sec-1 #star {
@@ -319,19 +316,85 @@ import '../styles/global.css';
 			transform: rotate(360deg);
 		}
 	}
+
+	@keyframes negativefullrotate {
+		0% {
+			transform: rotate(0);
+		}
+
+		100% {
+			transform: rotate(-360deg);
+		}
+	}
+
+	/* ----------- section 2 ----------- */
+
+	.sec-2 {
+		height: 100vh;
+	}
 </style>
 
 <script>
-	import { gsap } from "gsap";
-	import { ScrollTrigger } from "gsap/ScrollTrigger";
-	gsap.registerPlugin(ScrollTrigger);
-/*
-	const animSlide = function(referenciel, start, elementAnim, delay) {
+	import { gsap } from "gsap"
+	import { ScrollTrigger } from "gsap/ScrollTrigger"
+	gsap.registerPlugin(ScrollTrigger)
+
+function animateHeroBanner() {
+	// Animation de la ligne
+	gsap.fromTo('.line', { scaleX: 0 }, {
+	    scaleX: 1,
+	    duration: 1.4,
+	    ease: "power4.out"
+	})
+
+	  // Animation de l'opacité du paragraphe
+	gsap.fromTo('.hero-banner p', { opacity: 0 }, {
+	    opacity: 1,
+	    duration: 1.4,
+	    delay: 1,
+	    ease: "power4.out"
+	})
+
+	// Animation des tuiles
+  	const tiles = [
+	    '#tiles-1 div:nth-child(1)',
+	    '#tiles-1 div:nth-child(2)',
+	    '#tiles-1 div:nth-child(3)',
+	    '#tiles-1 div:nth-child(4)',
+	    '#tiles-1 div:nth-child(5)',
+	    '#tiles-2 div:nth-child(1)',
+	    '#tiles-2 div:nth-child(2)',
+	    '#tiles-2 div:nth-child(3)',
+	    '#tiles-2 div:nth-child(4)',
+	    '#tiles-2 div:nth-child(5)',
+	]
+
+	const tilePositions = [
+	    '100%', '150%', '125%', '225%', '175%',
+	    '-175%', '-225%', '-125%', '-150%', '-100%',
+	]
+	
+	tiles.forEach((tile, index) => {
+		gsap.fromTo(tile, { y: tilePositions[index] }, {
+			y: 0,
+			x: 0,
+	      	duration: 1.4,
+	      	ease: "power4.out"
+		})
+	})
+}
+
+animateHeroBanner()
+
+	const ratioTrigger = "top 70%"
+	const ratioTriggerFullPage = "top bottom"
+
+	const animSlide = function(referenciel, elementAnim, delay) {
 		gsap.to(referenciel, {
   			scrollTrigger: {
     			trigger: referenciel,
-   				start: start,
-    			markers: true,
+   				start: ratioTrigger,
+    			// markers: true,
 				onEnter: () => gsap.to(elementAnim, {
 					x: 0,
 					y: 0,
@@ -341,24 +404,8 @@ import '../styles/global.css';
 					delay: delay
 				})
   			}
-		});
+		})
 	}
-
-	gsap.set('.line', {
-		scaleX: 0
-	})
-
-	gsap.to('.line', {
-  			scrollTrigger: {
-    			trigger: '.line',
-   				start: 'top bottom',
-  			},
-			scaleX: 1,
-			duration: 1.4,
-      		ease: "power4.out"
-		});
-
-
 
 	gsap.set([".text h2", ".text p"], {
 		opacity: 0,
@@ -370,145 +417,37 @@ import '../styles/global.css';
 		y: 100,
 	})
 
-	animSlide('.text', "top 60%",'.text h2', 0)
-	animSlide('.text', "top 60%",'.text p', 0.1)
-	animSlide('.text', "top bottom",'.hero-banner h1 span:first-child', 0)
-	animSlide('.text', "top bottom",'.hero-banner h1 span:last-child', 0.5)
-*/
+	animSlide('.text', '.text h2', 0)
+	animSlide('.text', '.text p', 0.1)
 
-function animateHeroBanner() {
-	gsap.set('.line', {
-		scaleX: 0
+	// toggle action
+	let rotatePositive = 0
+	let rotateNegative = 0
+
+	function handler() {
+		rotatePositive += 3
+		rotateNegative -= 3
+		gsap.to('.sec-1 svg', {
+			rotate: rotatePositive,
+			duration: 0.5,
+			ease: "power4.out"
+		})
+		gsap.to('.sec-1 #container-star > div', {
+			rotate: rotateNegative,
+			duration: 0.5,
+			ease: "power4.out"
+		})
+	}
+
+	ScrollTrigger.create({
+		trigger: '.rotating',
+   		start: ratioTriggerFullPage,
+    	markers: true,
+		scrub: 2,
+		onEnter: () => { document.addEventListener('scroll', (handler)) },
+		onLeave: () => { document.removeEventListener('scroll', (handler)) },
+		onEnterBack: () => { document.addEventListener('scroll', (handler)) },
+		onLeaveBack: () => { document.removeEventListener('scroll', (handler)) }
 	})
-	
-	gsap.to('.line', {
-		scaleX: 1,
-		duration: 1.4,
-      	ease: "power4.out",
-	})
-/*
-	gsap.set('h1', {
-		opacity: 0,
-		x: -100,
-	})
-
-	gsap.to('h1', {
-		opacity: 1,
-		x: 0,
-		duration: 1.4,
-      	ease: "power4.out",
-	})*/
-
-	gsap.set('.hero-banner p', {
-		opacity: 0,
-	})
-
-	gsap.to('.hero-banner p', {
-		opacity: 1,
-		duration: 1.4,
-		delay: 1,
-      	ease: "power4.out",
-	})
-
-
-
-
-
-	// tiles 
-	/*gsap.set('#tiles-1 span:nth-child(1)', {y: 175, x: -175, rotate: 40})
-	gsap.set('#tiles-1 span:nth-child(2)', {y: 175, x: 350, rotate: -40})
-	gsap.set('#tiles-1 span:nth-child(3)', {y: 0, x: 350, rotate: 65})
-	gsap.set('#tiles-1 span:nth-child(4)', {y: 175, x: 0, rotate: 20})
-	gsap.set('#tiles-1 span:nth-child(5)', {y: 175, x: 175, rotate: 35})
-
-	gsap.set('#tiles-2 span:nth-child(1)', {y: -175, x: -175, rotate: -35})
-	gsap.set('#tiles-2 span:nth-child(2)', {y: -175, x: 0, rotate: -20})
-	gsap.set('#tiles-2 span:nth-child(3)', {y: 0, x: -350, rotate: -65})
-	gsap.set('#tiles-2 span:nth-child(4)', {y: -175, x: -350, rotate: 40})
-	gsap.set('#tiles-2 span:nth-child(5)', {y: -175, x: 175, rotate: -40})*/
-
-	gsap.set('#tiles-1 span:nth-child(1)', {y: '100%'})
-	gsap.set('#tiles-1 span:nth-child(2)', {y: '150%'})
-	gsap.set('#tiles-1 span:nth-child(3)', {y: '175%'})
-	gsap.set('#tiles-1 span:nth-child(4)', {y: '125%'})
-	gsap.set('#tiles-1 span:nth-child(5)', {y: '175%'})
-
-	gsap.set('#tiles-2 span:nth-child(1)', {y: '-175%'})
-	gsap.set('#tiles-2 span:nth-child(2)', {y: '-125%'})
-	gsap.set('#tiles-2 span:nth-child(3)', {y: '-175%'})
-	gsap.set('#tiles-2 span:nth-child(4)', {y: '-150%'})
-	gsap.set('#tiles-2 span:nth-child(5)', {y: '-100%'})
-
-
-	// go top 2px
-	gsap.to('#tiles-1 span:nth-child(5)', {
-		y: -2,
-		x: 0,
-		rotate: 0,
-		duration: 1.4,
-      	ease: "power4.out",
-	})
-
-	// go top right 2px
-	gsap.to('#tiles-1 span:nth-child(4)', {
-		y: -2,
-		x: 2,
-		rotate: 0,
-		duration: 1.4,
-      	ease: "power4.out",
-	})
-
-	// go right 2px
-	gsap.to(['#tiles-1 span:nth-child(1)', '#tiles-2 span:nth-child(3)'], {
-		y: 0,
-		x: 2,
-		rotate: 0,
-		duration: 1.4,
-      	ease: "power4.out",
-	})
-
-	// go bottom 2px
-	gsap.to('#tiles-2 span:nth-child(1)', {
-		y: 2,
-		x: 0,
-		rotate: 0,
-		duration: 1.4,
-      	ease: "power4.out",
-	})
-
-	// go bottom left 2px
-	gsap.to('#tiles-2 span:nth-child(2)', {
-		y: 2,
-		x: -2,
-		rotate: 0,
-		duration: 1.4,
-      	ease: "power4.out",
-	})
-
-	// go left 2px
-	gsap.to(['#tiles-1 span:nth-child(3)', '#tiles-2 span:nth-child(5)'], {
-		y: 0,
-		x: -2,
-		rotate: 0,
-		duration: 1.4,
-      	ease: "power4.out",
-	})
-
-	
-	gsap.to(['#tiles-1 span:nth-child(2)', '#tiles-2 span:nth-child(4)'], {
-		y: 0,
-		x: 0,
-		rotate: 0,
-		duration: 1.4,
-      	ease: "power4.out",
-	})
-}
-
-
-animateHeroBanner()
-
-setInterval(() => {
-	animateHeroBanner()
-}, 5000)
 
 </script>
