@@ -30,7 +30,6 @@ import '../styles/global.css';
 				<div><span></span></div>
 				<div><span></span></div>
 			</div>
-
 			<p>Je suis actuellement en classe de terminale STI2D avec l'enseignement spécifique "système d'information et numérique (SIN)".</p>
 		</div>
 	</section>
@@ -39,8 +38,7 @@ import '../styles/global.css';
 			<h2>Mes Objectifs</h2>
 			<p>Mon objectif premier est créer une experience web inoubliable en combinant esthétisme et fonctionnalité. Pour cela il me faut donc affiner mes competences en tant que développeur web front-end. Je suis quelqu'un de motiver qui aime apprendre de nouvelles choses.</p>
 		</div>
-
-		<div class="rotating">
+		<div class="rotating-text">
 			<div>
 				<div class="circle-text">
 					<svg viewBox="0 0 100 100" width="100" height="100">
@@ -71,9 +69,31 @@ import '../styles/global.css';
 			</div>
 		</div>
 	</section>
-
 	<section class="sec-2">
+		<div id="tiles-3">
+			<div><span></span></div>
+			<div><span></span></div>
+			<div><span></span></div>
+			<div><span></span></div>
+			<div><span></span></div>
+		</div>
+		<div class="my-projects">
+			<div>
+				<h2>Mes Differents<br> Projets</h2>
+			</div>
+			<div>
+				<a class="cercle-button" href="#">
+					<div class="arrow">
+						<span></span>
+						<span></span>
+						<span></span>
+					</div>
+				</a>
+			</div>
+		</div>
+		<div class="list-fovorite-project">
 
+		</div>
 	</section>
 </Layout>
 
@@ -228,7 +248,7 @@ import '../styles/global.css';
 		font-weight: 200;
 	}
 
-	.sec-1 .rotating {
+	.sec-1 .rotating-text {
 		position: absolute;
 		bottom: 3vw;
 		right: 5vw;
@@ -240,19 +260,19 @@ import '../styles/global.css';
 			height: 625px;
 		}
 
-		.sec-1 .rotating {
+		.sec-1 .rotating-text {
 			right: auto;
 			left: 3vw;
 		}
 	}
 
-	.sec-1 .rotating > div{
+	.sec-1 .rotating-text > div{
 		position: relative;
 		width: min-content;
 	}
 
 	.sec-1 .circle-text {
-		animation: 10s linear infinite fullrotate;
+		animation: 13s linear infinite fullrotate;
 	}
 
 	.sec-1 svg {
@@ -282,7 +302,7 @@ import '../styles/global.css';
 	.sec-1 #container-star > div > div {
 		width: 20px;
 		height: 20px;
-		animation: 10s linear infinite negativefullrotate;
+		animation: 13s linear infinite negativefullrotate;
 	}
 
 	.sec-1 #star {
@@ -330,9 +350,31 @@ import '../styles/global.css';
 	/* ----------- section 2 ----------- */
 
 	.sec-2 {
-		height: 100vh;
+		
+	}
+
+	.my-projects .cercle-button {
+		width: 260px;
+		height: 260px;
 	}
 </style>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 <script>
 	import { gsap } from "gsap"
@@ -355,7 +397,7 @@ function animateHeroBanner() {
 	    ease: "power4.out"
 	})
 
-	// Animation des tuiles
+	// id de toutes les tuiles a animé
   	const tiles = [
 	    '#tiles-1 div:nth-child(1)',
 	    '#tiles-1 div:nth-child(2)',
@@ -369,13 +411,23 @@ function animateHeroBanner() {
 	    '#tiles-2 div:nth-child(5)',
 	]
 
+	// position de la tuiles avant l'animation
 	const tilePositions = [
-	    '100%', '150%', '125%', '225%', '175%',
-	    '-175%', '-225%', '-125%', '-150%', '-100%',
+		{ x: '0', y: '100%' },
+		{ x: '0', y: '150%' },
+		{ x: '0', y: '125%' },
+		{ x: '0', y: '225%' },
+		{ x: '0', y: '175%' },
+		{ x: '0', y: '-175%' },
+		{ x: '0', y: '-225%' },
+		{ x: '0', y: '-125%' },
+		{ x: '0', y: '-150%' },
+		{ x: '0', y: '-100%' }
 	]
 	
+	// animation pour les tuiles
 	tiles.forEach((tile, index) => {
-		gsap.fromTo(tile, { y: tilePositions[index] }, {
+		gsap.fromTo(tile, { x: tilePositions[index].x, y: tilePositions[index].y}, {
 			y: 0,
 			x: 0,
 	      	duration: 1.4,
@@ -407,26 +459,14 @@ animateHeroBanner()
 		})
 	}
 
-	gsap.set([".text h2", ".text p"], {
-		opacity: 0,
-		x: -100,
-	})
-
-	gsap.set(".hero-banner h1 span", {
-		opacity: 1,
-		y: 100,
-	})
-
-	animSlide('.text', '.text h2', 0)
-	animSlide('.text', '.text p', 0.1)
-
-	// toggle action
+	// animation cercle text
 	let rotatePositive = 0
 	let rotateNegative = 0
 
 	function handler() {
 		rotatePositive += 3
 		rotateNegative -= 3
+		
 		gsap.to('.sec-1 svg', {
 			rotate: rotatePositive,
 			duration: 0.5,
@@ -442,12 +482,12 @@ animateHeroBanner()
 	ScrollTrigger.create({
 		trigger: '.rotating',
    		start: ratioTriggerFullPage,
-    	markers: true,
-		scrub: 2,
 		onEnter: () => { document.addEventListener('scroll', (handler)) },
 		onLeave: () => { document.removeEventListener('scroll', (handler)) },
 		onEnterBack: () => { document.addEventListener('scroll', (handler)) },
 		onLeaveBack: () => { document.removeEventListener('scroll', (handler)) }
 	})
+
+	// 
 
 </script>
