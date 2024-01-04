@@ -53,7 +53,7 @@ import '../styles/global.css';
 						</text>
 					  </svg>
 				</div>
-				  <div id="container-star">
+				<div id="container-star">
 					<div>
 						<div>
 							<div id="star">
@@ -65,7 +65,7 @@ import '../styles/global.css';
 							</div>
 						</div>
 					</div>
-				  </div>
+				</div>
 			</div>
 		</div>
 	</section>
@@ -75,24 +75,48 @@ import '../styles/global.css';
 			<div><span></span></div>
 			<div><span></span></div>
 			<div><span></span></div>
-			<div><span></span></div>
 		</div>
 		<div class="my-projects">
 			<div>
+				<span class="line-1"></span>
 				<h2>Mes Differents<br> Projets</h2>
 			</div>
 			<div>
-				<a class="cercle-button" href="#">
+				<a class="cercle-button over-opacity" href="#">
 					<div class="arrow">
-						<span></span>
-						<span></span>
-						<span></span>
+						<div><span></span></div>
+						<div><span></span></div>
+						<div><span></span></div>
 					</div>
 				</a>
 			</div>
 		</div>
 		<div class="list-fovorite-project">
-
+			<h4>Mes Projets Favoris</h4>
+			<span class="line-1"></span>
+			<div class="project">
+				<div class="project-counter">1</div>
+				<div class="project-name">
+					<p>Picture Poker</p>
+					<p>Mini Jeu | 2024 | HTML5 | CSS3 | JavaScript</p>
+				</div>
+			</div>
+			<span class="line-1"></span>
+			<div class="project">
+				<div class="project-counter">2</div>
+				<div class="project-name">
+					<p>Aesthetic</p>
+					<p>Site Web | 2023 | HTML5 | CSS3 | JavaScript</p>
+				</div>
+			</div>
+			<span class="line-1"></span>
+		</div>
+		<div id="tiles-4">
+			<div><span></span></div>
+			<div><span></span></div>
+		</div>
+		<div id="tiles-5">
+			<div><span></span></div>
 		</div>
 	</section>
 </Layout>
@@ -129,8 +153,16 @@ import '../styles/global.css';
 	    font-style: italic;
 	}
 
-	.hero-banner .line {
+	/*.hero-banner*/ .line {
 	    display: block;
+	    width: 100%;
+	    height: 2px;
+	    background: rgb(var(--grey));
+		transform-origin: left;
+	}
+
+		/*.hero-banner*/ .line-1 {
+			display: block;
 	    width: 100%;
 	    height: 2px;
 	    background: rgb(var(--grey));
@@ -282,7 +314,6 @@ import '../styles/global.css';
 		min-width: 135px;
 		color: rgb(var(--yellow));
 		font-weight: 200;
-		
 	}
 
 	.sec-1 #container-star {
@@ -350,13 +381,228 @@ import '../styles/global.css';
 	/* ----------- section 2 ----------- */
 
 	.sec-2 {
-		
+		position: relative;
+	}
+
+	.sec-2 .my-projects {
+		display: flex;
+		padding-top: calc(var(--tile-width) * 1.5);
+	}
+
+	@media (max-width: 1330px) {
+		.sec-2 .my-projects {
+			display: flex;
+			padding-top: calc(var(--tile-width) * 2.2);
+		}
+	}
+
+	.sec-2 .my-projects h2 {
+		display: flex;
+		margin-left: 3vw;
+		padding-top: 30px;
+		font-size: clamp(3.125rem, 0.4934rem + 8.4211vw, 8.125rem); /* 130 > 50 */
+		white-space: nowrap;
+	}
+
+	.my-projects > div:last-child {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		flex-grow: 1;
 	}
 
 	.my-projects .cercle-button {
 		width: 260px;
-		height: 260px;
+		aspect-ratio: 1/1;
 	}
+
+	@media (max-width: 1600px) {
+		.my-projects .cercle-button {
+			width: 200px;
+		}
+	}
+
+	@media (max-width: 1330px) {
+		.my-projects .cercle-button {
+			width: 175px;
+		}
+	}
+
+	@media (max-width: 1050px) {
+		.my-projects .cercle-button {
+			width: 150px;
+		}
+
+		.sec-2 .my-projects h2 {
+			padding-top: 20px;
+		}
+	}
+
+	@media (max-width: 700px) {
+		.sec-2 .my-projects {
+			flex-direction: column;
+			gap: 15px;
+			width: min-content;
+		}
+
+		.my-projects > div:last-child {
+			display: flex;
+			justify-content: end;
+			align-items: center;
+		}
+
+		.my-projects .cercle-button {
+			width: 150px;
+		}
+
+		.sec-2 .my-projects h2 {
+			padding-top: 10px;
+		}
+	}
+
+	@media (max-width: 500px) {
+		.my-projects .cercle-button {
+			width: 125px;
+		}
+	}
+
+	.list-fovorite-project {
+		margin: 0 auto;
+		display: flex;
+		flex-direction: column;
+		gap: 30px;
+		width: 94vw;
+		padding:  calc(var(--tile-width) * 1.5) 0;
+	}
+
+	.list-fovorite-project h4 {
+		font-size: clamp(1.5625rem, 0.4911rem + 2.8571vw, 2.8125rem); /* 45 > 25 */
+		font-weight: 200;
+	}
+
+	.project {
+		display: flex;
+		align-items: center;
+		gap: 70px;
+	}
+
+	.project-counter {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		min-width: 125px;
+		aspect-ratio: 1/1;
+		border: 1px solid rgb(var(--grey));
+		border-radius: 50%;
+		font-size: clamp(1.5625rem, 0.4911rem + 2.8571vw, 2.8125rem); /* 45 > 25 */
+		font-weight: 200;
+		color: rgb(var(--grey));
+		margin-bottom: 45px;
+	}
+
+	@media (max-width: 1300px) {
+		.project-counter {
+			min-width: 100px;
+		}
+	}
+
+	@media (max-width: 1150px) {
+		.project {
+			gap: 50px;
+		}
+
+		.project-counter {
+			min-width: 85px;
+		}
+	}
+
+	@media (max-width: 1075px) {
+		.project-counter {
+			min-width: 70px;
+		}
+	}
+
+	@media (max-width: 800px) {
+		.project {
+			gap: 30px;
+		}
+
+		.project-counter {
+			min-width: 55px;
+			margin-bottom: 30px;
+		}
+	}
+
+	@media (max-width: 650px) {
+		.project-counter {
+			min-width: 45px;
+			margin-bottom: 25px;
+		}
+	}
+
+	.project-name p:first-child {
+		font-size: clamp(3.4375rem, -0.5099rem + 12.6316vw, 10.9375rem); /* 175 > 55 */
+		font-style: italic;
+	}
+
+	.project-name p:last-child {
+		font-size: clamp(0.9375rem, 0.6696rem + 0.7143vw, 1.25rem); /* 25 > 20 */
+		font-weight: 200;
+		color: rgb(var(--grey));
+	}
+
+	#tiles-3 {
+		grid-template-columns: repeat(3, var(--tile-width));
+		grid-template-rows: repeat(2, var(--tile-width));
+		transform: translateX(2px);
+		top: 0;
+		right: 0;
+	}
+
+	#tiles-3 div:nth-child(1) span { transform: translate(2px, 0); }
+	#tiles-3 div:nth-child(1) { grid-area: 1 / 1 / 2 / 2; }
+
+	#tiles-3 div:nth-child(2) { grid-area: 1 / 2 / 2 / 3; }
+
+	#tiles-3 div:nth-child(3) span { transform: translate(-2px, 0); }
+	#tiles-3 div:nth-child(3) { grid-area: 1 / 3 / 2 / 4; }
+
+	#tiles-3 div:nth-child(4) span { transform: translate(-2px, -2px); }
+	#tiles-3 div:nth-child(4) { grid-area: 2 / 3 / 3 / 4; }
+
+	#tiles-4 {
+		grid-template-columns: repeat(2, var(--tile-width));
+		grid-template-rows: var(--tile-width);
+		bottom: 0;
+		left: 0;
+	}
+
+	#tiles-4 div:nth-child(1) { grid-area: 1 / 1 / 2 / 2; }
+
+	#tiles-4 div:nth-child(2) span { transform: translate(-2px, 0); }
+	#tiles-4 div:nth-child(2) { grid-area: 1 / 2 / 2 / 3; }
+
+	#tiles-5 {
+		grid-template-columns: var(--tile-width);
+		grid-template-rows: var(--tile-width);
+		bottom: 0;
+		right: 0;
+	}
+
+	#tiles-5 div:nth-child(1) { grid-area: 1 / 1 / 2 / 2; }
+
+
+
+
+
+
+
+	@media (max-width: 665px) {
+
+	}
+
+
+
 </style>
 
 
@@ -381,15 +627,63 @@ import '../styles/global.css';
 	import { ScrollTrigger } from "gsap/ScrollTrigger"
 	gsap.registerPlugin(ScrollTrigger)
 
-function animateHeroBanner() {
-	// Animation de la ligne
-	gsap.fromTo('.line', { scaleX: 0 }, {
+	const ratioTrigger = "top 80%"
+	const ratioTriggerFullPage = "top bottom"
+
+function animTiles(tiles, tilePositions) {
+	tiles.forEach((tile, index) => {
+		gsap.fromTo(tile, { x: tilePositions[index].x, y: tilePositions[index].y, opacity: 0}, {
+			y: 0,
+			x: 0,
+			opacity: 1,
+	      	duration: 1.4,
+	      	ease: "power4.out"
+		})
+	})
+}
+
+function animTilesScroll(referenciel, tiles, tilePositions) {
+	gsap.set(tiles, {opacity: 0})
+
+	ScrollTrigger.create({
+		trigger: referenciel,
+    	start: ratioTrigger,
+		once: true,
+    	// markers: true,
+		onEnter: () => { animTiles(tiles, tilePositions) },
+	})
+}
+
+
+
+function animLine(line) {
+	gsap.fromTo(line, { scaleX: 0, opacity: 0 }, {
 	    scaleX: 1,
+		opacity: 1,
 	    duration: 1.4,
 	    ease: "power4.out"
 	})
+}
 
-	  // Animation de l'opacité du paragraphe
+function animLineScroll(referenciel, line) {
+	gsap.set(line, {scaleX: 0, opacity: 0})
+	console.log('okay')
+	ScrollTrigger.create({
+		trigger: referenciel,
+    	start: ratioTrigger,
+		once: true,
+    	// markers: true,
+		onEnter: () => { animLine(line) },
+	})
+}
+
+
+
+function animateHeroBanner() {
+	// Animation de la ligne
+	animLine('.hero-banner .line')
+
+	// Animation de l'opacité du paragraphe
 	gsap.fromTo('.hero-banner p', { opacity: 0 }, {
 	    opacity: 1,
 	    duration: 1.4,
@@ -425,39 +719,58 @@ function animateHeroBanner() {
 		{ x: '0', y: '-100%' }
 	]
 	
-	// animation pour les tuiles
-	tiles.forEach((tile, index) => {
-		gsap.fromTo(tile, { x: tilePositions[index].x, y: tilePositions[index].y}, {
-			y: 0,
-			x: 0,
-	      	duration: 1.4,
-	      	ease: "power4.out"
-		})
-	})
+	animTiles(tiles, tilePositions)
 }
 
 animateHeroBanner()
 
-	const ratioTrigger = "top 70%"
-	const ratioTriggerFullPage = "top bottom"
+	/*const animSlide = function(referenciel, elementAnim, delay) {
+		gsap.set(elementAnim, { opacity: 0, x: -200 })
 
-	const animSlide = function(referenciel, elementAnim, delay) {
 		gsap.to(referenciel, {
   			scrollTrigger: {
-    			trigger: referenciel,
-   				start: ratioTrigger,
-    			// markers: true,
-				onEnter: () => gsap.to(elementAnim, {
-					x: 0,
-					y: 0,
-      				opacity: 1,
-      				duration: 1.4,
-      				ease: "power4.out",
-					delay: delay
+    		trigger: referenciel,
+   			start: ratioTrigger,
+    		markers: true,
+			onEnter: () => gsap.to(elementAnim, {
+				x: 0,
+				y: 0,
+      			opacity: 1,
+      			duration: 1.4,
+      			ease: "power4.out",
+				delay: delay
 				})
   			}
 		})
+	}*/
+
+	const animSlide = function(referenciel, elementAnim, xFrom, yFrom, delay) {
+  		gsap.set(elementAnim, { opacity: 0, x: xFrom, y: yFrom })
+
+  		const animation = gsap.to(elementAnim, {
+    		x: 0,
+    		y: 0,
+    		opacity: 1,
+    		duration: 1.4,
+    		ease: "power4.out",
+    		delay: delay,
+    		paused: true // Met l'animation en pause initialement
+  		})
+
+  		ScrollTrigger.create({
+    		trigger: referenciel,
+    		start: ratioTrigger,
+    		// markers: true,
+    		onEnter: () => animation.play() // Démarre l'animation quand l'élément entre dans la vue
+  		})
 	}
+
+	animSlide('.sec-1 .text', '.sec-1 h2', -200, 0, 0)
+	animSlide('.sec-1 .text', '.sec-1 p', -200, 0, 0.1)
+
+
+
+
 
 	// animation cercle text
 	let rotatePositive = 0
@@ -488,6 +801,36 @@ animateHeroBanner()
 		onLeaveBack: () => { document.removeEventListener('scroll', (handler)) }
 	})
 
-	// 
+	// sec 3
+
+	const tiles3 = [
+	    '#tiles-3 div:nth-child(1)',
+	    '#tiles-3 div:nth-child(2)',
+	    '#tiles-3 div:nth-child(3)',
+	    '#tiles-3 div:nth-child(4)',
+	]
+
+	// position de la tuiles avant l'animation
+	const tile3Positions = [
+		{ x: '-150%', y: '0' },
+		{ x: '-100%', y: '0' },
+		{ x: '0', y: '100%' },
+		{ x: '0', y: '150%' },
+	]
+
+	animTilesScroll('#tiles-3' ,tiles3, tile3Positions)
+
+	document.querySelectorAll('.line-1').forEach(line => {
+		animLineScroll(line, line)
+	})
+	
+	animSlide('.my-projects h2', '.my-projects h2', -100, 0, 0.3)
+	animSlide('.list-fovorite-project h4', '.list-fovorite-project h4', 0, 50, 0.3)
+
+	document.querySelectorAll('.project').forEach(project => {
+		animSlide(project, project.querySelector('.project-name p:first-child'), 0, 100, 0)
+		animSlide(project, project.querySelector('.project-name p:last-child'), 0, 100, 0.1)
+		animSlide(project, project.querySelector('.project-counter'), 0, 100, 0.3)
+	})
 
 </script>
