@@ -24,15 +24,21 @@
         transform: translate(-100%, -100%);
     }
     
-    #cursor.over-opacity {
-        width: 90px;
+    #cursor.over-none {
+        width: 75px;
         opacity: 0;
     }
 
-    #cursor.over-link{
-        width: 85px;
+    #cursor.over-opacity {
         background: rgb(var(--yellow));
-        opacity: 0.8;
+        width: 75px;
+        opacity: 0.6;
+    }
+
+    #cursor.over-link{
+        width: 75px;
+        background: rgb(var(--yellow));
+        opacity: 0.6;
         cursor: none;
     }
 
@@ -67,12 +73,12 @@
         cursor.style.transform = `translate(${x}px, ${y}px)`
     })
 
-    document.querySelectorAll('.over-opacity').forEach(element => {
+    document.querySelectorAll('.over-none').forEach(element => {
         element.addEventListener('mouseover', () => {
-            cursor.classList.add('over-opacity')
+            cursor.classList.add('over-none')
         })
         element.addEventListener('mouseout', () => {
-            cursor.classList.remove('over-opacity')
+            cursor.classList.remove('over-none')
         })
     })
 
@@ -87,7 +93,14 @@
         })
     })
 
-
+    document.querySelectorAll('.over-opacity').forEach(element => {
+        element.addEventListener('mouseover', () => {
+            cursor.classList.add('over-opacity')
+        })
+        element.addEventListener('mouseout', () => {
+            cursor.classList.remove('over-opacity')
+        })
+    })
 
 
 

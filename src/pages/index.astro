@@ -1,6 +1,7 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import Header from '../components/header.astro';
+import Footer from '../components/footer.astro';
 import Menu from '../components/menu.astro';
 import Cursor from '../components/cursor.astro';
 import '../styles/global.css';
@@ -119,6 +120,7 @@ import '../styles/global.css';
 			<div><span></span></div>
 		</div>
 	</section>
+	<Footer/>
 </Layout>
 
 <style>
@@ -144,7 +146,7 @@ import '../styles/global.css';
 
 	.hero-banner h1 {
 	    white-space: nowrap;
-	    margin-left: 1vw;
+	    margin-left: 2vw;
 	    font-size: clamp(3.4375rem, -0.0481rem + 11.1538vw, 12.5rem); /* 200 > 55 */
 	    font-weight: 800;
 	}
@@ -156,15 +158,15 @@ import '../styles/global.css';
 	/*.hero-banner*/ .line {
 	    display: block;
 	    width: 100%;
-	    height: 2px;
+	    height: 1px;
 	    background: rgb(var(--grey));
 		transform-origin: left;
 	}
 
-		/*.hero-banner*/ .line-1 {
+		/*.hero-banner*/ .line-1 {                                                                        /*        /!\ line-1        */
 			display: block;
 	    width: 100%;
-	    height: 2px;
+	    height: 1px;
 	    background: rgb(var(--grey));
 		transform-origin: left;
 	}
@@ -197,52 +199,52 @@ import '../styles/global.css';
 
 	@media (max-width: 800px) {
 		.hero-banner p {
-	    	width: 94vw;
+	    	width: 96vw;
 		}
     }
 
 	#tiles-1 {
 		grid-template-columns: repeat(3, var(--tile-width));
 		grid-template-rows: repeat(2, var(--tile-width));
-		transform: translate(-2px, -2px);
+		transform: translate(-1px, -1px);
 		top: 0;
 		left: 0;
 	}
 
-	#tiles-1 div:nth-child(1) span { transform: translate(2px, 0); }
+	#tiles-1 div:nth-child(1) span { transform: translate(1px, 0); }
 	#tiles-1 div:nth-child(1) { grid-area: 1 / 1 / 2 / 2; }
 
 	#tiles-1 div:nth-child(2) { grid-area: 1 / 2 / 2 / 3; }
 
-	#tiles-1 div:nth-child(3) span { transform: translate(-2px, 0); }
+	#tiles-1 div:nth-child(3) span { transform: translate(-1px, 0); }
 	#tiles-1 div:nth-child(3) { grid-area: 1 / 3 / 2 / 4; }
 
-	#tiles-1 div:nth-child(4) span { transform: translate(2px, -2px); }
+	#tiles-1 div:nth-child(4) span { transform: translate(1px, -1px); }
 	#tiles-1 div:nth-child(4) { grid-area: 2 / 1 / 3 / 2; }
 
-	#tiles-1 div:nth-child(5) span { transform: translate(0, -2px); }
+	#tiles-1 div:nth-child(5) span { transform: translate(0, -1px); }
 	#tiles-1 div:nth-child(5) { grid-area: 2 / 2 / 3 / 3; }
 
 	#tiles-2 {
 		grid-template-columns: repeat(3, var(--tile-width));
 		grid-template-rows: repeat(2, var(--tile-width));
-		transform: translateX(2px);
+		transform: translateX(1px);
 		bottom: 0;
 		right: 0;
 	}
 
-	#tiles-2 div:nth-child(1) span { transform: translate(0, 2px); }
+	#tiles-2 div:nth-child(1) span { transform: translate(0, 1px); }
 	#tiles-2 div:nth-child(1) { grid-area: 1 / 2 / 2 / 3; }
 
-	#tiles-2 div:nth-child(2) span { transform: translate(-2px, 2px); }
+	#tiles-2 div:nth-child(2) span { transform: translate(-1px, 1px); }
 	#tiles-2 div:nth-child(2) { grid-area: 1 / 3 / 2 / 4; }
 
-	#tiles-2 div:nth-child(3) span { transform: translate(2px, 0); }
+	#tiles-2 div:nth-child(3) span { transform: translate(1px, 0); }
 	#tiles-2 div:nth-child(3) { grid-area: 2 / 1 / 3 / 2; }
 
 	#tiles-2 div:nth-child(4) { grid-area: 2 / 2 / 3 / 3; }
 
-	#tiles-2 div:nth-child(5) span { transform: translate(-2px, 0); }
+	#tiles-2 div:nth-child(5) span { transform: translate(-1px, 0); }
 	#tiles-2 div:nth-child(5) { grid-area: 2 / 3 / 3 / 4; }
 
 	@media (max-height: 665px) {
@@ -263,7 +265,7 @@ import '../styles/global.css';
 	.sec-1 .text {
 		position: relative;
 		top: 5vw;
-		left: 3vw;
+		left: 2vw;
 		width: min-content;
 		color: rgb(var(--white));
 	}
@@ -294,7 +296,7 @@ import '../styles/global.css';
 
 		.sec-1 .rotating-text {
 			right: auto;
-			left: 3vw;
+			left: 2vw;
 		}
 	}
 
@@ -398,7 +400,7 @@ import '../styles/global.css';
 
 	.sec-2 .my-projects h2 {
 		display: flex;
-		margin-left: 3vw;
+		margin-left: 2vw;
 		padding-top: 30px;
 		font-size: clamp(3.125rem, 0.4934rem + 8.4211vw, 8.125rem); /* 130 > 50 */
 		white-space: nowrap;
@@ -471,7 +473,7 @@ import '../styles/global.css';
 		display: flex;
 		flex-direction: column;
 		gap: 30px;
-		width: 94vw;
+		width: 96vw;
 		padding:  calc(var(--tile-width) * 1.5) 0;
 	}
 
@@ -554,20 +556,20 @@ import '../styles/global.css';
 	#tiles-3 {
 		grid-template-columns: repeat(3, var(--tile-width));
 		grid-template-rows: repeat(2, var(--tile-width));
-		transform: translateX(2px);
+		transform: translateX(1px);
 		top: 0;
 		right: 0;
 	}
 
-	#tiles-3 div:nth-child(1) span { transform: translate(2px, 0); }
+	#tiles-3 div:nth-child(1) span { transform: translate(1px, 0); }
 	#tiles-3 div:nth-child(1) { grid-area: 1 / 1 / 2 / 2; }
 
 	#tiles-3 div:nth-child(2) { grid-area: 1 / 2 / 2 / 3; }
 
-	#tiles-3 div:nth-child(3) span { transform: translate(-2px, 0); }
+	#tiles-3 div:nth-child(3) span { transform: translate(-1px, 0); }
 	#tiles-3 div:nth-child(3) { grid-area: 1 / 3 / 2 / 4; }
 
-	#tiles-3 div:nth-child(4) span { transform: translate(-2px, -2px); }
+	#tiles-3 div:nth-child(4) span { transform: translate(-1px, -1px); }
 	#tiles-3 div:nth-child(4) { grid-area: 2 / 3 / 3 / 4; }
 
 	#tiles-4 {
@@ -579,7 +581,7 @@ import '../styles/global.css';
 
 	#tiles-4 div:nth-child(1) { grid-area: 1 / 1 / 2 / 2; }
 
-	#tiles-4 div:nth-child(2) span { transform: translate(-2px, 0); }
+	#tiles-4 div:nth-child(2) span { transform: translate(-1px, 0); }
 	#tiles-4 div:nth-child(2) { grid-area: 1 / 2 / 2 / 3; }
 
 	#tiles-5 {
@@ -591,12 +593,6 @@ import '../styles/global.css';
 
 	#tiles-5 div:nth-child(1) { grid-area: 1 / 1 / 2 / 2; }
 
-
-
-
-
-
-
 	@media (max-width: 665px) {
 
 	}
@@ -604,23 +600,6 @@ import '../styles/global.css';
 
 
 </style>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 <script>
 	import { gsap } from "gsap"
@@ -810,7 +789,6 @@ animateHeroBanner()
 	    '#tiles-3 div:nth-child(4)',
 	]
 
-	// position de la tuiles avant l'animation
 	const tile3Positions = [
 		{ x: '-150%', y: '0' },
 		{ x: '-100%', y: '0' },
@@ -832,5 +810,20 @@ animateHeroBanner()
 		animSlide(project, project.querySelector('.project-name p:last-child'), 0, 100, 0.1)
 		animSlide(project, project.querySelector('.project-counter'), 0, 100, 0.3)
 	})
+
+	const tiles4 = [
+	    '#tiles-4 div:nth-child(1)',
+	    '#tiles-4 div:nth-child(2)',
+	    '#tiles-5 div:nth-child(1)',
+
+	]
+
+	const tile4Positions = [
+		{ x: '125%', y: '0' },
+		{ x: '150%', y: '0' },
+		{ x: '-125%', y: '0' },
+	]
+
+	animTilesScroll('#tiles-4' ,tiles4, tile4Positions)
 
 </script>

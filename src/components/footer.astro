@@ -1,0 +1,133 @@
+---
+
+---
+
+<footer>
+    <div class="part-1">
+        <div>
+            <p>Pour toute question ou simplement si vous souhaiter me contacter, n'hésitez pas à me contacter par e-mail à 
+                <span>enzo.galiano38@gmail.com.</span> Je suis ouvert aux échanges et aux opportunités. À bientôt !</p>
+        </div>
+        <div>
+            <a id="upper-button" href="#">REMONTER</a>
+            <div id="list-links-page">
+                <a class="over-link" href="#">Accueil</a>
+                <a class="over-link" href="#">Compétences</a>
+                <a class="over-link" href="#">Projets</a>
+            </div>
+        </div>
+    </div>
+    <div class="part-2">
+        <h1>Portfolio</h1>
+    </div>
+    <div class="part-3">
+        <div>
+            <p>Conçu et réalisé par Galiano Enzo</p>
+            <p class="slide-up"><span>contact: </span>enzo.galiano38@gmail.com</p>
+        </div>
+        <div>
+            <p class="slide-left over-opacity">Téléchager CV</p>
+        </div>
+    </div>
+</footer>
+
+<style>
+    footer {
+        padding: 2vw 2vw 20px 2vw;
+        background: rgb(var(--black));
+        color: rgb(var(--white));
+    }
+
+    footer .part-1 {
+        display: grid;
+        grid-template-columns: 45% 55%;
+        height: 750px;
+    }
+
+    footer .part-1 div:first-child p {
+        font-size: 35px;
+    }
+
+    footer .part-1 div:first-child span {
+        font-style: italic;
+        text-decoration: underline;
+    }
+
+    footer .part-1 div:last-child {
+        position: relative;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    footer .part-1 #list-links-page {
+       display: flex;
+       flex-direction: column;
+       gap: 20px;
+    }
+
+    footer .part-1 a {
+        color: inherit;
+        font-size: 60px;
+        align-self: start;
+    }
+
+    footer .part-1 #upper-button {
+        position: absolute;
+        top: 0;
+        right: 0;
+        color: rgb(var(--yellow));
+        text-decoration: underline;
+        font-size: 20px;
+        font-weight: 800;
+    }
+
+
+
+
+
+    footer .part-2 h1 {
+        font-size: 300px;
+        font-weight: 800;
+        text-align: center;
+        margin-bottom: 50px;
+    }
+
+
+
+
+
+    footer .part-3 {
+        display: flex;
+        justify-content: space-between;
+        align-items: end;
+        font-size: 20px;
+    }
+
+    footer .part-3 div:first-child span {
+        font-weight: 800;
+    }
+
+    footer .part-3 div:last-child {
+        cursor: pointer;
+        width: min-content;
+        white-space: nowrap;
+    }
+
+    footer .part-3 div:last-child p::after {
+        content: '';
+        display: block;
+        width: 100%;
+        transform: scaleX(1);
+        height: 1px;
+        background-color: rgb(var(--white));
+        transform-origin: left;
+        transition: transform 0.2s ease-out;
+    }
+
+    footer .part-3 div:last-child:hover p::after {
+        transform: scaleX(0);
+        transform-origin: right;
+    }
+
+</style>
