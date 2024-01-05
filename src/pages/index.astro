@@ -646,7 +646,6 @@ function animLine(line) {
 
 function animLineScroll(referenciel, line) {
 	gsap.set(line, {scaleX: 0, opacity: 0})
-	console.log('okay')
 	ScrollTrigger.create({
 		trigger: referenciel,
     	start: ratioTrigger,
@@ -702,26 +701,6 @@ function animateHeroBanner() {
 }
 
 animateHeroBanner()
-
-	/*const animSlide = function(referenciel, elementAnim, delay) {
-		gsap.set(elementAnim, { opacity: 0, x: -200 })
-
-		gsap.to(referenciel, {
-  			scrollTrigger: {
-    		trigger: referenciel,
-   			start: ratioTrigger,
-    		markers: true,
-			onEnter: () => gsap.to(elementAnim, {
-				x: 0,
-				y: 0,
-      			opacity: 1,
-      			duration: 1.4,
-      			ease: "power4.out",
-				delay: delay
-				})
-  			}
-		})
-	}*/
 
 	const animSlide = function(referenciel, elementAnim, xFrom, yFrom, delay) {
   		gsap.set(elementAnim, { opacity: 0, x: xFrom, y: yFrom })

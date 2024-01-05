@@ -22,7 +22,7 @@
     </div>
     <div class="part-3">
         <div>
-            <p>Conçu et réalisé par Galiano Enzo</p>
+            <p>conçu et réalisé par Galiano Enzo</p>
             <p class="slide-up"><span>contact: </span>enzo.galiano38@gmail.com</p>
         </div>
         <div>
@@ -33,6 +33,7 @@
 
 <style>
     footer {
+        overflow: hidden;
         padding: 2vw 2vw 20px 2vw;
         background: rgb(var(--black));
         color: rgb(var(--white));
@@ -41,11 +42,11 @@
     footer .part-1 {
         display: grid;
         grid-template-columns: 45% 55%;
-        height: 750px;
+        height: 700px;
     }
 
     footer .part-1 div:first-child p {
-        font-size: 35px;
+        font-size: clamp(1.375rem, 0.7946rem + 1.8571vw, 2.1875rem); /* 35 > 22 */
     }
 
     footer .part-1 div:first-child span {
@@ -66,10 +67,26 @@
        gap: 20px;
     }
 
-    footer .part-1 a {
+    footer #list-links-page a {
         color: inherit;
-        font-size: 60px;
+        font-size: clamp(2.1875rem, 1.0714rem + 3.5714vw, 3.75rem); /* 60 > 35 */
         align-self: start;
+    }
+
+    footer #list-links-page a::after {
+        content: '';
+        display: block;
+        width: 100%;
+        transform: scaleX(1);
+        height: 1px;
+        background-color: rgb(var(--white));
+        transform-origin: left;
+        transition: transform 0.2s ease-out;
+    }
+
+    footer #list-links-page a:hover::after {
+        transform: scaleX(0);
+        transform-origin: right;
     }
 
     footer .part-1 #upper-button {
@@ -82,15 +99,29 @@
         font-weight: 800;
     }
 
+    @media (max-width: 850px) {
+        footer .part-1 #upper-button {
+            display: none;
+        }
 
+        footer .part-1 {
+            grid-template-columns: auto;
+            grid-template-rows: 50% 50%;
+            height: auto;
+        }
+
+        footer #list-links-page a {
+            align-self: center;
+        }
+    }
 
 
 
     footer .part-2 h1 {
-        font-size: 300px;
+        font-size: clamp(5rem, -1.5476rem + 20.9524vw, 18.75rem); /* 300 > 80 */
         font-weight: 800;
         text-align: center;
-        margin-bottom: 50px;
+        /*margin-bottom: 50px;*/
     }
 
 
@@ -130,4 +161,60 @@
         transform-origin: right;
     }
 
+
+
 </style>
+
+<script>
+    import { gsap } from "gsap"
+	import { ScrollTrigger } from "gsap/ScrollTrigger"
+	gsap.registerPlugin(ScrollTrigger)
+
+    const ratioTrigger = "top 80%"
+	const ratioTriggerFullPage = "top bottom"
+    const title = document.querySelector('footer h1')
+    
+    // gsap.set(title, {y: '100%',})
+/*
+    gsap.set(title, {y: 200})
+
+    gsap.to(title, {
+        scrollTrigger: {
+            trigger: 'footer .part-2',
+            start: ratioTriggerFullPage,
+    	    markers: true,
+            scrub: 1
+        },
+        y: 0,
+        duration: 1.4,
+	    ease: "power4.out"
+    })
+*/
+/*
+    gsap.to(title, {
+        scrollTrigger: {
+            trigger: title,
+            start: ratioTriggerFullPage,
+    	    markers: true,
+            scrub: 1
+        },
+        y: 0,
+        duration: 1.4,
+	    ease: "power4.out"
+    })*/
+
+
+    gsap.from(title, {
+    y: '50%', // Position initiale à partir de laquelle l'élément commence
+    scrollTrigger: {
+        trigger: 'footer .part-2',
+        start: "top bottom",
+        end:"bottom bottom",
+        scrub: 1,
+        markers: true
+    },
+    duration: 1.4,
+    ease: "power4.out"
+});
+
+</script>
