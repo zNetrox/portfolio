@@ -42,6 +42,24 @@
         cursor: none;
     }
 
+    #cursor.over-image {
+        opacity: 1;
+        width: 349px;
+        height: 197px;
+        background-image: url(/img/aesthetic.png);
+        background-size: cover;
+        border-radius: 0;
+        border: 0;
+    }
+    
+
+    @media (max-width: 1500px) {
+        #cursor.over-image {
+            width: 279px;
+            height: 158px;
+        }
+    }
+
     @media (max-width: 1023px) {
     	#cursor {
     		display: none;
@@ -102,8 +120,32 @@
         })
     })
 
+    document.querySelectorAll('.over-opacity').forEach(element => {
+        element.addEventListener('mouseover', () => {
+            cursor.classList.add('over-opacity')
+        })
+        element.addEventListener('mouseout', () => {
+            cursor.classList.remove('over-opacity')
+        })
+    })
 
+    document.querySelectorAll('.over-image').forEach(element => {
+        element.addEventListener('mouseover', () => {
+            cursor.classList.add('over-image')
+        })
+        element.addEventListener('mouseout', () => {
+            cursor.classList.remove('over-image')
+        })
+    })
 
+    document.querySelectorAll('.over-image').forEach(element => {
+        element.addEventListener('mouseover', () => {
+            cursor.classList.add('over-image')
+        })
+        element.addEventListener('mouseout', () => {
+            cursor.classList.remove('over-image')
+        })
+    })
 
 
 

@@ -30,6 +30,15 @@ body {
     overflow-x: hidden;
 }
 
+.line {
+	display: block;
+	width: 100%;
+	height: 2px;
+	height: 1px;
+	background: rgb(var(--grey));
+	transform-origin: left;
+}
+
 .cercle-button {
     position: relative;
     display: block;

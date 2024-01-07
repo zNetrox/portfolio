@@ -1,0 +1,137 @@
+---
+
+---
+
+<div id="loader">
+    <div class="part-1">
+        <span class="loader-line"></span>
+        <div class="overflow">
+            <h2>Portfolio</h2>
+        </div>
+        <span class="loader-line"></span>
+        <div class="overflow">
+            <p>Galiano Enzo</p>
+        </div>
+    </div>
+    <div class="part-2 overflow">
+        <p>PLEASE WAIT</p>
+    </div>
+</div>
+
+<style>
+    #loader {
+        position: fixed;
+        width: 100vw;
+        height: 100vh;
+        top: 0;
+        background: rgb(var(--black));
+        z-index: 9999;
+        user-select: none;
+    }
+
+    .overflow { overflow: hidden; }
+
+    #loader .part-1 {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 60%;
+        color: rgb(var(--white));
+    }
+
+    #loader .part-1 .overflow:nth-child(2) { margin: 40px 0; }
+
+    #loader h2 {
+        font-size: 200px;
+        text-align: center;
+        font-weight: 400;
+        transform: translateY(8%);
+    }
+
+    #loader .loader-line {
+        display: block;
+        width: 100%;
+        height: 5px;
+        background: rgb(var(--white));
+    }
+
+    #loader .loader-line:nth-child(1) { transform-origin: left; }
+    #loader .loader-line:nth-child(3) { transform-origin: right; }
+
+    #loader .part-1 .overflow:nth-child(4) { margin-top: 25px; }
+
+    #loader .part-1 p {
+        
+        font-size: 50px;
+        font-style: italic;
+        text-align: center;
+    }
+
+    #loader .part-2 {
+        position: absolute;
+        top: 85%;
+        left: 50%;
+        transform: translateX(-50%);
+    }
+
+    #loader .part-2 p {
+        font-style: 25px;
+        font-weight: 800;
+        color: rgb(var(--yellow));
+    }
+
+    #loader .part-2 p:after {
+        content: '';
+        display: block;
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 2px;
+        background: rgb(var(--yellow));
+    }
+</style>
+
+<script>
+import { gsap } from "gsap";
+import { wait } from '../js/libray.js'
+
+gsap.set(['#loader h2', '#loader .part-1 p'], { y: '100%' })
+gsap.set('#loader .loader-line', { scaleX: 0 })
+gsap.set('#loader .part-2 p', { opacity: 0 })
+
+gsap.to('#loader h2', {
+    y: '8%',
+    duration: 1.4,
+    ease: "power4.out"
+})
+
+gsap.to(['#loader .part-1 p', '#loader .loader-line', '#loader .part-2 p'], {
+    opacity: 1,
+    scaleX: 1,
+    y: 0,
+    duration: 1.4,
+    ease: "power4.out"
+})
+
+gsap.to(['#loader h2', '#loader .part-1 p'], { y: '-100%', delay: 5 })
+gsap.to('#loader .loader-line', { scaleX: 0, delay: 5 })
+gsap.to('#loader .part-2 p', { opacity: 0, delay: 5 })
+
+gsap.to('#loader', {
+    y: '-100%',
+    duration: 1.4,
+    ease: "power4.out",
+    delay: 6
+})
+
+
+</script>
+
+
+
+
+
+
+

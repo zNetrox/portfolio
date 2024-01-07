@@ -4,10 +4,12 @@ import Header from '../components/header.astro';
 import Footer from '../components/footer.astro';
 import Menu from '../components/menu.astro';
 import Cursor from '../components/cursor.astro';
+import Loader from '../components/loader.astro';
 import '../styles/global.css';
 ---
 
 <Layout title="Accueil">
+	<Loader/>
 	<Cursor/>
 	<Menu/>
 	<Header/>
@@ -79,7 +81,7 @@ import '../styles/global.css';
 		</div>
 		<div class="my-projects">
 			<div>
-				<span class="line-1"></span>
+				<span class="line"></span>
 				<h2>Mes Differents<br> Projets</h2>
 			</div>
 			<div>
@@ -94,23 +96,23 @@ import '../styles/global.css';
 		</div>
 		<div class="list-fovorite-project">
 			<h4>Mes Projets Favoris</h4>
-			<span class="line-1"></span>
-			<div class="project">
+			<span class="line"></span>
+			<a class="project over-image" href="#">
 				<div class="project-counter">1</div>
 				<div class="project-name">
 					<p>Picture Poker</p>
 					<p>Mini Jeu | 2024 | HTML5 | CSS3 | JavaScript</p>
 				</div>
-			</div>
-			<span class="line-1"></span>
-			<div class="project">
+			</a>
+			<span class="line"></span>
+			<a class="project over-image" href="#">
 				<div class="project-counter">2</div>
 				<div class="project-name">
 					<p>Aesthetic</p>
 					<p>Site Web | 2023 | HTML5 | CSS3 | JavaScript</p>
 				</div>
-			</div>
-			<span class="line-1"></span>
+			</a>
+			<span class="line"></span>
 		</div>
 		<div id="tiles-4">
 			<div><span></span></div>
@@ -153,22 +155,6 @@ import '../styles/global.css';
 
 	.hero-banner h1 span:last-child {
 	    font-style: italic;
-	}
-
-	/*.hero-banner*/ .line {
-	    display: block;
-	    width: 100%;
-	    height: 1px;
-	    background: rgb(var(--grey));
-		transform-origin: left;
-	}
-
-		/*.hero-banner*/ .line-1 {                                                                        /*        /!\ line-1        */
-			display: block;
-	    width: 100%;
-	    height: 1px;
-	    background: rgb(var(--grey));
-		transform-origin: left;
 	}
 
 	.hero-banner .part-2 {
@@ -545,6 +531,7 @@ import '../styles/global.css';
 	.project-name p:first-child {
 		font-size: clamp(3.4375rem, -0.5099rem + 12.6316vw, 10.9375rem); /* 175 > 55 */
 		font-style: italic;
+		color: rgb(var(--black));
 	}
 
 	.project-name p:last-child {
@@ -592,85 +579,25 @@ import '../styles/global.css';
 	}
 
 	#tiles-5 div:nth-child(1) { grid-area: 1 / 1 / 2 / 2; }
-
-	@media (max-width: 665px) {
-
-	}
-
-
-
 </style>
 
 <script>
-	import { gsap } from "gsap"
-	import { ScrollTrigger } from "gsap/ScrollTrigger"
-	gsap.registerPlugin(ScrollTrigger)
+	import { animTiles } from '../js/libray.js'
+	import { animLine } from '../js/libray.js'
+	import { animOpacity } from '../js/libray.js'
+	import { animSlide } from '../js/libray.js'
+	import { animRotateScroll } from '../js/libray.js'
 
 	const ratioTrigger = "top 80%"
 	const ratioTriggerFullPage = "top bottom"
 
-function animTiles(tiles, tilePositions) {
-	tiles.forEach((tile, index) => {
-		gsap.fromTo(tile, { x: tilePositions[index].x, y: tilePositions[index].y, opacity: 0}, {
-			y: 0,
-			x: 0,
-			opacity: 1,
-	      	duration: 1.4,
-	      	ease: "power4.out"
-		})
-	})
-}
+	// hero banner
 
-function animTilesScroll(referenciel, tiles, tilePositions) {
-	gsap.set(tiles, {opacity: 0})
+	animLine('.hero-banner .line', ratioTriggerFullPage, '.hero-banner .line')
+	animOpacity('.hero-banner .line', ratioTriggerFullPage, '.hero-banner p', 1)
 
-	ScrollTrigger.create({
-		trigger: referenciel,
-    	start: ratioTrigger,
-		once: true,
-    	// markers: true,
-		onEnter: () => { animTiles(tiles, tilePositions) },
-	})
-}
-
-
-
-function animLine(line) {
-	gsap.fromTo(line, { scaleX: 0, opacity: 0 }, {
-	    scaleX: 1,
-		opacity: 1,
-	    duration: 1.4,
-	    ease: "power4.out"
-	})
-}
-
-function animLineScroll(referenciel, line) {
-	gsap.set(line, {scaleX: 0, opacity: 0})
-	ScrollTrigger.create({
-		trigger: referenciel,
-    	start: ratioTrigger,
-		once: true,
-    	// markers: true,
-		onEnter: () => { animLine(line) },
-	})
-}
-
-
-
-function animateHeroBanner() {
-	// Animation de la ligne
-	animLine('.hero-banner .line')
-
-	// Animation de l'opacité du paragraphe
-	gsap.fromTo('.hero-banner p', { opacity: 0 }, {
-	    opacity: 1,
-	    duration: 1.4,
-	    delay: 1,
-	    ease: "power4.out"
-	})
-
-	// id de toutes les tuiles a animé
-  	const tiles = [
+	animTiles('#tiles-1', ratioTriggerFullPage, 
+	[
 	    '#tiles-1 div:nth-child(1)',
 	    '#tiles-1 div:nth-child(2)',
 	    '#tiles-1 div:nth-child(3)',
@@ -681,10 +608,8 @@ function animateHeroBanner() {
 	    '#tiles-2 div:nth-child(3)',
 	    '#tiles-2 div:nth-child(4)',
 	    '#tiles-2 div:nth-child(5)',
-	]
-
-	// position de la tuiles avant l'animation
-	const tilePositions = [
+	], 
+	[
 		{ x: '0', y: '100%' },
 		{ x: '0', y: '150%' },
 		{ x: '0', y: '125%' },
@@ -695,114 +620,54 @@ function animateHeroBanner() {
 		{ x: '0', y: '-125%' },
 		{ x: '0', y: '-150%' },
 		{ x: '0', y: '-100%' }
-	]
-	
-	animTiles(tiles, tilePositions)
-}
+	])
 
-animateHeroBanner()
+	// section 2
 
-	const animSlide = function(referenciel, elementAnim, xFrom, yFrom, delay) {
-  		gsap.set(elementAnim, { opacity: 0, x: xFrom, y: yFrom })
+	animSlide('.sec-1 .text', ratioTrigger, '.sec-1 h2', -200, 0, 0)
+	animSlide('.sec-1 .text', ratioTrigger, '.sec-1 p', -200, 0, 0.1)
 
-  		const animation = gsap.to(elementAnim, {
-    		x: 0,
-    		y: 0,
-    		opacity: 1,
-    		duration: 1.4,
-    		ease: "power4.out",
-    		delay: delay,
-    		paused: true // Met l'animation en pause initialement
-  		})
+	animRotateScroll('.rotating-text', ratioTriggerFullPage, '.sec-1 svg', '+', 3)
+	animRotateScroll('.rotating-text', ratioTriggerFullPage, '.sec-1 #container-star > div', '-', 3)
 
-  		ScrollTrigger.create({
-    		trigger: referenciel,
-    		start: ratioTrigger,
-    		// markers: true,
-    		onEnter: () => animation.play() // Démarre l'animation quand l'élément entre dans la vue
-  		})
-	}
+	// section 3
 
-	animSlide('.sec-1 .text', '.sec-1 h2', -200, 0, 0)
-	animSlide('.sec-1 .text', '.sec-1 p', -200, 0, 0.1)
+	animSlide('.my-projects h2', ratioTrigger, '.my-projects h2', -100, 0, 0.3)
+	animSlide('.list-fovorite-project h4', ratioTrigger, '.list-fovorite-project h4', 0, 50, 0.3)
 
-
-
-
-
-	// animation cercle text
-	let rotatePositive = 0
-	let rotateNegative = 0
-
-	function handler() {
-		rotatePositive += 3
-		rotateNegative -= 3
-		
-		gsap.to('.sec-1 svg', {
-			rotate: rotatePositive,
-			duration: 0.5,
-			ease: "power4.out"
-		})
-		gsap.to('.sec-1 #container-star > div', {
-			rotate: rotateNegative,
-			duration: 0.5,
-			ease: "power4.out"
-		})
-	}
-
-	ScrollTrigger.create({
-		trigger: '.rotating',
-   		start: ratioTriggerFullPage,
-		onEnter: () => { document.addEventListener('scroll', (handler)) },
-		onLeave: () => { document.removeEventListener('scroll', (handler)) },
-		onEnterBack: () => { document.addEventListener('scroll', (handler)) },
-		onLeaveBack: () => { document.removeEventListener('scroll', (handler)) }
+	document.querySelectorAll('.project').forEach(project => {
+		animSlide(project, ratioTrigger, project.querySelector('.project-name p:last-child'), 0, '500%', 0.2)
+		animSlide(project, ratioTrigger, project.querySelector('.project-counter'), 0, '100%', 0.3)
+		animSlide(project, ratioTrigger, project.querySelector('.project-name p:first-child'), 0, '70%', 0)
 	})
 
-	// sec 3
+	document.querySelectorAll('.sec-2 .line').forEach(line => {
+		animLine(line, ratioTrigger, line)
+	})
 
-	const tiles3 = [
+	animTiles('#tiles-3', ratioTrigger,
+	[
 	    '#tiles-3 div:nth-child(1)',
 	    '#tiles-3 div:nth-child(2)',
 	    '#tiles-3 div:nth-child(3)',
 	    '#tiles-3 div:nth-child(4)',
-	]
-
-	const tile3Positions = [
+	],
+	[
 		{ x: '-150%', y: '0' },
 		{ x: '-100%', y: '0' },
 		{ x: '0', y: '100%' },
 		{ x: '0', y: '150%' },
-	]
+	])
 
-	animTilesScroll('#tiles-3' ,tiles3, tile3Positions)
-
-	document.querySelectorAll('.line-1').forEach(line => {
-		animLineScroll(line, line)
-	})
-	
-	animSlide('.my-projects h2', '.my-projects h2', -100, 0, 0.3)
-	animSlide('.list-fovorite-project h4', '.list-fovorite-project h4', 0, 50, 0.3)
-
-	document.querySelectorAll('.project').forEach(project => {
-		animSlide(project, project.querySelector('.project-name p:first-child'), 0, 100, 0)
-		animSlide(project, project.querySelector('.project-name p:last-child'), 0, 100, 0.1)
-		animSlide(project, project.querySelector('.project-counter'), 0, 100, 0.3)
-	})
-
-	const tiles4 = [
-	    '#tiles-4 div:nth-child(1)',
+	animTiles('#tiles-4', ratioTrigger,
+	[
+		'#tiles-4 div:nth-child(1)',
 	    '#tiles-4 div:nth-child(2)',
 	    '#tiles-5 div:nth-child(1)',
-
-	]
-
-	const tile4Positions = [
+	],
+	[
 		{ x: '125%', y: '0' },
 		{ x: '150%', y: '0' },
 		{ x: '-125%', y: '0' },
-	]
-
-	animTilesScroll('#tiles-4' ,tiles4, tile4Positions)
-
+	])
 </script>
