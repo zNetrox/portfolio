@@ -131,10 +131,13 @@
 
     document.querySelectorAll('.over-image').forEach(element => {
         element.addEventListener('mouseover', () => {
+            const image = element.getAttribute("data-image")
             cursor.classList.add('over-image')
+            cursor.style.backgroundImage = `url(/img/${image}.png)`
         })
         element.addEventListener('mouseout', () => {
             cursor.classList.remove('over-image')
+            cursor.style.backgroundImage = ``
         })
     })
 
