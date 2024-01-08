@@ -5,6 +5,7 @@ import Footer from '../components/footer.astro';
 import Menu from '../components/menu.astro';
 import Cursor from '../components/cursor.astro';
 import Loader from '../components/loader.astro';
+import List from '../components/list.astro';
 import '../styles/global.css';
 ---
 
@@ -28,9 +29,31 @@ import '../styles/global.css';
         </div>
     </section>
 
-    <section>
-
+    <section class="sec-2">
+        <div class="list-container">
+        <List
+            principalTitle="Language de programmation"
+            listTitles= {["HTML5", "CSS3", "JavaScript", "PHP", "Python"]}
+        />
+        <List
+            principalTitle="Frameworks"
+            listTitles= {["Astro JS", "Gsap"]}
+        />
+        <List
+            principalTitle="Outils"
+            listTitles= {["Visual Studio Code", "Figma", "Github"]}
+        />
+        </div>
+        <div id="tiles-2">
+            <div><span></span></div>
+            <div><span></span></div>
+            <div><span></span></div>
+            <div><span></span></div>
+            <div><span></span></div>
+            <div><span></span></div>
+        </div>
     </section>
+    <Footer/>
 </Layout>
 
 <style>
@@ -62,7 +85,6 @@ import '../styles/global.css';
 		grid-template-columns: repeat(5, var(--tile-width));
 		grid-template-rows: repeat(2, var(--tile-width));
 		transform: translate(-1px, -1px);
-
 	}
 
 	#tiles-1 div:nth-child(1) span { transform: translate(1px, 0); }
@@ -84,4 +106,97 @@ import '../styles/global.css';
 
 
 
+
+
+
+
+    .sec-2 {
+        position: relative;
+        margin: calc(var(--tile-width) * 2.5) 0 2vw 2vw;
+    }
+
+    .list-container {
+        display: flex;
+        flex-direction: column;
+        gap: 200px;
+        width: 55%;
+    }
+
+    #tiles-2 {
+		grid-template-columns: repeat(3, var(--tile-width));
+		grid-template-rows: repeat(3, var(--tile-width));
+        top: 50%;
+        right: 0;
+        transform: translate(-25%, -50%);
+	}
+
+	#tiles-2 div:nth-child(1) span { transform: translate(0, 1px); }
+	#tiles-2 div:nth-child(1) { grid-area: 1 / 2 / 2 / 3; }
+
+	#tiles-2 div:nth-child(2) span { transform: translate(1px, 0); }
+	#tiles-2 div:nth-child(2) { grid-area: 2 / 1 / 3 / 2; }
+
+	#tiles-2 div:nth-child(3) { grid-area: 2 / 2 / 3 / 3; }
+
+	#tiles-2 div:nth-child(4) span { transform: translate(-1px, 0); }
+	#tiles-2 div:nth-child(4) { grid-area: 2 / 3 / 3 / 4; }
+
+	#tiles-2 div:nth-child(5) span { transform: translate(1px, -1px); }
+	#tiles-2 div:nth-child(5) { grid-area: 3 / 1 / 4 / 2; }
+
+    #tiles-2 div:nth-child(6) span { transform: translate(0, -1px); }
+	#tiles-2 div:nth-child(6) { grid-area: 3 / 2 / 4 / 3; }
+
 </style>
+
+<script>
+    import { animTiles } from '../js/libray.js'
+	import { animSlide } from '../js/libray.js'
+
+    const ratioTrigger = "top 80%"
+
+    animTiles('#tiles-1', ratioTrigger,
+	[
+		'#tiles-1 div:nth-child(1)',
+	    '#tiles-1 div:nth-child(2)',
+	    '#tiles-1 div:nth-child(3)',
+	    '#tiles-1 div:nth-child(4)',
+	    '#tiles-1 div:nth-child(5)',
+	    '#tiles-1 div:nth-child(6)'
+	],
+	[
+		{ x: '100%', y: '0' },
+		{ x: '125%', y: '0' },
+		{ x: '150%', y: '0' },
+		{ x: '175%', y: '0' },
+		{ x: '200', y: '0' },
+		{ x: '225', y: '0' }
+	])
+
+    animTiles('#tiles-2', ratioTrigger,
+	[
+		'#tiles-2 div:nth-child(1)',
+	    '#tiles-2 div:nth-child(2)',
+	    '#tiles-2 div:nth-child(3)',
+	    '#tiles-2 div:nth-child(4)',
+	    '#tiles-2 div:nth-child(5)',
+	    '#tiles-2 div:nth-child(6)'
+	],
+	[
+		{ x: '0', y: '-100%' },
+		{ x: '-100%', y: '0' },
+		{ x: '100%', y: '0' },
+		{ x: '125%', y: '0' },
+		{ x: '0', y: '100%' },
+		{ x: '0', y: '125%' }
+	])
+
+/*
+    animSlide('#tiles-2 div:nth-child(1)', ratioTrigger, '#tiles-2 div:nth-child(1)', 0, '-100%', 0)
+    animSlide('#tiles-2 div:nth-child(2)', ratioTrigger, '#tiles-2 div:nth-child(2)', '-100%', 0, 0)
+    animSlide('#tiles-2 div:nth-child(3)', ratioTrigger, '#tiles-2 div:nth-child(3)', '100%', 0, 0)
+    animSlide('#tiles-2 div:nth-child(4)', ratioTrigger, '#tiles-2 div:nth-child(4)', '125%', 0, 0)
+    animSlide('#tiles-2 div:nth-child(5)', ratioTrigger, '#tiles-2 div:nth-child(5)', 0, '100%', 0)
+    animSlide('#tiles-2 div:nth-child(6)', ratioTrigger, '#tiles-2 div:nth-child(6)', 0, '125%', 0)
+    */
+</script>

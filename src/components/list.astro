@@ -1,0 +1,53 @@
+---
+
+interface Props {
+    principalTitle: string;
+    listTitles: string[];
+}
+
+const { principalTitle, listTitles } = Astro.props
+
+---
+
+<ul>
+    <h4>{principalTitle}</h4>
+    <span class="line"></span>
+    {listTitles.map((title) => 
+        <li>
+            <p>{title}</p>
+        </li>
+        <span class="line"></span>
+    )}
+</ul>
+
+<style>
+    h4 {
+        font-size: clamp(1.5625rem, 0.4911rem + 2.8571vw, 2.8125rem); /* 45 > 25 */
+		font-weight: 200;
+        margin-bottom: 30px;
+    }
+
+    li {
+        padding: 30px 0;
+    }
+
+    li p {
+        font-size: 75px;
+        font-weight: 200;
+    }
+</style>
+
+<script>
+    import { animLine } from '../js/libray.js'
+    import { animSlide } from '../js/libray.js'
+
+    const ratioTrigger = "top 80%"
+
+	document.querySelectorAll('ul span').forEach(line => {
+		animLine(line, ratioTrigger, line)
+	})
+
+    document.querySelectorAll('ul :is(p, h4)').forEach(title => {
+		animSlide(title, ratioTrigger, title, 0, '50%', 0)
+	})
+</script>
