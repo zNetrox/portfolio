@@ -5,6 +5,7 @@ import Footer from '../components/footer.astro';
 import Menu from '../components/menu.astro';
 import Cursor from '../components/cursor.astro';
 import Loader from '../components/loader.astro';
+import List from '../components/list-link.astro';
 import '../styles/global.css';
 ---
 
@@ -12,5 +13,82 @@ import '../styles/global.css';
 	<Cursor/>
 	<Menu/>
 	<Header/>
+	<section class="sec-1">
+	<div class="part-1">
+		<h1>Mes Projets</h1>
+		<span class="line"></span>
+	</div>
+		<div id="tiles-1">
+			<div><span></span></div>
+			<div><span></span></div>
+		</div>
+	</section>
 
+	<section class="sec-2">
+		<div class="list-container">
+			<List
+				title= {"hello"}
+				date={"2024"}
+			/>
+		</div>
+	</section>
 </Layout>
+
+<style>
+	.sec-1 {
+        position: relative;
+	}
+
+    .sec-1 .part-1 {
+        position: relative;
+        display: flex;
+        align-items: center;
+        height: 40vh;
+        width: min-content;
+	}
+
+    .sec-1 .part-1 h1 {
+        padding-left: 2vw;
+        font-size: clamp(3.4375rem,-0.0481rem + 11.1538vw,12.5rem);
+        font-weight: 800;
+		white-space: nowrap;
+	}
+
+    .sec-1 .part-1 .line {
+        position: absolute;
+        bottom: 0;
+	}
+
+    #tiles-1 {
+		grid-template-columns: repeat(2, var(--tile-width));
+		grid-template-rows: repeat(2, var(--tile-width));
+		transform: translate(-50%, 50%);
+		bottom: 0;
+		right: 0;
+	}
+
+	#tiles-1 div:nth-child(1) span { transform: translate(1px, 1px); }
+	#tiles-1 div:nth-child(1) { grid-area: 1 / 1 / 2 / 2; }
+
+	#tiles-1 div:nth-child(2) span { transform: translate(0, 0); }
+	#tiles-1 div:nth-child(2) { grid-area: 2 / 2 / 3 / 3; }
+
+
+
+
+
+
+
+	.sec-2 {
+        position: relative;
+        margin-top: calc(var(--tile-width) * 1.5);
+		margin-left: 2vw;
+    }
+
+	.list-container {
+		width: 55%;
+	}
+
+
+
+</style>
