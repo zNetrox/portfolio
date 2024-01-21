@@ -25,6 +25,7 @@ const { principalTitle, listTitles } = Astro.props
         font-size: clamp(1.5625rem, 0.4911rem + 2.8571vw, 2.8125rem); /* 45 > 25 */
 		font-weight: 200;
         margin-bottom: 30px;
+        white-space: nowrap;
     }
 
     li {
@@ -32,8 +33,9 @@ const { principalTitle, listTitles } = Astro.props
     }
 
     li p {
-        font-size: 75px;
+        font-size: clamp(3.125rem, 2.1484rem + 3.125vw, 4.6875rem); /* 75 > 50 */
         font-weight: 200;
+        white-space: nowrap;
     }
 </style>
 

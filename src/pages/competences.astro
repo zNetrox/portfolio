@@ -103,11 +103,17 @@ import '../styles/global.css';
     #tiles-1 div:nth-child(6) span { transform: translate(1px, -1px); }
 	#tiles-1 div:nth-child(6) { grid-area: 2 / 1 / 3 / 2; }
 
+    @media (max-width: 635px) {
+        #tiles-1 div:nth-child(5) {
+            display: none;
+        }
+    }
 
-
-
-
-
+    @media (max-width: 510px) {
+        #tiles-1 div:nth-child(4) {
+            display: none;
+        }
+    }
 
     .sec-2 {
         position: relative;
@@ -145,6 +151,22 @@ import '../styles/global.css';
 
     #tiles-2 div:nth-child(6) span { transform: translate(0, -1px); }
 	#tiles-2 div:nth-child(6) { grid-area: 3 / 2 / 4 / 3; }
+
+    @media (max-width: 1300px) {
+        #tiles-2 {
+            display: none;
+        }
+
+        .list-container {
+            width: 75%;
+        }
+    }
+
+    @media (max-width: 700px) {
+        .list-container {
+            width: 98%;
+        }
+    }
 
 </style>
 
@@ -197,5 +219,5 @@ import '../styles/global.css';
     animSlide('#tiles-2 div:nth-child(4)', ratioTrigger, '#tiles-2 div:nth-child(4)', '125%', 0, 0)
     animSlide('#tiles-2 div:nth-child(5)', ratioTrigger, '#tiles-2 div:nth-child(5)', 0, '100%', 0)
     animSlide('#tiles-2 div:nth-child(6)', ratioTrigger, '#tiles-2 div:nth-child(6)', 0, '125%', 0)
-    */
+*/
 </script>
