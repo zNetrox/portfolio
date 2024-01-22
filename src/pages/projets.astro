@@ -26,12 +26,42 @@ import '../styles/global.css';
 
 	<section class="sec-2">
 		<div class="list-container">
-			<List
-				title= {"hello"}
-				date={"2024"}
-			/>
+			<ul>
+				<span class="line"></span>
+				<List
+					title= "Picture Poker"
+					date="2024"
+					linkGit="https://gsap.com/"
+					linkSite="https://gsap.com/"
+				/>
+				<List
+					title= "Aesthetic"
+					date="2023"
+					linkGit="https://gsap.com/"
+					linkSite="https://gsap.com/"
+				/>
+				<List
+					title= "Memory"
+					date="2023"
+					linkGit="https://gsap.com/"
+					linkSite="https://gsap.com/"
+				/>
+				<List
+					title= "Tic-Tac-Toe"
+					date="2023"
+					linkGit="https://gsap.com/"
+					linkSite="https://gsap.com/"
+				/>
+				<List
+					title= "Calculateur Age"
+					date="2023"
+					linkGit="https://gsap.com/"
+					linkSite="https://gsap.com/"
+				/>
+			</ul>
 		</div>
 	</section>
+	<Footer/>
 </Layout>
 
 <style>
@@ -73,22 +103,13 @@ import '../styles/global.css';
 	#tiles-1 div:nth-child(2) span { transform: translate(0, 0); }
 	#tiles-1 div:nth-child(2) { grid-area: 2 / 2 / 3 / 3; }
 
-
-
-
-
-
-
 	.sec-2 {
-        position: relative;
-        margin-top: calc(var(--tile-width) * 1.5);
-		margin-left: 2vw;
+        display: flex;
+		justify-content: end;
+		margin: calc(var(--tile-width) * 1.5) 2vw 2vw 0;
     }
 
 	.list-container {
 		width: 55%;
 	}
-
-
-
 </style>

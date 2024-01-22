@@ -3,22 +3,22 @@
 interface Props {
     title: string;
     date: string;
+    linkGit: string;
+    linkSite: string;
 }
 
-const { title, date } = Astro.props
+const { title, date ,linkGit, linkSite } = Astro.props
 
 ---
 
-<ul>
-    <span class="line"></span>
-    <li>
+    <li class="over-opacity">
         <div>
             <p class="title">{title}</p>
             <p class="right-text">{date}</p>
         </div>
 
         <div>
-            <a href="#">
+            <a href={linkSite}>
                 <div class="cercle-button">
                     <div class="arrow">
                         <div><span></span></div>
@@ -28,11 +28,10 @@ const { title, date } = Astro.props
                 </div>
                 <p class="title">Visiter</p>
             </a>
-            <a class="right-text" href="#">Dépôt Git</a>
+            <a class="git-link" href={linkGit}>Dépôt Git</a>
         </div>
     </li>
     <span class="line"></span>
-</ul>
 
 <style>
     h4 {
@@ -102,8 +101,31 @@ const { title, date } = Astro.props
         font-weight: 200;
     }
 
-    .right-text {
+    .git-link {
         font-size: 25px;
         font-weight: 200;
     }
 </style>
+
+<script>
+    /*import { gsap } from "gsap";
+    import { ScrollTrigger } from "gsap/ScrollTrigger";*/
+
+    import { animLine } from '../js/libray.js'
+    import { animSlide } from '../js/libray.js'
+    import { animOpacity } from '../js/libray.js'
+
+    const ratioTrigger = "top 80%"
+
+	document.querySelectorAll('ul .line').forEach(line => {
+		animLine(line, ratioTrigger, line)
+	})
+
+    document.querySelectorAll('ul li').forEach(text => {
+		animSlide(text.querySelector('div:first-child :is(.title, .git-link)'), ratioTrigger, text.querySelector('div:first-child :is(.title, .git-link)'), 0, '50%', 0)
+        animOpacity(text.querySelector('div:first-child :is(.title, .git-link)'), ratioTrigger, text.querySelector('div:last-child :is(.cercle-button, p, a)'), 0)
+	})
+
+    
+
+</script>
