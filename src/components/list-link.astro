@@ -14,7 +14,7 @@ const { title, date ,linkGit, linkSite } = Astro.props
     <li class="over-opacity">
         <div>
             <p class="title">{title}</p>
-            <p class="right-text">{date}</p>
+            <p class="date">{date}</p>
         </div>
 
         <div>
@@ -108,8 +108,6 @@ const { title, date ,linkGit, linkSite } = Astro.props
 </style>
 
 <script>
-    /*import { gsap } from "gsap";
-    import { ScrollTrigger } from "gsap/ScrollTrigger";*/
 
     import { animLine } from '../js/libray.js'
     import { animSlide } from '../js/libray.js'
@@ -121,11 +119,20 @@ const { title, date ,linkGit, linkSite } = Astro.props
 		animLine(line, ratioTrigger, line)
 	})
 
-    document.querySelectorAll('ul li').forEach(text => {
-		animSlide(text.querySelector('div:first-child :is(.title, .git-link)'), ratioTrigger, text.querySelector('div:first-child :is(.title, .git-link)'), 0, '50%', 0)
-        animOpacity(text.querySelector('div:first-child :is(.title, .git-link)'), ratioTrigger, text.querySelector('div:last-child :is(.cercle-button, p, a)'), 0)
+    document.querySelectorAll('ul li').forEach(title => {
+        console.log(document.querySelectorAll(`${title} .date, ${title} .title`))
+		animSlide(title, ratioTrigger, `${title} .date, ${title} .title`, 0, '50%', 0)
+
+        //animOpacity(title, ratioTrigger, title.querySelectorAll('ul div:last-child :is(.cercle-button, .title, .git-link)'), 0)
+        
+        //console.log(title.querySelectorAll('.cercle-button, .title, .git-link'))
 	})
 
-    
+    /*document.querySelectorAll('ul li .title').forEach(text => {
+		animSlide(text.querySelector('div:first-child :is(.title, .git-link)'), ratioTrigger, text.querySelector('div:first-child :is(.title, .git-link)'), 0, '50%', 0)
+        animOpacity(text, ratioTrigger, text.querySelectorAll('div:first-child :is(.title, .git-link, .date)'), 0)
+        animOpacity(text, ratioTrigger, text, 0)
+        console.log(text.querySelectorAll('div:first-child :is(.title, .git-link, .date)'))
+	})*/
 
 </script>
