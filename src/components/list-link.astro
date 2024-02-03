@@ -109,30 +109,48 @@ const { title, date ,linkGit, linkSite } = Astro.props
 
 <script>
 
+    import { gsap } from "gsap";
+    import { ScrollTrigger } from "gsap/ScrollTrigger";
+
     import { animLine } from '../js/libray.js'
     import { animSlide } from '../js/libray.js'
     import { animOpacity } from '../js/libray.js'
 
     const ratioTrigger = "top 80%"
 
+
+
+
+    const pointer = function(referenciel, ratio, element) {
+    gsap.set(element, {pointerEvents: 'none'})
+
+    const animation = function() {
+        gsap.to(element, {
+            pointerEvents: 'auto'
+        })
+    }
+    
+    ScrollTrigger.create({
+        trigger: referenciel,
+        start: ratio,
+        once: true,
+        onEnter: () => { animation() },
+    })
+}
+
+
+
+
 	document.querySelectorAll('ul .line').forEach(line => {
 		animLine(line, ratioTrigger, line)
 	})
 
-    document.querySelectorAll('ul li').forEach(title => {
-        console.log(document.querySelectorAll(`${title} .date, ${title} .title`))
-		animSlide(title, ratioTrigger, `${title} .date, ${title} .title`, 0, '50%', 0)
-
-        //animOpacity(title, ratioTrigger, title.querySelectorAll('ul div:last-child :is(.cercle-button, .title, .git-link)'), 0)
-        
-        //console.log(title.querySelectorAll('.cercle-button, .title, .git-link'))
+    document.querySelectorAll('ul li > div:first-child').forEach(title => {
+		animSlide(title, ratioTrigger, title.querySelectorAll('p'), 0, '50%', 0)
 	})
 
-    /*document.querySelectorAll('ul li .title').forEach(text => {
-		animSlide(text.querySelector('div:first-child :is(.title, .git-link)'), ratioTrigger, text.querySelector('div:first-child :is(.title, .git-link)'), 0, '50%', 0)
-        animOpacity(text, ratioTrigger, text.querySelectorAll('div:first-child :is(.title, .git-link, .date)'), 0)
-        animOpacity(text, ratioTrigger, text, 0)
-        console.log(text.querySelectorAll('div:first-child :is(.title, .git-link, .date)'))
-	})*/
+    document.querySelectorAll('ul li').forEach(li => {
+		pointer(li.querySelector('div:first-child'), ratioTrigger, li)
+	})
 
 </script>

@@ -113,13 +113,13 @@ body {
    transform: scaleX(1);
 }
 
-[id*='tiles-'] {
+[id*='tiles'] {
     position: absolute;
     display: grid;
     z-index: -1;
 }
 
-[id*='tiles-'] span {
+[id*='tiles'] span {
     display: block;
     border-style: solid;
     border-color: rgb(var(--grey));
