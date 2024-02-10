@@ -1,7 +1,6 @@
-
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-gsap.registerPlugin(ScrollTrigger) 
+gsap.registerPlugin(ScrollTrigger)
 
 /**
  * permet d'attendre une certaine durée
@@ -16,7 +15,7 @@ export function wait(duration) {
 }
 
 /**
- * animation des cadriages
+ * animation des quadrillages
  * @param {Element || String} referenciel a partir de quelle element l'animation débute
  * @param {string} ratio a partir de combien de pixel l'animation se declanche. 'top 80%'
  * @param {Array || Element} tiles tableau avec tout les selecteur dans des string. [ '#tiles-1 div:nth-child(1)' ]
@@ -97,13 +96,13 @@ export const animOpacity = function(referenciel, ratio, element, delay) {
 }
 
 /**
- * 
- * @param {*} referenciel 
- * @param {*} ratio 
- * @param {*} element 
- * @param {*} xFrom 
- * @param {*} yFrom 
- * @param {*} delay 
+ * animation avec des translations
+ * @param {Element || String} referenciel a partir de quelle element l'animation débute
+ * @param {string} ratio a partir de combien de pixel l'animation se declanche. 'top 80%'
+ * @param {Element || string} element l'élément a animé
+ * @param {number || string} xFrom position au debut
+ * @param {number || string} yFrom position a la fin
+ * @param {number} delay delai avant le debut de l'animation en ms
  */
 export const animSlide = function(referenciel, ratio, element, xFrom, yFrom, delay) {
     gsap.set(element, { opacity: 0, x: xFrom, y: yFrom })
@@ -125,6 +124,14 @@ export const animSlide = function(referenciel, ratio, element, xFrom, yFrom, del
     })
 }
 
+/**
+ * animation avec de rotation en fonction du scroll
+ * @param {Element || String} referenciel a partir de quelle element l'animation débute
+ * @param {string} ratio a partir de combien de pixel l'animation se declanche. 'top 80%'
+ * @param {Element || string} element l'élément a animé
+ * @param {string} direction direction de rotation ('+' ou '-')
+ * @param {number || string} valueRotate degres de rotation a chaque scroll
+ */
 export const animRotateScroll = function(referenciel, ratio, element, direction, valueRotate) {
     let rotateDegres = 0
 
@@ -133,6 +140,8 @@ export const animRotateScroll = function(referenciel, ratio, element, direction,
             rotateDegres += valueRotate
         } else if (direction === '-') {
             rotateDegres -= valueRotate
+        } else {
+            console.error()
         }
         
         gsap.to(element, {
