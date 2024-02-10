@@ -4,7 +4,7 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 gsap.registerPlugin(ScrollTrigger) 
 
 /**
- * permet d'attendre un certaine durée
+ * permet d'attendre une certaine durée
  * @param {number} duration durée d'attente en ms
  */
 export function wait(duration) {

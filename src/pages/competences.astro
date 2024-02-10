@@ -32,11 +32,11 @@ import '../styles/global.css';
     <section class="sec-2">
         <div class="list-container">
         <List
-            principalTitle="Language de programmation"
+            principalTitle="Languages de programmation"
             listTitles= {["HTML5", "CSS3", "JavaScript", "PHP", "Python"]}
         />
         <List
-            principalTitle="Frameworks"
+            principalTitle="Frameworks / Librairies"
             listTitles= {["Astro JS", "Gsap"]}
         />
         <List
@@ -48,6 +48,11 @@ import '../styles/global.css';
             <div><span></span></div>
             <div><span></span></div>
             <div><span></span></div>
+            <div><span></span></div>
+            <div><span></span></div>
+            <div><span></span></div>
+        </div>
+        <div id="tiles-3">
             <div><span></span></div>
             <div><span></span></div>
             <div><span></span></div>
@@ -83,7 +88,7 @@ import '../styles/global.css';
     #tiles-1 {
 		grid-template-columns: repeat(5, var(--tile-width));
 		grid-template-rows: repeat(2, var(--tile-width));
-		transform: translate(-1px, -1px);
+		transform: translate(0, -1px);
 	}
 
 	#tiles-1 div:nth-child(1) span { transform: translate(1px, 0); }
@@ -117,7 +122,7 @@ import '../styles/global.css';
 
     .sec-2 {
         position: relative;
-        margin: calc(var(--tile-width) * 2.5) 0 2vw 2vw;
+        padding: calc(var(--tile-width) * 2.5) 0 calc(var(--tile-width) * 2.5) 2vw;
     }
 
     .list-container {
@@ -168,13 +173,31 @@ import '../styles/global.css';
         }
     }
 
+    #tiles-3 {
+		grid-template-columns: repeat(2, var(--tile-width));
+		grid-template-rows: repeat(2, var(--tile-width));
+        bottom: 0;
+        left: 0;
+	}
+
+	#tiles-3 div:nth-child(1) span { transform: translate(1px, 1px); }
+	#tiles-3 div:nth-child(1) { grid-area: 1 / 1 / 2 / 2; }
+
+    #tiles-3 div:nth-child(2) span { transform: translate(1px, 0); }
+	#tiles-3 div:nth-child(2) { grid-area: 2 / 1 / 3 / 2; }
+
+	#tiles-3 div:nth-child(3) { grid-area: 2 / 2 / 3 / 3; }
+
 </style>
 
 <script>
     import { animTiles } from '../js/libray.js'
-	import { animSlide } from '../js/libray.js'
+	import { animLine } from '../js/libray.js'
 
     const ratioTrigger = "top 80%"
+    const ratioTriggerFullPage = "top bottom"
+
+    animLine('.sec-1 .line', ratioTriggerFullPage, '.sec-1 .line')
 
     animTiles('#tiles-1', ratioTrigger,
 	[
@@ -211,6 +234,19 @@ import '../styles/global.css';
 		{ x: '0', y: '100%' },
 		{ x: '0', y: '125%' }
 	])
+
+    animTiles('#tiles-3', ratioTrigger, 
+	[
+	    '#tiles-3 div:nth-child(1)',
+	    '#tiles-3 div:nth-child(2)',
+	    '#tiles-3 div:nth-child(3)',
+	], 
+	[
+		{ x: '100%', y: '0' },
+		{ x: '125%', y: '0' },
+		{ x: '150%', y: '0' },
+	])
+
 
 /*
     animSlide('#tiles-2 div:nth-child(1)', ratioTrigger, '#tiles-2 div:nth-child(1)', 0, '-100%', 0)
