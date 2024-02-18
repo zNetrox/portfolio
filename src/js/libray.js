@@ -1,17 +1,23 @@
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-gsap.registerPlugin(ScrollTrigger)
+import { ScrollToPlugin } from "gsap/ScrollToPlugin";
+gsap.registerPlugin(ScrollTrigger, ScrollToPlugin)
+
+export const ratio = {
+    basic: "top 90%",
+    fullPage: "top bottom"
+}
 
 /**
  * permet d'attendre une certaine durée
  * @param {number} duration durée d'attente en ms
  */
-export function wait(duration) {
+export const wait = function(duration) {
     return new Promise((resolve, reject) => {
         setTimeout(() => {
-        resolve(duration)
-    }, duration)
- })
+            resolve(duration)
+        }, duration)
+    })
 }
 
 /**
@@ -45,9 +51,24 @@ export function animTiles(referenciel, ratio, tiles, tilePositions) {
 }
 
 /**
+ * applique une translation a un élément
+ * @param {Element} element élément sur lequel la translation est appliqué
+ * @param {number || string} x translation sur l'axe x
+ * @param {number || string} y translation sur l'axe y
+ */
+export const translate = function(element, x, y) {
+    gsap.to(element, {
+        x: x,
+        y: y,
+        duration: 1.4,
+        ease: "power4.out"
+    })
+}
+
+/**
  * animation des lignes
  * @param {Element || string} referenciel a partir de quelle element l'animation débute
- * @param {string} ratio a partir de combien de pixel l'animation se declanche. 'top 80%'
+ * @param {string} ratio a partir de combien de pixel l'animation se declanche. 'top 90%'
  * @param {Element || sting} line la ligne a animé
  */
 export const animLine = function(referenciel, ratio, line) {
@@ -73,9 +94,9 @@ export const animLine = function(referenciel, ratio, line) {
 /**
  * animation opacité
  * @param {Element || String} referenciel a partir de quelle element l'animation débute
- * @param {string} ratio a partir de combien de pixel l'animation se declanche. 'top 80%'
+ * @param {string} ratio a partir de combien de pixel l'animation se declanche. 'top 90%'
  * @param {Element || string} element l'élément a animé
- * @param {number} delay delai avec que l'animation s'effetue
+ * @param {number} delay delai avant le debut de l'animation en sec
  */
 export const animOpacity = function(referenciel, ratio, element, delay) {
     gsap.set(element, { opacity: 0 })
@@ -98,11 +119,11 @@ export const animOpacity = function(referenciel, ratio, element, delay) {
 /**
  * animation avec des translations
  * @param {Element || String} referenciel a partir de quelle element l'animation débute
- * @param {string} ratio a partir de combien de pixel l'animation se declanche. 'top 80%'
+ * @param {string} ratio a partir de combien de pixel l'animation se declanche. 'top 90%'
  * @param {Element || string} element l'élément a animé
  * @param {number || string} xFrom position au debut
  * @param {number || string} yFrom position a la fin
- * @param {number} delay delai avant le debut de l'animation en ms
+ * @param {number} delay delai avant le debut de l'animation en sec
  */
 export const animSlide = function(referenciel, ratio, element, xFrom, yFrom, delay) {
     gsap.set(element, { opacity: 0, x: xFrom, y: yFrom })
@@ -125,9 +146,43 @@ export const animSlide = function(referenciel, ratio, element, xFrom, yFrom, del
 }
 
 /**
+ * scroll automatiquement jusqu'à un élément
+ * @param {Element} btn bouton 
+ * @param {Element || number} finish 
+ */
+export const scrollTo =  function(btn, finish) {
+    btn.addEventListener("click", () => {
+        gsap.to(window, { duration: 1.5, scrollTo: finish, ease: 'power4.out' });
+    })
+}
+
+/**
+ * supprime le survol / clique d'un element jusqu'à ce qu'il soit apparue
+ * @param {Element || String} referenciel a partir de quelle élément est survolable / cliquable
+ * @param {string} ratio a partir de combien de pixel l'animation se declanche. 'top 90%'
+ * @param {Element || string} element élément sur lequel on applique les modifications
+ */
+export const pointerRemove = function(referenciel, ratio, element) {
+    gsap.set(element, {pointerEvents: 'none'})
+
+    const animation = function() {
+        gsap.to(element, {
+            pointerEvents: 'auto'
+        })
+    }
+    
+    ScrollTrigger.create({
+        trigger: referenciel,
+        start: ratio,
+        once: true,
+        onEnter: () => { animation() },
+    })
+}
+
+/**
  * animation avec de rotation en fonction du scroll
  * @param {Element || String} referenciel a partir de quelle element l'animation débute
- * @param {string} ratio a partir de combien de pixel l'animation se declanche. 'top 80%'
+ * @param {string} ratio a partir de combien de pixel l'animation se declanche. 'top 90%'
  * @param {Element || string} element l'élément a animé
  * @param {string} direction direction de rotation ('+' ou '-')
  * @param {number || string} valueRotate degres de rotation a chaque scroll

@@ -9,7 +9,7 @@ import '../styles/global.css';
 ---
 
 <Layout title="Accueil">
-	<Loader/>
+	<!-- <Loader/> -->
 	<Cursor/>
 	<Menu/>
 	<Header/>
@@ -85,7 +85,7 @@ import '../styles/global.css';
 				<h2>Mes Differents<br> Projets</h2>
 			</div>
 			<div>
-				<a class="cercle-button over-opacity" href="#">
+				<a class="cercle-button over-opacity" href="/projets">
 					<div class="arrow">
 						<div><span></span></div>
 						<div><span></span></div>
@@ -126,21 +126,19 @@ import '../styles/global.css';
 </Layout>
 
 <script>
+	import { ratio } from '../js/libray.js'
 	import { animTiles } from '../js/libray.js'
 	import { animLine } from '../js/libray.js'
 	import { animOpacity } from '../js/libray.js'
 	import { animSlide } from '../js/libray.js'
 	import { animRotateScroll } from '../js/libray.js'
 
-	const ratioTrigger = "top 80%"
-	const ratioTriggerFullPage = "top bottom"
-
 	// hero banner
 
-	animLine('.hero-banner .line', ratioTriggerFullPage, '.hero-banner .line')
-	animOpacity('.hero-banner .line', ratioTriggerFullPage, '.hero-banner p', 1)
+	animLine('.index-hero-banner .line', ratio.fullPage, '.index-hero-banner .line')
+	animOpacity('.index-hero-banner .line', ratio.fullPage, '.index-hero-banner p', 1)
 
-	animTiles('#tiles-1', ratioTriggerFullPage, 
+	animTiles('#tiles-1', ratio.fullpage, 
 	[
 	    '#tiles-1 div:nth-child(1)',
 	    '#tiles-1 div:nth-child(2)',
@@ -168,28 +166,28 @@ import '../styles/global.css';
 
 	// section 2
 
-	animSlide('.index-sec-1 .text', ratioTrigger, '.index-sec-1 h2', -200, 0, 0)
-	animSlide('.index-sec-1 .text', ratioTrigger, '.index-sec-1 p', -200, 0, 0.1)
+	animSlide('.index-sec-1 .text', ratio.basic, '.index-sec-1 h2', -200, 0, 0)
+	animSlide('.index-sec-1 .text', ratio.basic, '.index-sec-1 p', -200, 0, 0.1)
 
-	animRotateScroll('.rotating-text', ratioTriggerFullPage, '.index-sec-1 svg', '+', 3)
-	animRotateScroll('.rotating-text', ratioTriggerFullPage, '.index-sec-1 #container-star > div', '-', 3)
+	animRotateScroll('.rotating-text', ratio.fullPage, '.index-sec-1 svg', '+', 4)
+	animRotateScroll('.rotating-text', ratio.fullPage, '.index-sec-1 #container-star > div', '-', 4)
 
 	// section 3
 
-	animSlide('.my-projects h2', ratioTrigger, '.my-projects h2', -100, 0, 0.3)
-	animSlide('.list-fovorite-project h4', ratioTrigger, '.list-fovorite-project h4', 0, 50, 0.3)
+	animSlide('.my-projects h2', ratio.basic, '.my-projects h2', -100, 0, 0.3)
+	animSlide('.list-fovorite-project h4', ratio.basic, '.list-fovorite-project h4', 0, 50, 0.3)
 
 	document.querySelectorAll('.project').forEach(project => {
-		animSlide(project, ratioTrigger, project.querySelector('.project-name p:last-child'), 0, '500%', 0.2)
-		animSlide(project, ratioTrigger, project.querySelector('.project-counter'), 0, '100%', 0.3)
-		animSlide(project, ratioTrigger, project.querySelector('.project-name p:first-child'), 0, '70%', 0)
+		animSlide(project, ratio.basic, project.querySelector('.project-name p:last-child'), 0, '500%', 0.2)
+		animSlide(project, ratio.basic, project.querySelector('.project-counter'), 0, '100%', 0.3)
+		animSlide(project, ratio.basic, project.querySelector('.project-name p:first-child'), 0, '70%', 0)
 	})
 
 	document.querySelectorAll('.index-sec-2 .line').forEach(line => {
-		animLine(line, ratioTrigger, line)
+		animLine(line, ratio.basic, line)
 	})
 
-	animTiles('#tiles-3', ratioTrigger,
+	animTiles('#tiles-3', ratio.basic,
 	[
 	    '#tiles-3 div:nth-child(1)',
 	    '#tiles-3 div:nth-child(2)',
@@ -203,7 +201,7 @@ import '../styles/global.css';
 		{ x: '0', y: '150%' },
 	])
 
-	animTiles('#tiles-4', ratioTrigger,
+	animTiles('#tiles-4', ratio.basic,
 	[
 		'#tiles-4 div:nth-child(1)',
 	    '#tiles-4 div:nth-child(2)',

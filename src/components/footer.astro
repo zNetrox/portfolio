@@ -9,7 +9,7 @@
                 <span>enzo.galiano38@gmail.com</span>. Je suis ouvert aux échanges et aux opportunités. À bientôt !</p>
         </div>
         <div>
-            <a id="upper-button" href="#">REMONTER</a>
+            <button id="upper-button">REMONTER</button>
             <div id="list-links-page">
                 <a class="over-link" href="/">Accueil</a>
                 <a class="over-link" href="/competences">Compétences</a>
@@ -22,164 +22,26 @@
     </div>
     <div class="part-3">
         <div>
-            <p>conçu et réalisé par Galiano Enzo</p>
-            <p class="slide-up"><span>contact: </span>enzo.galiano38@gmail.com</p>
+            <p>Conçu et réalisé par Galiano Enzo</p>
+            <p><span>Contact: </span>enzo.galiano38@gmail.com</p>
         </div>
         <div>
-            <p class="slide-left over-none">Téléchager CV</p>
+            <p class="over-none">Téléchager CV</p>
         </div>
     </div>
 </footer>
 
-<style>
-    footer {
-        overflow: hidden;
-        padding: 2vw 2vw 20px 2vw;
-        background: rgb(var(--black));
-        color: rgb(var(--white));
-    }
-
-    footer .part-1 {
-        display: grid;
-        grid-template-columns: 45% 55%;
-    }
-
-    footer .part-1 div:first-child p {
-        font-size: clamp(1.375rem, 0.7946rem + 1.8571vw, 2.1875rem); /* 35 > 22 */
-    }
-
-    footer .part-1 div:first-child span {
-        font-style: italic;
-        text-decoration: underline;
-    }
-
-    footer .part-1 div:last-child {
-        position: relative;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-    }
-
-    footer .part-1 #list-links-page {
-        position: relative;
-        display: flex;
-        flex-direction: column;
-        gap: 20px;
-        margin-top: 25%;
-    }
-
-    footer #list-links-page a {
-        color: inherit;
-        font-size: clamp(2.1875rem, 1.0714rem + 3.5714vw, 3.75rem); /* 60 > 35 */
-        align-self: start;
-    }
-
-    footer #list-links-page a::after {
-        content: '';
-        display: block;
-        width: 100%;
-        transform: scaleX(1);
-        height: 1px;
-        background-color: rgb(var(--white));
-        transform-origin: left;
-        transition: transform 0.2s ease-out;
-    }
-
-    footer #list-links-page a:hover::after {
-        transform: scaleX(0);
-        transform-origin: right;
-    }
-
-    footer .part-1 #upper-button {
-        position: absolute;
-        top: 0;
-        right: 0;
-        color: rgb(var(--yellow));
-        text-decoration: underline;
-        font-size: 20px;
-        font-weight: 800;
-    }
-
-    footer .part-2 h1 {
-        font-size: clamp(5rem, -1.5476rem + 20.9524vw, 18.75rem); /* 300 > 80 */
-        font-weight: 800;
-        text-align: center;
-        margin: 5% 0;
-    }
-
-    footer .part-3 {
-        display: flex;
-        justify-content: space-between;
-        align-items: end;
-        font-size: 20px;
-    }
-
-    footer .part-3 div:first-child span {
-        font-weight: 800;
-    }
-
-    footer .part-3 div:last-child {
-        cursor: pointer;
-        width: min-content;
-        white-space: nowrap;
-    }
-
-    footer .part-3 div:last-child p::after {
-        content: '';
-        display: block;
-        width: 100%;
-        transform: scaleX(1);
-        height: 1px;
-        background-color: rgb(var(--white));
-        transform-origin: left;
-        transition: transform 0.2s ease-out;
-    }
-
-    footer .part-3 div:last-child:hover p::after {
-        transform: scaleX(0);
-        transform-origin: right;
-    }
-
-    @media (max-width: 850px) {
-        footer .part-1 #upper-button {
-            display: none;
-        }
-
-        footer .part-1 {
-            grid-template-columns: auto;
-            grid-template-rows: 50% 50%;
-            height: auto;
-        }
-
-        footer #list-links-page a {
-            align-self: center;
-        }
-
-        footer .part-1 #list-links-page {
-            margin-top: 15%;
-        }
-
-        footer .part-2 h1 {
-            margin: 15% 0;
-        }
-
-        footer .part-3 {
-            flex-direction: column-reverse;
-            align-items: start;
-        }
-    }
-
-</style>
-
 <script>
+
+    import { ratio } from '../js/libray.js'
     import { animSlide } from '../js/libray.js'
     import { gsap } from "gsap"
 	import { ScrollTrigger } from "gsap/ScrollTrigger"
+    import { scrollTo } from '../js/libray.js'
 	gsap.registerPlugin(ScrollTrigger)
 
-    const ratioTrigger = "top 80%"
-	const ratioTriggerFullPage = "top bottom"
     const title = document.querySelector('footer h1')
+    const scrollTop = document.querySelector('#upper-button')
 
     gsap.from(title, {
     y: '50%',
@@ -193,11 +55,16 @@
     ease: "power4.out"
 })
 
-animSlide('footer .part-1 p', ratioTrigger, 'footer .part-1 p', '-3vw', 0, 0)
-animSlide('footer .part-1 p', ratioTrigger, 'footer .part-1 a', '3vw', 0, 0)                                                  // /!\ l'animation se declanche trop tot a cause du margin
+    animSlide('footer .part-1 p', ratio.basic, 'footer .part-1 p', '-3vw', 0, 0)
+    animSlide('footer .part-1 p', ratio.basic, 'footer .part-1 a', '3vw', 0, 0)                                                  // /!\ l'animation se declanche trop tot a cause du margin
 
-animSlide('footer #list-links-page', ratioTrigger, 'footer #list-links-page a:nth-child(1)', 0, '100%', 0.2)
-animSlide('footer #list-links-page', ratioTrigger, 'footer #list-links-page a:nth-child(2)', 0, '100%', 0.1)
-animSlide('footer #list-links-page', ratioTrigger, 'footer #list-links-page a:nth-child(3)', 0, '100%', 0)
+    animSlide('footer #list-links-page', ratio.basic, 'footer #list-links-page a:nth-child(1)', 0, '100%', 0.2)
+    animSlide('footer #list-links-page', ratio.basic, 'footer #list-links-page a:nth-child(2)', 0, '100%', 0.1)
+    animSlide('footer #list-links-page', ratio.basic, 'footer #list-links-page a:nth-child(3)', 0, '100%', 0)
+/*
+    scrollTop.addEventListener('click', () => {
+        gsap.to(window, { duration: 0.5, scrollTo: 0 });
+    })*/
 
+    scrollTo(scrollTop, 0)
 </script>

@@ -40,16 +40,15 @@ const { principalTitle, listTitles } = Astro.props
 </style>
 
 <script>
+    import { ratio } from '../js/libray.js'
     import { animLine } from '../js/libray.js'
     import { animSlide } from '../js/libray.js'
 
-    const ratioTrigger = "top 80%"
-
 	document.querySelectorAll('ul span').forEach(line => {
-		animLine(line, ratioTrigger, line)
+		animLine(line, ratio.basic, line)
 	})
 
     document.querySelectorAll('ul :is(p, h4)').forEach(title => {
-		animSlide(title, ratioTrigger, title, 0, '50%', 0)
+		animSlide(title, ratio.basic, title, 0, '50%', 0)
 	})
 </script>
