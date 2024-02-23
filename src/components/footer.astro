@@ -1,7 +1,3 @@
----
-
----
-
 <footer>
     <div class="part-1">
         <div>
@@ -32,39 +28,22 @@
 </footer>
 
 <script>
-
     import { ratio } from '../js/libray.js'
-    import { animSlide } from '../js/libray.js'
-    import { gsap } from "gsap"
-	import { ScrollTrigger } from "gsap/ScrollTrigger"
+    import { animSlideScroll } from '../js/libray.js'
+    import { scrub } from '../js/libray.js'
     import { scrollTo } from '../js/libray.js'
-	gsap.registerPlugin(ScrollTrigger)
 
     const title = document.querySelector('footer h1')
     const scrollTop = document.querySelector('#upper-button')
 
-    gsap.from(title, {
-    y: '50%',
-    scrollTrigger: {
-        trigger: 'footer .part-2',
-        start: "top bottom",
-        end:"bottom bottom",
-        scrub: 1,
-    },
-    duration: 1.4,
-    ease: "power4.out"
-})
+    scrub(title, 0, '50%', 'footer .part-2', "top bottom", "bottom bottom")
 
-    animSlide('footer .part-1 p', ratio.basic, 'footer .part-1 p', '-3vw', 0, 0)
-    animSlide('footer .part-1 p', ratio.basic, 'footer .part-1 a', '3vw', 0, 0)                                                  // /!\ l'animation se declanche trop tot a cause du margin
+    animSlideScroll('footer .part-1 p', ratio.basic, 'footer .part-1 p', '-3vw', 0, 0)
+    animSlideScroll('footer .part-1 p', ratio.basic, 'footer .part-1 a', '3vw', 0, 0)
 
-    animSlide('footer #list-links-page', ratio.basic, 'footer #list-links-page a:nth-child(1)', 0, '100%', 0.2)
-    animSlide('footer #list-links-page', ratio.basic, 'footer #list-links-page a:nth-child(2)', 0, '100%', 0.1)
-    animSlide('footer #list-links-page', ratio.basic, 'footer #list-links-page a:nth-child(3)', 0, '100%', 0)
-/*
-    scrollTop.addEventListener('click', () => {
-        gsap.to(window, { duration: 0.5, scrollTo: 0 });
-    })*/
+    animSlideScroll('footer #list-links-page', ratio.basic, 'footer #list-links-page a:nth-child(1)', 0, '100%', 0.2)
+    animSlideScroll('footer #list-links-page', ratio.basic, 'footer #list-links-page a:nth-child(2)', 0, '100%', 0.1)
+    animSlideScroll('footer #list-links-page', ratio.basic, 'footer #list-links-page a:nth-child(3)', 0, '100%', 0)
 
     scrollTo(scrollTop, 0)
 </script>

@@ -9,7 +9,7 @@ import '../styles/global.css';
 ---
 
 <Layout title="Accueil">
-	<!-- <Loader/> -->
+	<Loader/>
 	<Cursor/>
 	<Menu/>
 	<Header/>
@@ -97,7 +97,7 @@ import '../styles/global.css';
 		<div class="list-fovorite-project">
 			<h4>Mes Projets Favoris</h4>
 			<span class="line"></span>
-			<a class="project over-image" data-image="picture-poker" href="#">
+			<a class="project over-image" data-image="picture-poker.png" href="#">
 				<div class="project-counter">1</div>
 				<div class="project-name">
 					<p>Picture Poker</p>
@@ -105,7 +105,7 @@ import '../styles/global.css';
 				</div>
 			</a>
 			<span class="line"></span>
-			<a class="project over-image" data-image="aesthetic" href="#">
+			<a class="project over-image" data-image="aesthetic.png" href="#">
 				<div class="project-counter">2</div>
 				<div class="project-name">
 					<p>Aesthetic</p>
@@ -127,18 +127,18 @@ import '../styles/global.css';
 
 <script>
 	import { ratio } from '../js/libray.js'
-	import { animTiles } from '../js/libray.js'
-	import { animLine } from '../js/libray.js'
-	import { animOpacity } from '../js/libray.js'
-	import { animSlide } from '../js/libray.js'
+	import { animTilesScroll } from '../js/libray.js'
+	import { animLineScroll } from '../js/libray.js'
+	import { animOpacityScroll } from '../js/libray.js'
+	import { animSlideScroll } from '../js/libray.js'
 	import { animRotateScroll } from '../js/libray.js'
 
 	// hero banner
 
-	animLine('.index-hero-banner .line', ratio.fullPage, '.index-hero-banner .line')
-	animOpacity('.index-hero-banner .line', ratio.fullPage, '.index-hero-banner p', 1)
+	animLineScroll('.index-hero-banner .line', ratio.fullPage, '.index-hero-banner .line')
+	animOpacityScroll('.index-hero-banner .line', ratio.fullPage, '.index-hero-banner p', 1)
 
-	animTiles('#tiles-1', ratio.fullpage, 
+	animTilesScroll('#tiles-1', ratio.fullpage, 
 	[
 	    '#tiles-1 div:nth-child(1)',
 	    '#tiles-1 div:nth-child(2)',
@@ -166,28 +166,28 @@ import '../styles/global.css';
 
 	// section 2
 
-	animSlide('.index-sec-1 .text', ratio.basic, '.index-sec-1 h2', -200, 0, 0)
-	animSlide('.index-sec-1 .text', ratio.basic, '.index-sec-1 p', -200, 0, 0.1)
+	animSlideScroll('.index-sec-1 .text', ratio.basic, '.index-sec-1 h2', -200, 0, 0)
+	animSlideScroll('.index-sec-1 .text', ratio.basic, '.index-sec-1 p', -200, 0, 0.1)
 
 	animRotateScroll('.rotating-text', ratio.fullPage, '.index-sec-1 svg', '+', 4)
 	animRotateScroll('.rotating-text', ratio.fullPage, '.index-sec-1 #container-star > div', '-', 4)
 
 	// section 3
 
-	animSlide('.my-projects h2', ratio.basic, '.my-projects h2', -100, 0, 0.3)
-	animSlide('.list-fovorite-project h4', ratio.basic, '.list-fovorite-project h4', 0, 50, 0.3)
+	animSlideScroll('.my-projects h2', ratio.basic, '.my-projects h2', -100, 0, 0.3)
+	animSlideScroll('.list-fovorite-project h4', ratio.basic, '.list-fovorite-project h4', 0, 50, 0.3)
 
 	document.querySelectorAll('.project').forEach(project => {
-		animSlide(project, ratio.basic, project.querySelector('.project-name p:last-child'), 0, '500%', 0.2)
-		animSlide(project, ratio.basic, project.querySelector('.project-counter'), 0, '100%', 0.3)
-		animSlide(project, ratio.basic, project.querySelector('.project-name p:first-child'), 0, '70%', 0)
+		animSlideScroll(project, ratio.basic, project.querySelector('.project-name p:last-child'), 0, '500%', 0.2)
+		animSlideScroll(project, ratio.basic, project.querySelector('.project-counter'), 0, '100%', 0.3)
+		animSlideScroll(project, ratio.basic, project.querySelector('.project-name p:first-child'), 0, '70%', 0)
 	})
 
 	document.querySelectorAll('.index-sec-2 .line').forEach(line => {
-		animLine(line, ratio.basic, line)
+		animLineScroll(line, ratio.basic, line)
 	})
 
-	animTiles('#tiles-3', ratio.basic,
+	animTilesScroll('#tiles-3', ratio.basic,
 	[
 	    '#tiles-3 div:nth-child(1)',
 	    '#tiles-3 div:nth-child(2)',
@@ -201,7 +201,7 @@ import '../styles/global.css';
 		{ x: '0', y: '150%' },
 	])
 
-	animTiles('#tiles-4', ratio.basic,
+	animTilesScroll('#tiles-4', ratio.basic,
 	[
 		'#tiles-4 div:nth-child(1)',
 	    '#tiles-4 div:nth-child(2)',

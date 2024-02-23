@@ -1,17 +1,16 @@
 ---
-
 interface Props {
     principalTitle: string;
     listTitles: string[];
 }
 
 const { principalTitle, listTitles } = Astro.props
-
 ---
 
-<ul>
+<ul class="list">
     <h4>{principalTitle}</h4>
     <span class="line"></span>
+    <!-- pour chaque élément du tableau listTitles on le met dans une balise li -->
     {listTitles.map((title) => 
         <li>
             <p>{title}</p>
@@ -20,35 +19,16 @@ const { principalTitle, listTitles } = Astro.props
     )}
 </ul>
 
-<style>
-    h4 {
-        font-size: clamp(1.5625rem, 0.4911rem + 2.8571vw, 2.8125rem); /* 45 > 25 */
-		font-weight: 200;
-        margin-bottom: 30px;
-        white-space: nowrap;
-    }
-
-    li {
-        padding: 30px 0;
-    }
-
-    li p {
-        font-size: clamp(3.125rem, 2.1484rem + 3.125vw, 4.6875rem); /* 75 > 50 */
-        font-weight: 200;
-        white-space: nowrap;
-    }
-</style>
-
 <script>
     import { ratio } from '../js/libray.js'
-    import { animLine } from '../js/libray.js'
-    import { animSlide } from '../js/libray.js'
+    import { animLineScroll } from '../js/libray.js'
+    import { animSlideScroll } from '../js/libray.js'
 
 	document.querySelectorAll('ul span').forEach(line => {
-		animLine(line, ratio.basic, line)
+		animLineScroll(line, ratio.basic, line)
 	})
 
     document.querySelectorAll('ul :is(p, h4)').forEach(title => {
-		animSlide(title, ratio.basic, title, 0, '50%', 0)
+		animSlideScroll(title, ratio.basic, title, 0, '50%', 0)
 	})
 </script>

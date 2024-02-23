@@ -115,7 +115,6 @@ body {
    transform: scaleX(1);
 }
 
-
 /* quadrillage */
 
 [id*='tiles'] {
@@ -542,6 +541,310 @@ footer .part-3 div:last-child:hover p::after {
     footer .part-3 {
         flex-direction: column-reverse;
         align-items: start;
+    }
+}
+
+/* ----------------------------------- */
+/* ---------- component nav ---------- */
+/* ----------------------------------- */
+
+nav {
+    position: fixed;
+    top: 0%;
+    transform: translateY(-100%);
+    width: 100vw;
+    height: 100vh;
+    background: rgb(var(--red));
+    color: rgb(var(--white));
+    transition: 1.4s var(--bezier);
+    z-index: 100;
+}
+
+nav.active {
+    transform: translateY(0);
+}
+
+nav .container {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: end;
+    height: 100%;
+}
+
+nav #links-list {
+    position: absolute;
+    top: 50%;
+    left: 2vw;
+    transform: translateY(-50%);
+    display: grid;
+    grid-template-rows: 33% 33% 33%;
+}
+
+nav a {
+    font-weight: 800;
+    font-size: clamp(3.125rem, -0.5952rem + 11.9048vw, 10.9375rem);
+    color: rgb(var(--white));
+    text-transform: uppercase;
+    user-select: none;
+    overflow: hidden;
+    width: min-content;
+    padding-right: 2%;
+}
+
+nav a:hover {
+    font-style: italic;
+}
+
+nav #infos {
+    margin: 0 auto;
+    margin-bottom: 25px;
+    display: flex;
+    justify-content: space-between;
+    width: 96vw;
+    bottom: 25px;
+    font-size: 20px;
+}
+
+nav #infos span {
+    font-weight: 800;
+}
+
+nav #infos p:last-child {
+    cursor: pointer;
+    width: min-content;
+    white-space: nowrap;
+}
+
+nav #infos p:last-child::after {
+    content: '';
+    display: block;
+    width: 100%;
+    transform: scaleX(1);
+    height: 1px;
+    background-color: rgb(var(--white));
+    transform-origin: left;
+    transition: transform 0.2s ease-out;
+}
+
+nav #infos p:last-child:hover::after {
+    transform: scaleX(0);
+    transform-origin: right;
+}
+
+@media (max-width: 700px) {
+    nav #links-list {
+        grid-row-gap: 15px;
+    }
+
+    nav #infos {
+        flex-direction: column-reverse;
+        gap: 10px;
+        font-size: 18px;
+    }
+}
+
+@media (max-width: 700px) {
+    nav .hero-banner .part-1 {
+        width: auto;
+    }
+}
+
+/* ----------------------------------------- */
+/* ---------- component list link ---------- */
+/* ----------------------------------------- */
+
+.list-link h4 {
+    font-size: clamp(1.5625rem, 0.4911rem + 2.8571vw, 2.8125rem); /* 45 > 25 */
+    font-weight: 200;
+    margin-bottom: 30px;
+}
+
+.list-link {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    overflow: hidden;
+}
+
+.list-link > div:nth-child(1) {
+    width: 100%;
+    transition: .4s;
+    padding: 30px 0;
+}
+
+.list-link:hover > div:nth-child(1) {
+    transform: translateY(calc(-100% - 30px));
+}
+
+.list-link:hover > a:nth-child(2) {
+    transform: translateY(-50%);
+}
+
+.list-link > a:nth-child(2) {
+    position: absolute;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding: 30px 0;
+    transform: translateY(100%);
+    top: 50%;
+    width: 100%;
+    transition: .4s;
+    color: rgb(var(--black));
+}
+
+.list-link .cercle-button {
+    width: 85px;
+    aspect-ratio: 1/1;
+    pointer-events: none;
+}
+
+.list-link .title {
+    font-size: 50px;
+    font-weight: 200;
+}
+
+.list-link .git-link {
+    font-size: 25px;
+    font-weight: 200;
+}
+
+.list-link .date {
+    position: absolute;
+    right: 0;
+    pointer-events: none;
+}
+
+/* ------------------------------------ */
+/* ---------- component list ---------- */
+/* ------------------------------------ */
+
+.list h4 {
+    font-size: clamp(1.5625rem, 0.4911rem + 2.8571vw, 2.8125rem); /* 45 > 25 */
+    font-weight: 200;
+    margin-bottom: 30px;
+    white-space: nowrap;
+}
+
+.list li {
+    padding: 30px 0;
+}
+
+.list li p {
+    font-size: clamp(3.125rem, 2.1484rem + 3.125vw, 4.6875rem); /* 75 > 50 */
+    font-weight: 200;
+    white-space: nowrap;
+}
+
+/* -------------------------------------- */
+/* ---------- component loader ---------- */
+/* -------------------------------------- */
+
+.loader {
+    position: fixed;
+    top: 0;
+    width: 100vw;
+    height: 100vh;
+    color: rgb(var(--white));
+    z-index: 9999;
+    user-select: none;
+}
+
+.loader .background {
+    width: 100%;
+    height: 100%;
+    background: rgb(var(--black));
+    z-index: -1;
+    transition: .5s var(--bezier);
+}
+
+.loader .inner-loader {
+    position: absolute;
+    top: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.loader .counter {
+    position: absolute;
+    display: flex;
+    bottom: 15vh;
+    right: 15vh;
+    color: rgb(var(--white));
+    font-size: 100px;
+    transition: .3s var(--bezier);
+}
+
+@media (max-width: 800px) {
+    .loader .counter {
+        bottom: 10vh;
+        right: 10vh;
+        font-size: 80px;
+    }
+}
+
+/* -------------------------------------- */
+/* ---------- component cursor ---------- */
+/* -------------------------------------- */
+
+#cursor {
+    position: fixed;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 999;
+    top: 0;
+    left: 0;
+    width: 60px;
+    aspect-ratio: 1 / 1;
+    border: 1px solid rgb(var(--yellow));
+    transition: .6s cubic-bezier(0.16, 1, 0.3, 1);
+    border-radius: 50%;
+    pointer-events: none;
+    user-select: none;
+    will-change: transform;
+    transform: translate(-100%, -100%);
+}
+
+#cursor.over-none {
+    width: 75px;
+    opacity: 0;
+}
+
+#cursor.over-opacity {
+    background: rgb(var(--yellow));
+    width: 75px;
+    opacity: 0.6;
+}
+
+#cursor.over-link {
+    width: 75px;
+    background: rgb(var(--yellow));
+    opacity: 0.6;
+    cursor: none;
+}
+
+#cursor.over-image {
+    opacity: 1;
+    width: 30vw;
+    aspect-ratio: 16/9;
+    background-image: url();
+    background-size: cover;
+    border-radius: 0;
+    border: 0;
+}
+
+#cursor .arrow div {
+    height: 3px;
+}
+
+@media (max-width: 1023px) {
+    #cursor {
+        display: none;
     }
 }
 

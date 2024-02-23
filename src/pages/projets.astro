@@ -10,6 +10,7 @@ import '../styles/global.css';
 ---
 
 <Layout title="Projets">
+	<!-- <Loader/> -->
 	<Cursor/>
 	<Menu/>
 	<Header/>
@@ -19,13 +20,11 @@ import '../styles/global.css';
 			<span class="line"></span>
 		</div>
 	</section>
-
 	<section class="project-sec-2">
 		<div id="tiles-9">
 			<div><span></span></div>
 			<div><span></span></div>
 		</div>
-		
 		<div class="list-container">
 			<h4>Tous Mes Projets</h4>
 			<ul>
@@ -74,8 +73,8 @@ import '../styles/global.css';
 
 <script>
 	import { ratio } from '../js/libray.js'
-	import { animTiles } from '../js/libray.js'
-	import { animLine } from '../js/libray.js'
+	import { animTilesScroll } from '../js/libray.js'
+	import { animLineScroll } from '../js/libray.js'
 	import { translate } from '../js/libray.js'
 
 	const img = document.querySelector('#img')
@@ -83,11 +82,11 @@ import '../styles/global.css';
 
 	// section 1
 
-	animLine('.project-sec-1 .line', ratio.fullPage, '.project-sec-1 .line')
+	animLineScroll('.project-sec-1 .line', ratio.fullPage, '.project-sec-1 .line')
 
 	// section 2
 
-	animTiles('#tiles-9', ratio.basic, 
+	animTilesScroll('#tiles-9', ratio.basic, 
 	[
 	    '#tiles-9 div:nth-child(1)',
 	    '#tiles-9 div:nth-child(2)',
@@ -98,7 +97,7 @@ import '../styles/global.css';
 
 	])
 
-	animTiles('#tiles-10', ratio.basic, 
+	animTilesScroll('#tiles-10', ratio.basic, 
 	[
 	    '#tiles-10 div:nth-child(1)',
 	    '#tiles-10 div:nth-child(2)',
@@ -124,7 +123,7 @@ import '../styles/global.css';
 
 	document.querySelectorAll('li').forEach(li => {
 		li.addEventListener('mouseover', () => {
-			img.src = `/img/${li.getAttribute("data-img")}`
+			img.src = `/img/${li.getAttribute("data-image")}`
 		})
 	})
 </script>

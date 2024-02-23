@@ -14,7 +14,6 @@ import '../styles/global.css';
 	<Cursor/>
 	<Menu/>
 	<Header/>
-
     <section class="skills-sec-1">
         <div class="part-1">
             <h1>Compétences</h1>
@@ -29,7 +28,6 @@ import '../styles/global.css';
             <div><span></span></div>
         </div>
     </section>
-
     <section class="skills-sec-2">
         <div class="list-container">
         <List
@@ -64,14 +62,14 @@ import '../styles/global.css';
 
 <script>
     import { ratio } from '../js/libray.js'
-    import { animTiles } from '../js/libray.js'
-	import { animLine } from '../js/libray.js'
+    import { animTilesScroll } from '../js/libray.js'
+	import { animLineScroll } from '../js/libray.js'
 
     // section 1
 
-    animLine('.skills-sec-1 .line', ratio.fullPage, '.skills-sec-1 .line')
+    animLineScroll('.skills-sec-1 .line', ratio.fullPage, '.skills-sec-1 .line')
 
-    animTiles('#tiles-6', ratio.basic,
+    animTilesScroll('#tiles-6', ratio.basic,
 	[
 		'#tiles-6 div:nth-child(1)',
 	    '#tiles-6 div:nth-child(2)',
@@ -91,7 +89,7 @@ import '../styles/global.css';
 
     // section 2
 
-    animTiles('#tiles-7', ratio.basic,
+    animTilesScroll('#tiles-7', ratio.basic,
 	[
 		'#tiles-7 div:nth-child(1)',
 	    '#tiles-7 div:nth-child(2)',
@@ -109,7 +107,7 @@ import '../styles/global.css';
 		{ x: '0', y: '125%' }
 	])
 
-    animTiles('#tiles-8', ratio.basic, 
+    animTilesScroll('#tiles-8', ratio.basic, 
 	[
 	    '#tiles-8 div:nth-child(1)',
 	    '#tiles-8 div:nth-child(2)',

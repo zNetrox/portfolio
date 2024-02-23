@@ -1,7 +1,3 @@
----
-
----
-
 <nav>
     <div class="container">
         <div id="links-list">
@@ -28,242 +24,93 @@
     </div>
 </nav>
 
-<style>
-    nav {
-        position: fixed;
-        top: 0%;
-        transform: translateY(-100%);
-        width: 100vw;
-        height: 100vh;
-        background: rgb(var(--red));
-        color: rgb(var(--white));
-        transition: 1.4s var(--bezier);
-        z-index: 100;
-    }
-
-    nav.active {
-        transform: translateY(0);
-    }
-
-    .container {
-        position: relative;
-        display: flex;
-        justify-content: center;
-        align-items: end;
-        height: 100%;
-    }
-
-    #links-list {
-        position: absolute;
-        top: 50%;
-        left: 2vw;
-        transform: translateY(-50%);
-        display: grid;
-        grid-template-rows: 33% 33% 33%;
-    }
-
-    a {
-        font-weight: 800;
-        font-size: clamp(3.125rem, -0.5952rem + 11.9048vw, 10.9375rem);
-        color: rgb(var(--white));
-        text-transform: uppercase;
-        user-select: none;
-        overflow: hidden;
-        width: min-content;
-        padding-right: 2%;
-    }
-
-    #links-list p {
-        /*transform: translateY(10%);*/
-        /*transform: translate(-25% ,35%);*/
-    }
-
-    a:hover {
-        font-style: italic;
-    }
-
-    #infos {
-        margin: 0 auto;
-        margin-bottom: 25px;
-        display: flex;
-        justify-content: space-between;
-        width: 96vw;
-        bottom: 25px;
-        font-size: 20px;
-    }
-
-    #infos span {
-        font-weight: 800;
-    }
-
-    #infos p:last-child {
-        cursor: pointer;
-        width: min-content;
-        white-space: nowrap;
-    }
-
-    #infos p:last-child::after {
-        content: '';
-        display: block;
-        width: 100%;
-        transform: scaleX(1);
-        height: 1px;
-        background-color: rgb(var(--white));
-        transform-origin: left;
-        transition: transform 0.2s ease-out;
-    }
-
-    #infos p:last-child:hover::after {
-        transform: scaleX(0);
-        transform-origin: right;
-    }
-
-    @media (max-width: 700px) {
-        #links-list {
-            grid-row-gap: 15px;
-        }
-
-        #infos {
-            flex-direction: column-reverse;
-            gap: 10px;
-            font-size: 18px;
-        }
-    }
-
-    @media (max-width: 700px) {
-		.hero-banner .part-1 {
-	    	width: auto;
-		}
-    }
-</style>
-
 <script>
-    import { gsap } from "gsap"
     import { wait } from '../js/libray.js'
-
+    import { customGsapSet } from '../js/libray.js'
+    import { customGsapFromTo } from '../js/libray.js'
+    import { animateUpDelay } from '../js/libray.js'
+    
     const nav = document.querySelector('nav')
-    const header = document.querySelector('header')
     const menuBtn = document.querySelector('header p')
 
-    gsap.set(["#links-list a div", "#infos p"], {   
+    customGsapSet(["#links-list a div", "#infos p"], {   
         opacity: 0,
     })
 
     function animateUpDelay(elements, opacityFrom, opacityTo, yFrom, yTo, delayIncrement) {
-        const links = gsap.utils.toArray(elements);
-        links.forEach((link, index) => {
-            gsap.fromTo(link, {
-                opacity: opacityFrom,
-                y: yFrom
-                },
-                {
-                opacity: opacityTo,
-                y: yTo,
-                duration: 1.4,
-                ease: "power4.out",
-                delay: 0.3 - index * delayIncrement
-                }
-            )
-        })
-    }
-
-    function animateOpacity(elements, opacityFrom, opacityTo, duration, delay) {
-        gsap.fromTo(elements, { opacity: opacityFrom }, {
-            opacity: opacityTo,
-            duration: duration,
-            ease: "power4.out",
-            delay: delay
-        })
-    }
-
     menuBtn.addEventListener("click", () => {
+        // si le menu n'est pas afficher
         if (nav.className !== "active") {
-            document.querySelector("body").style.overflow = 'hidden'
-            nav.classList.add("active");
-            animateOpacity("header", 1, 0, 0.8, 0)
-            gsap.set('header', {
+            document.querySelector("body").style.overflow = 'hidden' // supprime le scroll à la page
+            nav.classList.add("active"); // affiche le menu
+            // fait disparaître le header
+            customGsapFromTo("header", {opacity: 1}, {
+                opacity: 0,
+                duration: 0.8,
+                ease: "power4.out",
+                delay: 0
+            })
+            // modifie le header
+            customGsapSet('header', {
                 mixBlendMode: 'initial',
-                pointerEvents: 'none'
+                pointerEvents: 'none' // supprime le clique
             })
             wait(650)
             .then(() => {
-                animateUpDelay("#links-list a div", 1, 1, "106%", "10%", 0.1)
+                animateUpDelay("#links-list a div", 1, 1, "106%", "10%", 0.1) // affiche les liens pricipaux du menu
                 return wait(1000)
             })
             .then(() => {
-                animateOpacity("header", 0, 1, 0.8, 0)
-                animateOpacity("#infos p", 0, 1, 0.8, 0)
-                gsap.set('header', {
-                    pointerEvents: 'auto'
+                // fait apparaître le header
+                customGsapFromTo(["header", "#infos p"], {opacity: 0}, {
+                    opacity: 1,
+                    duration: 0.8,
+                    ease: "power4.out",
+                    delay: 0
                 })
-                menuBtn.innerText = 'Close' 
+                // modifie le header
+                customGsapSet('header', {
+                    pointerEvents: 'auto' // ajoute le clique
+                })
+                menuBtn.innerText = 'Close' // change le texte du bouton menu
             })
+        // si le menu est afficher
         } else {
-            document.querySelector("body").style.overflow = 'visible'
-            animateUpDelay("#links-list a div", 1, 0, "10%", "106%", 0.1);
-            animateOpacity("#infos p", 1, 0, 0.8, 0)
-            animateOpacity("header", 1, 0, 0.8, 0)
-            gsap.set('header', {
+            document.querySelector("body").style.overflow = 'visible' // ajoute le scroll à la page
+            animateUpDelay("#links-list a div", 1, 0, "10%", "106%", 0.1); // supprime les liens pricipaux du menu
+            // fait disparaître le header
+            customGsapFromTo(["header", "#infos p"], {opacity: 1}, {
+                opacity: 0,
+                duration: 0.8,
+                ease: "power4.out",
+                delay: 0
+            })
+            // modifie le header
+            customGsapSet('header', {
                 mixBlendMode: 'initial',
-                pointerEvents: 'none'
+                pointerEvents: 'none' // supprime le clique
             })
             wait(650)
             .then(() => {
-                nav.classList.remove("active");
+                nav.classList.remove("active"); // supprime le menu
                 return wait(1400)
             })
             .then(() => {
-                animateOpacity("header", 0, 1, 0.8, 0.1)
-                gsap.set('header', {
-                    mixBlendMode: 'difference',
-                    pointerEvents: 'auto',
+                // fait apparaître le header
+                customGsapFromTo("header", {opacity: 0}, {
+                    opacity: 1,
+                    duration: 0.8,
+                    ease: "power4.out",
                     delay: 0.1
                 })
-                menuBtn.innerText = 'Menu'
+                // modifie le header
+                customGsapSet('header', {
+                    mixBlendMode: 'difference',
+                    pointerEvents: 'auto', // ajoute le clique
+                    delay: 0.1
+                })
+                menuBtn.innerText = 'Menu' // change le texte du bouton menu
             })
         }
     })
-
-    /*
-    menuBtn.addEventListener('click', () => {
-        if (nav.className !== 'active') {
-            document.querySelectorAll('#links-list a').forEach(element => element.style.pointerEvents = 'auto')
-            document.querySelector("body").style.overflow = 'hidden' // supprime le scroll de la page
-            nav.classList.add('active')
-            // style pour le bouton menu
-            header.style.opacity = '0'
-            header.style.pointerEvents = 'none'
-            header.style.mixBlendMode = 'initial'
-            header.style.color = 'rgb(var(--black))'
-            wait(800)
-            .then(() => {
-                document.querySelectorAll('nav [class*="slide-"]').forEach(element => element.classList.add('anim')) // animation d'entrée des éléments
-                // style pour le bouton menu
-                menuBtn.innerHTML = 'Close'                          //     /!\ innerHTML
-                header.style.color = 'rgb(var(--white))'
-                header.style.opacity = '1'
-                header.style.pointerEvents = 'auto'
-            })
-        } else {
-            document.querySelectorAll('#links-list a').forEach(element => element.style.pointerEvents = 'none')
-            header.style.opacity = '0'
-            header.style.pointerEvents = 'none'
-            document.querySelectorAll('nav [class*="slide-"]').forEach(element => element.classList.remove('anim')) // animation de sortie des éléments
-            wait(700)
-            .then(() => {
-                nav.classList.remove('active')
-                return wait(700)
-            })
-            .then(() => {
-                document.querySelector("body").style.overflow = 'auto' // ajoute le scroll de la page
-                document.querySelectorAll('#links-list a').forEach(element => element.style.pointerEvents = 'auto')
-                // style pour le bouton menu
-                menuBtn.innerHTML = 'Menu'
-                header.style.opacity = '1'
-                header.style.mixBlendMode = 'difference'
-                header.style.pointerEvents = 'auto'
-            })
-        }
-    })
-    */
 </script>

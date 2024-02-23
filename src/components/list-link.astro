@@ -1,5 +1,4 @@
 ---
-
 interface Props {
     title: string;
     date: string;
@@ -8,14 +7,13 @@ interface Props {
 }
 
 const { title, date ,linkGit, nameImgFile } = Astro.props
-
 ---
 
-    <li data-img={nameImgFile}>
+    <li class="list-link" class="over-image" data-image={nameImgFile}> <!-- nom de l'image si on souhaite faire une animation avec une image -->
         <div>
             <p class="title">{title}</p>
         </div>
-        <a class="over-opacity" href={linkGit} target="_blank">
+        <a class="" href={linkGit} target="_blank">
             <div class="cercle-button">
                 <div class="arrow">
                     <div><span></span></div>
@@ -29,86 +27,19 @@ const { title, date ,linkGit, nameImgFile } = Astro.props
     </li>
     <span class="line"></span>
 
-<style>
-    h4 {
-        font-size: clamp(1.5625rem, 0.4911rem + 2.8571vw, 2.8125rem); /* 45 > 25 */
-		font-weight: 200;
-        margin-bottom: 30px;
-    }
-
-    li {
-        position: relative;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-
-        overflow: hidden;
-    }
-
-    li > div:nth-child(1) {
-        width: 100%;
-        transition: .4s;
-        padding: 30px 0;
-    }
-
-    li:hover > div:nth-child(1) {
-        transform: translateY(calc(-100% - 30px));
-    }
-
-    li:hover > a:nth-child(2) {
-        transform: translateY(-50%);
-    }
-
-    li > a:nth-child(2) {
-        position: absolute;
-        display: flex;
-        align-items: center;
-        gap: 15px;
-        padding: 30px 0;
-        transform: translateY(100%);
-        top: 50%;
-        width: 100%;
-        transition: .4s;
-        color: rgb(var(--black));
-    }
-
-    .cercle-button {
-        width: 85px;
-        aspect-ratio: 1/1;
-        pointer-events: none;
-    }
-
-    .title {
-        font-size: 50px;
-        font-weight: 200;
-    }
-
-    .git-link {
-        font-size: 25px;
-        font-weight: 200;
-    }
-
-    .date {
-        position: absolute;
-        right: 0;
-        pointer-events: none;
-    }
-</style>
-
 <script>
     import { ratio } from '../js/libray.js'
-    import { animLine } from '../js/libray.js'
-    import { animSlide } from '../js/libray.js'
-    import { pointerRemove } from '../js/libray.js'
+    import { animLineScroll } from '../js/libray.js'
+    import { animSlideScroll } from '../js/libray.js'
+    import { pointerRemoveScroll } from '../js/libray.js'
 
 	document.querySelectorAll('ul .line').forEach(line => {
-		animLine(line, ratio.basic, line)
+		animLineScroll(line, ratio.basic, line)
 	})
 
     document.querySelectorAll('ul li').forEach(li => {
-		animSlide(li.querySelector('div:nth-child(1) .title'), ratio.basic, li.querySelector('div:nth-child(1) .title'), 0, '50%', 0)
-		animSlide(li.querySelector('div:nth-child(1) .title'), ratio.basic, li.querySelector('.date'), '-100%', 0, 0)
-        pointerRemove(li.querySelector('div:first-child .title'), ratio.basic, li)
+		animSlideScroll(li.querySelector('div:nth-child(1) .title'), ratio.basic, li.querySelector('div:nth-child(1) .title'), 0, '50%', 0)
+		animSlideScroll(li.querySelector('div:nth-child(1) .title'), ratio.basic, li.querySelector('.date'), '-100%', 0, 0)
+        pointerRemoveScroll(li.querySelector('div:first-child .title'), ratio.basic, li)
 	})
 </script>
