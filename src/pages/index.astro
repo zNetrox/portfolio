@@ -4,12 +4,10 @@ import Header from '../components/header.astro';
 import Footer from '../components/footer.astro';
 import Menu from '../components/menu.astro';
 import Cursor from '../components/cursor.astro';
-import Loader from '../components/loader.astro';
 import '../styles/global.css';
 ---
 
 <Layout title="Accueil">
-	<Loader/>
 	<Cursor/>
 	<Menu/>
 	<Header/>
@@ -97,7 +95,7 @@ import '../styles/global.css';
 		<div class="list-fovorite-project">
 			<h4>Mes Projets Favoris</h4>
 			<span class="line"></span>
-			<a class="project over-image" data-image="picture-poker.png" href="#">
+			<a class="project over-image" data-image="picture-poker.png" href="https://github.com/zNetrox/picture-poker" target="_blank">
 				<div class="project-counter">1</div>
 				<div class="project-name">
 					<p>Picture Poker</p>
@@ -105,7 +103,7 @@ import '../styles/global.css';
 				</div>
 			</a>
 			<span class="line"></span>
-			<a class="project over-image" data-image="aesthetic.png" href="#">
+			<a class="project over-image" data-image="aesthetic.png" href="https://github.com/zNetrox/aesthetic" target="_blank">
 				<div class="project-counter">2</div>
 				<div class="project-name">
 					<p>Aesthetic</p>
@@ -127,13 +125,23 @@ import '../styles/global.css';
 
 <script>
 	import { ratio } from '../js/libray.js'
+	import { wait } from '../js/libray.js'
 	import { animTilesScroll } from '../js/libray.js'
 	import { animLineScroll } from '../js/libray.js'
 	import { animOpacityScroll } from '../js/libray.js'
 	import { animSlideScroll } from '../js/libray.js'
 	import { animRotateScroll } from '../js/libray.js'
 
+	const body = document.querySelector('body')
+
 	// hero banner
+
+	// supprime le scroll pendant 1 sec le temps de l'animation de l'hero banner
+	body.style.overflow = 'hidden'
+	wait(1000)
+		.then(() => {
+			body.style.overflow = 'visible'
+		})
 
 	animLineScroll('.index-hero-banner .line', ratio.fullPage, '.index-hero-banner .line')
 	animOpacityScroll('.index-hero-banner .line', ratio.fullPage, '.index-hero-banner p', 1)

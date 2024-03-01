@@ -654,47 +654,33 @@ nav #infos p:last-child:hover::after {
 /* ---------- component list link ---------- */
 /* ----------------------------------------- */
 
-.list-link h4 {
-    font-size: clamp(1.5625rem, 0.4911rem + 2.8571vw, 2.8125rem); /* 45 > 25 */
-    font-weight: 200;
-    margin-bottom: 30px;
-}
-
-.list-link {
+.list-link a {
     position: relative;
     display: flex;
-    flex-direction: column;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
-
     overflow: hidden;
-}
-
-.list-link > div:nth-child(1) {
     width: 100%;
-    transition: .4s;
+    color: var(--black);
     padding: 30px 0;
 }
 
-.list-link:hover > div:nth-child(1) {
-    transform: translateY(calc(-100% - 30px));
+.list-link .title {
+    font-size: 50px;
+    font-weight: 200;
 }
 
-.list-link:hover > a:nth-child(2) {
-    transform: translateY(-50%);
+.list-link .switch-text > div {
+    transition: .4s;
 }
 
-.list-link > a:nth-child(2) {
+.list-link .switch-text > div:last-child {
     position: absolute;
     display: flex;
     align-items: center;
     gap: 15px;
-    padding: 30px 0;
-    transform: translateY(100%);
-    top: 50%;
-    width: 100%;
-    transition: .4s;
-    color: rgb(var(--black));
+    top: 100%;
+    left: 0;
 }
 
 .list-link .cercle-button {
@@ -703,21 +689,13 @@ nav #infos p:last-child:hover::after {
     pointer-events: none;
 }
 
-.list-link .title {
-    font-size: 50px;
-    font-weight: 200;
+.list-link:hover .switch-text > div:first-child {
+   transform: translateY(calc(-100% - 30px));
 }
 
-.list-link .git-link {
-    font-size: 25px;
-    font-weight: 200;
-}
-
-.list-link .date {
-    position: absolute;
-    right: 0;
-    pointer-events: none;
-}
+.list-link:hover .switch-text > div:last-child {
+    transform: translateY(calc(-100% - 15px));
+ }
 
 /* ------------------------------------ */
 /* ---------- component list ---------- */
@@ -1148,7 +1126,7 @@ nav #infos p:last-child:hover::after {
     display: flex;
     align-items: center;
     gap: 70px;
-    margin: 30px 0;
+    padding: 30px 0;
 }
 
 .index-sec-2 .project-counter {

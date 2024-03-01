@@ -4,13 +4,11 @@ import Header from '../components/header.astro';
 import Footer from '../components/footer.astro';
 import Menu from '../components/menu.astro';
 import Cursor from '../components/cursor.astro';
-import Loader from '../components/loader.astro';
 import List from '../components/list-link.astro';
 import '../styles/global.css';
 ---
 
 <Layout title="Projets">
-	<!-- <Loader/> -->
 	<Cursor/>
 	<Menu/>
 	<Header/>
@@ -28,36 +26,42 @@ import '../styles/global.css';
 		<div class="list-container">
 			<h4>Tous Mes Projets</h4>
 			<ul>
-				<img id="img" src="" alt="">
+				<img id="img" src="" alt="illustration des projets">
 				<span class="line"></span>
+				<List
+					title= "Portfolio 2024"
+					date="2024"
+					linkGit="https://github.com/zNetrox/porfolio"
+					nameImgFile="portfolio-2024.png"
+				/>
 				<List
 					title= "Picture Poker"
 					date="2024"
-					linkGit="https://gsap.com/"
+					linkGit="https://github.com/zNetrox/picture-poker"
 					nameImgFile="picture-poker.png"
 				/>
 				<List
 					title= "Aesthetic"
 					date="2023"
-					linkGit="https://gsap.com/"
+					linkGit="https://github.com/zNetrox/aesthetic"
 					nameImgFile="aesthetic.png"
 				/>
 				<List
 					title= "Memory"
 					date="2023"
-					linkGit="https://gsap.com/"
+					linkGit="https://github.com/zNetrox/memory-game"
 					nameImgFile="memory.png"
 				/>
 				<List
 					title= "Tic-Tac-Toe"
 					date="2023"
-					linkGit="https://gsap.com/"
-					nameImgFile="picture-poker.png"
+					linkGit="https://github.com/zNetrox/tictactoe-pvp"
+					nameImgFile="tictactoe.png"
 				/>
 				<List
 					title= "Calculateur Age"
 					date="2023"
-					linkGit="https://gsap.com/"
+					linkGit="https://github.com/zNetrox/age-calculator"
 					nameImgFile="age-calculator.png"
 				/>
 			</ul>
