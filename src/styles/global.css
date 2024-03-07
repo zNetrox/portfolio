@@ -388,13 +388,17 @@ header {
     position: fixed;
     right: 2%;
     top: 25px;
+    z-index: 999;
+    mix-blend-mode: difference;
+}
+
+header p {
     font-size: 20px;
     font-weight: 200;
     color: rgb(var(--white));
-    mix-blend-mode: difference;
     user-select: none;
     cursor: pointer;
-    z-index: 999;
+    padding: 5px;
 }
 
 header.active {
@@ -666,7 +670,7 @@ nav #infos p:last-child:hover::after {
 }
 
 .list-link .title {
-    font-size: 50px;
+    font-size: clamp(2.8125rem, 2.6172rem + 0.625vw, 3.125rem); /* 50 > 45 */
     font-weight: 200;
 }
 
@@ -684,7 +688,7 @@ nav #infos p:last-child:hover::after {
 }
 
 .list-link .cercle-button {
-    width: 85px;
+    width: 80px;
     aspect-ratio: 1/1;
     pointer-events: none;
 }
@@ -695,7 +699,13 @@ nav #infos p:last-child:hover::after {
 
 .list-link:hover .switch-text > div:last-child {
     transform: translateY(calc(-100% - 15px));
- }
+}
+
+@media (max-width: 800px) {
+    .list-link .cercle-button {
+        width: 75px;
+    }
+}
 
 /* ------------------------------------ */
 /* ---------- component list ---------- */
@@ -705,7 +715,6 @@ nav #infos p:last-child:hover::after {
     font-size: clamp(1.5625rem, 0.4911rem + 2.8571vw, 2.8125rem); /* 45 > 25 */
     font-weight: 200;
     margin-bottom: 30px;
-    white-space: nowrap;
 }
 
 .list li {
@@ -713,9 +722,9 @@ nav #infos p:last-child:hover::after {
 }
 
 .list li p {
-    font-size: clamp(3.125rem, 2.1484rem + 3.125vw, 4.6875rem); /* 75 > 50 */
+    font-size: clamp(2.8125rem, 1.6406rem + 3.75vw, 4.6875rem); /* 75 > 45 */
     font-weight: 200;
-    white-space: nowrap;
+
 }
 
 /* -------------------------------------- */
@@ -826,6 +835,44 @@ nav #infos p:last-child:hover::after {
     }
 }
 
+/* --------------------------------------------- */
+/* ---------- modifications en commun ---------- */
+/* --------------------------------------------- */
+
+.project-sec-1 .part-1,
+.skills-sec-1 .part-1 {
+    position: relative;
+    display: flex;
+    align-items: center;
+    width: min-content;
+    height: 40vh;
+    min-height: 250px;
+}
+
+@media (max-width: 1300px) {
+    .project-sec-1 .part-1,
+    .skills-sec-1 .part-1 {
+        height: 30vh;
+        min-height: 225px;
+    }
+}
+
+@media (max-width: 850px) {
+    .project-sec-1 .part-1,
+    .skills-sec-1 .part-1 {
+        height: 25vh;
+        min-height: 175px;
+    }
+}
+
+@media (max-width: 635px) {
+    .project-sec-1 .part-1,
+    .skills-sec-1 .part-1 {
+        height: 20vh;
+        min-height: 150px;
+    }
+}
+
 /* --------------------------- */
 /* ---------- index ---------- */
 /* --------------------------- */
@@ -931,7 +978,7 @@ nav #infos p:last-child:hover::after {
 
 @media (max-width: 700px) {
     .index-sec-1 {
-        height: 625px;
+        height: auto;
     }
 
     .index-sec-1 .rotating-text {
@@ -950,9 +997,9 @@ nav #infos p:last-child:hover::after {
 }
 
 .index-sec-1 svg {
-      fill: currentColor;
-      height: auto;
-      transform-origin: center;
+    fill: currentColor;
+    height: auto;
+    transform-origin: center;
     min-width: 135px;
     color: rgb(var(--yellow));
     font-weight: 200;
@@ -1033,7 +1080,6 @@ nav #infos p:last-child:hover::after {
 
 @media (max-width: 1330px) {
     .index-sec-2 .my-projects {
-        display: flex;
         padding-top: calc(var(--tile-width) * 2.2);
     }
 }
@@ -1042,7 +1088,7 @@ nav #infos p:last-child:hover::after {
     display: flex;
     margin-left: 2vw;
     padding-top: 30px;
-    font-size: clamp(3.125rem, 0.4934rem + 8.4211vw, 8.125rem); /* 130 > 50 */
+    font-size: clamp(3.125rem, 0.4934rem + 8.4211vw, 8.125rem); /* 130 > 50 */ 
     white-space: nowrap;
 }
 
@@ -1116,6 +1162,12 @@ nav #infos p:last-child:hover::after {
     padding:  calc(var(--tile-width) * 1.5) 0;
 }
 
+@media (max-width: 700px) {
+    .index-sec-2 .list-fovorite-project {
+        padding:  calc(var(--tile-width) * 0.5) 0 calc(var(--tile-width) * 1.5) 0;
+    }
+}
+
 .index-sec-2 .list-fovorite-project h4 {
     font-size: clamp(1.5625rem, 0.4911rem + 2.8571vw, 2.8125rem); /* 45 > 25 */
     font-weight: 200;
@@ -1184,7 +1236,7 @@ nav #infos p:last-child:hover::after {
 }
 
 .index-sec-2 .project-name p:first-child {
-    font-size: clamp(3.4375rem, -0.5099rem + 12.6316vw, 10.9375rem); /* 175 > 55 */
+    font-size: clamp(3.125rem, -0.9868rem + 13.1579vw, 10.9375rem); /* 175 > 50 */
     font-style: italic;
     color: rgb(var(--black));
 }
@@ -1203,14 +1255,6 @@ nav #infos p:last-child:hover::after {
 
 .skills-sec-1 {
     position: relative;
-}
-
-.skills-sec-1 .part-1 {
-    position: relative;
-    display: flex;
-    align-items: center;
-    height: 40vh;
-    width: min-content;
 }
 
 .skills-sec-1 .part-1 h1 {
@@ -1244,6 +1288,18 @@ nav #infos p:last-child:hover::after {
     }
 }
 
+@media (max-width: 1200px) {
+    .skills-sec-2 .list-container {
+        gap: 150px;
+    }
+}
+
+@media (max-width: 600px) {
+    .skills-sec-2 .list-container {
+        gap: 100px;
+    }
+}
+
 @media (max-width: 700px) {
     .skills-sec-2 .list-container {
         width: 98%;
@@ -1258,14 +1314,6 @@ nav #infos p:last-child:hover::after {
 
 .project-sec-1 {
     position: relative;
-}
-
-.project-sec-1 .part-1 {
-    position: relative;
-    display: flex;
-    align-items: center;
-    height: 40vh;
-    width: min-content;
 }
 
 .project-sec-1 .part-1 h1 {
@@ -1284,7 +1332,7 @@ nav #infos p:last-child:hover::after {
 
 .project-sec-2 {
 	position: relative;
-    padding: calc(var(--tile-width) * 2.5) 0 calc(var(--tile-width) * 2.5) 2vw;
+    padding: calc(var(--tile-width) * 2) 0 calc(var(--tile-width) * 2) 2vw;
 }
 
 .project-sec-2 .list-container {
