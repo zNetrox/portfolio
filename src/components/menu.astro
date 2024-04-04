@@ -19,7 +19,7 @@
         </div>
         <div id="infos">
             <p class="slide-up"><span>Contact: </span>enzo.galiano38@gmail.com</p>
-            <p class="slide-left over-none">Téléchager CV</p>
+            <a class="slide-left over-none" href="/documents/cv_galiano_enzo_2024.pdf" title="Pdf" target="_blank">Téléchager CV</a>
         </div>
     </div>
 </nav>
@@ -61,7 +61,7 @@
             })
             .then(() => {
                 // fait apparaître le header
-                customGsapFromTo(["header", "#infos p"], {opacity: 0}, {
+                customGsapFromTo(["header", "#infos p", "#infos a"], {opacity: 0}, {
                     opacity: 1,
                     duration: 0.8,
                     ease: "power4.out",
@@ -78,7 +78,7 @@
             document.querySelector("body").style.overflow = 'visible' // ajoute le scroll à la page
             animateUpDelay("#links-list a div", 1, 0, "10%", "106%", 0.1) // supprime les liens pricipaux du menu
             // fait disparaître le header
-            customGsapFromTo(["header", "#infos p"], {opacity: 1}, {
+            customGsapFromTo(["header", "#infos p", "#infos a"], {opacity: 1}, {
                 opacity: 0,
                 duration: 0.8,
                 ease: "power4.out",

@@ -503,7 +503,11 @@ footer .part-3 div:last-child {
     white-space: nowrap;
 }
 
-footer .part-3 div:last-child p::after {
+footer .part-3 div:last-child a {
+    color: rgb(var(--white));
+}
+
+footer .part-3 div:last-child a::after {
     content: '';
     display: block;
     width: 100%;
@@ -514,7 +518,7 @@ footer .part-3 div:last-child p::after {
     transition: transform 0.2s ease-out;
 }
 
-footer .part-3 div:last-child:hover p::after {
+footer .part-3 div:last-child:hover a::after {
     transform: scaleX(0);
     transform-origin: right;
 }
@@ -585,7 +589,7 @@ nav #links-list {
     grid-template-rows: 33% 33% 33%;
 }
 
-nav a {
+nav #links-list a {
     font-weight: 800;
     font-size: clamp(3.125rem, -0.5952rem + 11.9048vw, 10.9375rem);
     color: rgb(var(--white));
@@ -596,7 +600,7 @@ nav a {
     padding-right: 2%;
 }
 
-nav a:hover {
+nav #links-list a:hover {
     font-style: italic;
 }
 
@@ -614,13 +618,14 @@ nav #infos span {
     font-weight: 800;
 }
 
-nav #infos p:last-child {
+nav #infos a:last-child {
+    color: rgb(var(--white));
     cursor: pointer;
     width: min-content;
     white-space: nowrap;
 }
 
-nav #infos p:last-child::after {
+nav #infos a:last-child::after {
     content: '';
     display: block;
     width: 100%;
@@ -631,7 +636,7 @@ nav #infos p:last-child::after {
     transition: transform 0.2s ease-out;
 }
 
-nav #infos p:last-child:hover::after {
+nav #infos a:last-child:hover::after {
     transform: scaleX(0);
     transform-origin: right;
 }
