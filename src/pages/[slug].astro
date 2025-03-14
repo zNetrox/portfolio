@@ -1,0 +1,74 @@
+---
+// Importer les données (tu peux les stocker dans un fichier JSON ou TypeScript)
+import projects from "../js/dataProjects"; 
+
+// Fonction pour générer les routes dynamiques
+export async function getStaticPaths() {
+  return projects.map((project) => ({
+    params: { slug: project.slug },
+  }));
+}
+
+// Récupérer le paramètre "slug" depuis l'URL
+const { slug } = Astro.params;
+
+// Trouver le projet correspondant
+const project = projects.find((p) => p.slug === slug);
+
+// Si le projet n'existe pas, afficher une erreur
+if (!project) {
+  throw new Error(`Projet non trouvé: ${slug}`);
+}
+
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/header.astro';
+import Footer from '../components/footer.astro';
+import Menu from '../components/menu.astro';
+import Cursor from '../components/cursor.astro';
+import List from '../components/list.astro';
+
+import '../styles/global.css';
+import '../js/descriptionProjet.js';
+---
+
+<Layout title={"Projet " + project.title}>
+    <Cursor/>
+	<Menu/>
+	<Header/>
+
+	<section class="description-sec-1">
+        <div>
+            <h1>{project.title}</h1>
+		    <span class="line"></span>
+        </div>
+        <p>{project.description}</p>
+	</section>
+
+    <section class="description-sec-2">
+        <!-- liste des compétences -->
+        {project.skills.length != 0 && 
+            <List
+                principalTitle="Compétences mis en oeuvre"
+                listTitles= {project.skills}
+            />
+        }
+        <!-- liste des outils -->
+        {project.tools.length != 0 && 
+            <List
+                principalTitle="Outils utilisés"
+                listTitles= {project.tools}
+            />
+        }
+    </section>
+
+    <section class="description-sec-3">
+        {// @ts-ignore 
+        project.listImgFile.limitedArray.map((img) => (
+            <img src={"/img/" + img} alt="image d'illustration">
+        ))}
+        
+    </section>
+
+
+    <Footer/>
+</Layout>

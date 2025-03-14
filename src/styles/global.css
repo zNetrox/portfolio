@@ -1392,6 +1392,96 @@ nav #infos a:last-child:hover::after {
     }
 }
 
+/* ----------------------------------------- */
+/* ---------- description projets ---------- */
+/* ----------------------------------------- */
+
+/* ----------- section 1 ----------- */
+
+.description-sec-1 > div {
+    position: relative;
+    display: flex;
+    align-items: center;
+    width: min-content;
+    height: 40vh;
+    min-height: 250px;
+}
+
+.description-sec-1 h1 {
+    padding-left: 2vw;
+    font-size: clamp(3.4375rem,-0.0481rem + 11.1538vw,12.5rem);
+    font-weight: 800;
+	white-space: nowrap;
+}
+
+.description-sec-1 .line {
+    position: absolute;
+    bottom: 0;
+}
+
+.description-sec-1 p {
+    margin-top: 30px;
+    font-size: 30px; /* 30 > 20 */
+    font-weight: 200;
+    padding-left: 2vw;
+    width: 70%;
+}
+
+/* ----------- section 2 ----------- */
+
+.description-sec-2 {
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: end;
+    gap: 200px;
+    margin: 20vh 0;
+    width: 96vw;
+}
+
+.description-sec-2 ul {
+    width: 55%;
+}
+
+/* ----------- section 3 ----------- */
+
+.description-sec-3 {
+    position: relative;
+    display: flex;
+    margin: 0 auto;
+    width: 80vw;
+    height: 1200px;
+}
+
+.description-sec-3 img {
+    position: absolute;
+    height: 75vh;
+    object-fit: cover;
+}
+
+.description-sec-3:has(> :last-child:nth-child(2)) img {
+    width: 60%;
+}
+
+.description-sec-3:has(> :last-child:nth-child(2)) img:nth-child(2) {
+    right: 0;
+    transform: rotate(2deg);
+}
+
+.description-sec-3:has(> :last-child:nth-child(3)) img {
+    width: 50%;
+}
+
+.description-sec-3:has(> :last-child:nth-child(3)) img:nth-child(2) {
+    left: 50%;
+    transform: translate(-50%, -2%) rotate(2deg);
+}
+
+.description-sec-3:has(> :last-child:nth-child(3)) img:nth-child(3) {
+    right: 0;
+    transform: rotate(-5deg);
+}
+
 /* ---------- font ---------- */
 
 @font-face {

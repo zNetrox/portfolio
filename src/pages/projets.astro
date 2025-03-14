@@ -5,7 +5,9 @@ import Footer from '../components/footer.astro';
 import Menu from '../components/menu.astro';
 import Cursor from '../components/cursor.astro';
 import List from '../components/list-link.astro';
+
 import '../styles/global.css';
+import projects from "../js/dataProjects.js";
 ---
 
 <Layout title="Projets">
@@ -28,42 +30,15 @@ import '../styles/global.css';
 			<ul>
 				<img id="img" src="" alt="illustration des projets">
 				<span class="line"></span>
-				<List
-					title= "Portfolio 2024"
-					date="2024"
-					linkGit="https://github.com/zNetrox/portfolio"
-					nameImgFile="portfolio-2024.png"
-				/>
-				<List
-					title= "Picture Poker"
-					date="2024"
-					linkGit="https://github.com/zNetrox/picture-poker"
-					nameImgFile="picture-poker.png"
-				/>
-				<List
-					title= "Aesthetic"
-					date="2023"
-					linkGit="https://github.com/zNetrox/aesthetic"
-					nameImgFile="aesthetic.png"
-				/>
-				<List
-					title= "Memory"
-					date="2023"
-					linkGit="https://github.com/zNetrox/memory-game"
-					nameImgFile="memory.png"
-				/>
-				<List
-					title= "Tic-Tac-Toe"
-					date="2023"
-					linkGit="https://github.com/zNetrox/tictactoe-pvp"
-					nameImgFile="tictactoe.png"
-				/>
-				<List
-					title= "Calculateur Age"
-					date="2023"
-					linkGit="https://github.com/zNetrox/age-calculator"
-					nameImgFile="age-calculator.png"
-				/>
+				<!-- Creation d'une liste avec des liens dynamiques -->
+				{projects.map((project) => (
+					<List
+						title= {project.title}
+						date={project.date}
+						slug={`../${project.slug}`}
+						nameImgFile={project.nameImgFileTease}
+					/>
+				))}
 			</ul>
 		</div>
 		<div id="tiles-10">

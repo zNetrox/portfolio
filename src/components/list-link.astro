@@ -2,15 +2,15 @@
 interface Props {
     title: string;
     date: string;
-    linkGit: string;
+    slug: string;
     nameImgFile: string;
 }
 
-const { title, date ,linkGit, nameImgFile } = Astro.props
+const { title, date ,slug, nameImgFile } = Astro.props
 ---
 
 <li class="list-link over-opacity" data-image={nameImgFile}>
-    <a href={linkGit} target="_blank">
+    <a href={slug}>
         <div class="switch-text">
             <div>
                 <p class="title">{title}</p>
@@ -23,7 +23,7 @@ const { title, date ,linkGit, nameImgFile } = Astro.props
                         <div><span></span></div>
                     </div>
                 </div>
-                <p class="title">Dépôt Git</p>
+                <p class="title">En savoir plus</p>
             </div>
         </div>
         <div class="date">
