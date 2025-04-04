@@ -23,13 +23,13 @@ export default [
   {
     title: "Picture Poker",
     slug: "picture-poker",
-    description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+    description: "Un projet qui consiste à recréer un concept d’un jeu vidéo accessible dpuis un navigateur web.",
     date:"2024",
     linkGit:"https://github.com/zNetrox/picture-poker",
     nameImgFileTease:"picture-poker.png",
-    listImgFile: [],
-    skills:[],
-    tools:[]
+    listImgFile:createLimitedArray(2, 3, ["picture-poker.png", "memory.png", "tictactoe.png"]),
+    skills:["Conception UX/UI", "Programmation"],
+    tools:["HTML", "JavaScript", "CSS", "Affinity Designer"]
   },
   {
     title: "Aesthetic",
@@ -38,7 +38,7 @@ export default [
     date:"2023",
     linkGit:"https://github.com/zNetrox/aesthetic",
     nameImgFileTease:"aesthetic.png",
-    listImgFile:[],
+    listImgFile:createLimitedArray(2, 3, ["picture-poker.png", "memory.png", "tictactoe.png"]),
     skills:[],
     tools:[]
   },
@@ -49,7 +49,7 @@ export default [
     date:"2023",
     linkGit:"https://github.com/zNetrox/memory",
     nameImgFileTease:"memory.png",
-    listImgFile:[],
+    listImgFile:createLimitedArray(2, 3, ["picture-poker.png", "memory.png", "tictactoe.png"]),
     skills:[],
     tools:[]
   },
@@ -60,7 +60,7 @@ export default [
     date:"2023",
     linkGit:"https://github.com/zNetrox/tictactoe-pvp",
     nameImgFileTease:"tictactoe.png",
-    listImgFile:[],
+    listImgFile:createLimitedArray(2, 3, ["picture-poker.png", "memory.png", "tictactoe.png"]),
     skills:[],
     tools:[]
   },
@@ -71,7 +71,7 @@ export default [
     date:"2023",
     linkGit:"https://github.com/zNetrox/age-calculator",
     nameImgFileTease:"age-calculator.png",
-    listImgFile:[],
+    listImgFile:createLimitedArray(2, 3, ["picture-poker.png", "memory.png", "tictactoe.png"]),
     skills:[],
     tools:[]
   }
