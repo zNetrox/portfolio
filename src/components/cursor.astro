@@ -57,24 +57,16 @@
     })
 
     // change le curseur par une image
-    document.querySelectorAll('.btn-link').forEach(element => {
+    document.querySelectorAll('.over-image').forEach(element => {
         element.addEventListener('mouseover', () => {
-            const image = element.getAttribute("data-image")
             cursor.classList.add('over-image')
-            cursor.style.backgroundImage = `url(/img/${image})`
+
+            const image = element.getAttribute("data-image")
+            cursor.style.backgroundImage = `url(/public/img/${image})`
         })
         element.addEventListener('mouseout', () => {
             cursor.classList.remove('over-image')
             cursor.style.backgroundImage = ``
-        })
-    })
-
-    document.querySelectorAll('.over-image').forEach(element => {
-        element.addEventListener('mouseover', () => {
-            cursor.classList.add('over-image')
-        })
-        element.addEventListener('mouseout', () => {
-            cursor.classList.remove('over-image')
         })
     })
 </script>

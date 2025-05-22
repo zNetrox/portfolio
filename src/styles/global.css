@@ -105,7 +105,6 @@ body {
     transform: translate(-50%, -50%) rotate(-90deg);
 }
 
-
 .cercle-button:hover .arrow div span {
   transform: scaleX(0);
 }
@@ -1464,6 +1463,30 @@ nav #infos a:last-child:hover::after {
     width: 55%;
 }
 
+@media (max-width: 1300px) {
+    .description-sec-2 ul {
+        width: 75%;
+    }
+}
+
+@media (max-width: 1200px) {
+    .description-sec-2 ul {
+        gap: 150px;
+    }
+}
+
+@media (max-width: 600px) {
+    .description-sec-2 ul {
+        gap: 100px;
+    }
+}
+
+@media (max-width: 700px) {
+    .description-sec-2 ul {
+        width: 98%;
+    }
+}
+
 /* ----------- section 3 ----------- */
 
 .description-sec-3 {
@@ -1513,8 +1536,8 @@ nav #infos a:last-child:hover::after {
 }
 
 .description-sec-4 > div:first-child {
-    width: max-content;
-    height: max-content;
+    display: flex;
+    width: 100%;
 }
 
 .description-sec-4 h2 {
@@ -1525,7 +1548,7 @@ nav #infos a:last-child:hover::after {
     white-space: nowrap;
 }
 
-.description-sec-4 > div:nth-child(2) {
+.description-sec-4 > div:first-child > div:last-child {
     flex-grow: 1;
     display: flex;
     flex-direction: column;
@@ -1537,11 +1560,38 @@ nav #infos a:last-child:hover::after {
     aspect-ratio: 1/1;
 }
 
-.description-sec-4 > div:nth-child(2) {
-    flex-grow: 1;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+@media (max-width: 1600px) {
+    .description-sec-4 .cercle-button {
+        width: 200px;
+    }
+}
+
+@media (max-width: 1330px) {
+    .description-sec-4 .cercle-button {
+        width: 175px;
+    }
+}
+
+@media (max-width: 1050px) {
+    .description-sec-4 .cercle-button {
+        width: 150px;
+        justify-self: end;
+    }
+}
+
+@media (max-width: 975px) {
+    .description-sec-4 > div:first-child {
+        width: auto;
+    }
+
+    .description-sec-4 > div:first-child {
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .description-sec-4 > div:first-child > div:last-child {
+        align-items: end;
+    }
 }
 
 /* ---------- font ---------- */
