@@ -18,7 +18,7 @@ export default [
     nameImgFileTease:"portfolio-2024.png",
     listImgFile:createLimitedArray(2, 3, ["picture-poker.png", "memory.png", "tictactoe.png"]),
     skills:["Conception UX/UI", "Developpement Web", "Gestion De Projet"],
-    tools:["Affinity Designer", "Visual Studio Code", "Gsap", "Astro"]
+    tools:["Affinity Designer", "Gsap", "Astro"]
   },
   {
     title: "Picture Poker",
