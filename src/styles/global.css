@@ -970,7 +970,7 @@ nav #infos a:last-child:hover::after {
 .index-sec-1 {
     position: relative;
     height: 90vh;
-    min-height: 530px;
+    min-height: 600px;
     background: rgb(var(--black));
 }
 
@@ -1542,9 +1542,14 @@ nav #infos a:last-child:hover::after {
 .description-sec-3 img {
     position: absolute;
     top: 100%;
-    top: 100%;
     object-fit: cover;
     width: 60%;
+}
+
+.description-sec-3:has(> :last-child:nth-child(1)) img {
+    left: 50%;
+    transform: translateX(-50%);
+    height: 60vh;
 }
 
 .description-sec-3:has(> :last-child:nth-child(2)) img {
@@ -1601,8 +1606,6 @@ nav #infos a:last-child:hover::after {
     width: 260px;
     aspect-ratio: 1/1;
 }
-
-
 
 @media (max-width: 1600px) {
     .description-sec-4 .cercle-button {

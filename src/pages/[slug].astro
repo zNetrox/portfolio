@@ -62,7 +62,7 @@ import '../js/descriptionProjet.js';
     </section>
 
     <section class="description-sec-3">
-        {project.listImgFile.limitedArray.map((img) => (
+        {project.listImgFile.map((img) => (
             <img src={"/img/" + img} alt="image d'illustration" />
         ))}
         
@@ -106,8 +106,9 @@ gsap.registerPlugin(ScrollTrigger);
 let images = gsap.utils.toArray(".description-sec-3 img");
 let rotationsDegres = [-1, 2, -5]
 
+
 let tl = gsap.timeline({
-    scrollTrigger: {
+scrollTrigger: {
         trigger: ".description-sec-3",
         scrub: true,
         pin: true,
@@ -116,12 +117,12 @@ let tl = gsap.timeline({
     }
 });
 
-if(images.length != 0) {
-    images.forEach((img, i) => {
-        // @ts-ignore 
-        tl.to(img, { top: "50%", y: "-70%", rotation: rotationsDegres[i] });
-    });
-}
+
+images.forEach((img, i) => {
+    // @ts-ignore 
+    tl.to(img, { top: "50%", y: "-70%", rotation: rotationsDegres[i] });
+});
+
 
     
 

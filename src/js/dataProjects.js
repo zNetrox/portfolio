@@ -1,22 +1,23 @@
-import { LimitedArray } from '../js/LimitedArray.js'
-
-function createLimitedArray(min, max, values) {
-  const arr = new LimitedArray(min, max);
-  for (const val of values) {
-    arr.push(val);
-  }
-  return arr;
-}
-
 export default [
+  {
+    title: "Classification",
+    slug: "classification",
+    description: "Dans le cadre d’un projet universitaire, j’ai collaboré avec Nicolas Graver pour développer une application de classification automatique en Java.",
+    date:"2025",
+    linkGit:"https://github.com/Filogigin/ClassificationAutomatique",
+    nameImgFileTease:"classification.png",
+    listImgFile:["classification.png"],
+    skills:["Developpement", "Gestion De Projet"],
+    tools:["Java"]
+  },
   {
     title: "Portfolio",
     slug: "portfolio",
     description: "Un projet personnel et profesionnel commencé et terminé en janvier 2024. Puis repris en debut 2025 dans le cadre d'un projet univairsitaire.",
-    date:"2024",
+    date:"2024 - 2025",
     linkGit:"https://github.com/zNetrox/portfolio",
-    nameImgFileTease:"portfolio-2024.png",
-    listImgFile:createLimitedArray(2, 3, ["picture-poker.png", "memory.png", "tictactoe.png"]),
+    nameImgFileTease:"portfolio.png",
+    listImgFile:["portfolio.png"],
     skills:["Conception UX/UI", "Developpement Web", "Gestion De Projet"],
     tools:["Affinity Designer", "Gsap", "Astro"]
   },
@@ -27,7 +28,7 @@ export default [
     date:"2024",
     linkGit:"https://github.com/zNetrox/picture-poker",
     nameImgFileTease:"picture-poker.png",
-    listImgFile:createLimitedArray(2, 3, ["picture-poker.png", "memory.png", "tictactoe.png"]),
+    listImgFile:["picture-poker.png", "picture-poker-settings.png"],
     skills:["Conception UX/UI", "Programmation"],
     tools:["Affinity Designer", "HTML", "CSS", "JavaScript"]
   },
@@ -38,7 +39,7 @@ export default [
     date:"2023",
     linkGit:"https://github.com/zNetrox/aesthetic",
     nameImgFileTease:"aesthetic.png",
-    listImgFile:createLimitedArray(2, 3, ["picture-poker.png", "memory.png", "tictactoe.png"]),
+    listImgFile:["aesthetic.png", "aesthetic-player.png"],
     skills:["Conception UX/UI", "Developpement Web", "Gestion De Projet"],
     tools:["Affinity Designer", "HTML", "CSS", "JavaScript"]
   },
@@ -49,7 +50,7 @@ export default [
     date:"2023",
     linkGit:"https://github.com/zNetrox/memory",
     nameImgFileTease:"memory.png",
-    listImgFile:createLimitedArray(2, 3, ["picture-poker.png", "memory.png", "tictactoe.png"]),
+    listImgFile:["memory.png"],
     skills:["Programmation", "Developpement Web"],
     tools:["HTML", "CSS", "JavaScript"]
   },
@@ -60,18 +61,18 @@ export default [
     date:"2023",
     linkGit:"https://github.com/zNetrox/tictactoe-pvp",
     nameImgFileTease:"tictactoe.png",
-    listImgFile:createLimitedArray(2, 3, ["picture-poker.png", "memory.png", "tictactoe.png"]),
+    listImgFile:["tictactoe.png"],
     skills:["Programmation", "Developpement Web"],
     tools:["HTML", "CSS", "JavaScript"]
   },
   {
     title: "Calculateur Age",
     slug: "calculateur-age",
-    description: "projet personnel sur la création d'une application qui calcul l'age d'une personne jour pour jour.",
+    description: "Projet personnel sur la création d'une application qui calcul l'age d'une personne jour pour jour.",
     date:"2023",
     linkGit:"https://github.com/zNetrox/age-calculator",
     nameImgFileTease:"age-calculator.png",
-    listImgFile:createLimitedArray(2, 3, ["picture-poker.png", "memory.png", "tictactoe.png"]),
+    listImgFile:["age-calculator.png"],
     skills:["Programmation", "Developpement Web"],
     tools:["HTML", "CSS", "JavaScript"]
   }
