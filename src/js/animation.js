@@ -9,18 +9,6 @@ export const ratio = {
 }
 
 /**
- * permet d'attendre une certaine durée
- * @param {number} duration durée d'attente en ms
- */
-export const wait = function(duration) {
-    return new Promise((resolve, reject) => {
-        setTimeout(() => {
-            resolve(duration)
-        }, duration)
-    })
-}
-
-/**
  * applique une translation a un élément
  * @param {Element || string} element élément sur lequel la translation est appliqué
  * @param {number || string} x translation sur l'axe x
@@ -91,13 +79,14 @@ export const animateUpDelay = function(elements, opacityFrom, opacityTo, yFrom, 
 }
 
 /**
+ * met en pause les animation de gsap
  * si globalTimeline n'est pas en pause on l'a met en pause et inversement
  */
-export const globalTimelineIverse = function() {
-    if(gsap.globalTimeline._ts === 1) {
-        gsap.globalTimeline.pause()
-    } else if(gsap.globalTimeline._ts === 0) {
-        gsap.globalTimeline.resume()
+export const globalTimelineInverse = function() {
+    if (!gsap.globalTimeline.paused()) {
+        gsap.globalTimeline.pause();
+    } else {
+        gsap.globalTimeline.resume();
     }
 }
 

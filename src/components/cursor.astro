@@ -1,6 +1,8 @@
 <div id="cursor"></div>
 
 <script>
+    import { preloadImages } from '../js/utils.js'
+
     const cursor = document.querySelector("#cursor")
     const arrow = `<div class="arrow">
 						<div><span></span></div>
@@ -56,17 +58,20 @@
         })
     })
 
-    // change le curseur par une image
+    // over image
+    preloadImages('.over-image[data-image]','data-image', '/public/img/');
+
     document.querySelectorAll('.over-image').forEach(element => {
         element.addEventListener('mouseover', () => {
-            cursor.classList.add('over-image')
+            cursor.classList.add('over-image');
 
-            const image = element.getAttribute("data-image")
-            cursor.style.backgroundImage = `url(/public/img/${image})`
-        })
+            const image = element.getAttribute("data-image");
+            cursor.style.backgroundImage = `url(/public/img/${image})`;
+        });
         element.addEventListener('mouseout', () => {
-            cursor.classList.remove('over-image')
-            cursor.style.backgroundImage = ``
-        })
-    })
+            cursor.classList.remove('over-image');
+            // 'none' est légèrement plus propre que '' pour effacer un background
+            cursor.style.backgroundImage = 'none'; 
+        });
+    });
 </script>

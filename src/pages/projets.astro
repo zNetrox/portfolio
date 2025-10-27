@@ -30,7 +30,7 @@ import projects from "../js/dataProjects.js";
 			<ul>
 				<img id="img" src="" alt="illustration des projets">
 				<span class="line"></span>
-				<!-- Creation d'une liste avec des liens dynamiques -->
+				<!-- creation d'une liste avec des liens dynamiques -->
 				{projects.map((project) => (
 					<List
 						title= {project.title}
@@ -51,10 +51,11 @@ import projects from "../js/dataProjects.js";
 </Layout>
 
 <script>
-	import { ratio } from '../js/libray.js'
-	import { animTilesScroll } from '../js/libray.js'
-	import { animLineScroll } from '../js/libray.js'
-	import { translate } from '../js/libray.js'
+	import { ratio } from '../js/animation.js'
+	import { animTilesScroll } from '../js/animation.js'
+	import { animLineScroll } from '../js/animation.js'
+	import { translate } from '../js/animation.js'
+	import { preloadImages } from '../js/utils.js'
 
 	const img = document.querySelector('#img')
 	const ul = document.querySelector('ul')
@@ -99,6 +100,8 @@ import projects from "../js/dataProjects.js";
 
 		translate(img, x, y)
 	})
+
+    preloadImages('.list-link[data-image]','data-image', '/img/');
 
 	document.querySelectorAll('li').forEach(li => {
 		li.addEventListener('mouseover', () => {

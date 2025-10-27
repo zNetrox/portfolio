@@ -20,9 +20,9 @@ const { principalTitle, listTitles } = Astro.props
 </ul>
 
 <script>
-    import { ratio } from '../js/libray.js'
-    import { animLineScroll } from '../js/libray.js'
-    import { animSlideScroll } from '../js/libray.js'
+    import { ratio } from '../js/animation.js'
+    import { animLineScroll } from '../js/animation.js'
+    import { animSlideScroll } from '../js/animation.js'
 
 	document.querySelectorAll('ul span').forEach(line => {
 		animLineScroll(line, ratio.basic, line)
