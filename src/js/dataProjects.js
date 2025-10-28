@@ -1,4 +1,15 @@
 export default [
+    {
+    title: "ERP de Grand Prix",
+    slug: "erp-gp",
+    description: "Dans le cadre d’un projet universitaire, j’ai travaillé en équipe pour développer un ERP de gestion de Grand Prix automobile.",
+    date:"2025",
+    linkGit: null,
+    nameImgFileTease:"saferace-home.png",
+    listImgFile:["saferace-home.png", "saferace-planning.png"],
+    skills:["déploiement", "Gestion De Projet", "L'UI Design"],
+    tools:["Java", "JavaFX", "UML", "Architecture MVC", "GitLub"]
+  },
   {
     title: "Classification",
     slug: "classification",
@@ -8,18 +19,18 @@ export default [
     nameImgFileTease:"classification.png",
     listImgFile:["classification.png"],
     skills:["Developpement", "Gestion De Projet"],
-    tools:["Java"]
+    tools:["Java", "GitHub"]
   },
   {
     title: "Portfolio",
     slug: "portfolio",
-    description: "Un projet personnel et profesionnel commencé et terminé en janvier 2024. Puis repris en debut 2025 dans le cadre d'un projet univairsitaire.",
+    description: "Un projet personnel et profesionnel commencé et terminé en janvier 2024. Puis repris en 2025 dans le cadre d'un projet univairsitaire.",
     date:"2024 - 2025",
     linkGit:"https://github.com/zNetrox/portfolio",
     nameImgFileTease:"portfolio.png",
     listImgFile:["portfolio.png"],
-    skills:["Conception UX/UI", "Developpement Web", "Gestion De Projet"],
-    tools:["Affinity Designer", "Gsap", "Astro"]
+    skills:["Conception UX/UI", "Developpement Web", "Gestion De Projet", "deploiment"],
+    tools:["Affinity Designer", "Gsap", "Astro", "GitHub"]
   },
   {
     title: "Picture Poker",
