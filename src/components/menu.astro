@@ -18,7 +18,7 @@
             </a>
         </div>
         <div id="infos">
-            <p class="slide-up"><span>Contact: </span>enzo.galiano@etu.univ-grenoble-alpes.fr</p>
+            <p class="slide-up"><span>Contact: </span><a href="mailto:enzo.galiano@etu.univ-grenoble-alpes.fr">enzo.galiano@etu.univ-grenoble-alpes.fr</a></p>
             <a class="slide-left over-none" href="/documents/cv_galiano_enzo_2025.pdf" title="Pdf" target="_blank">Télécharger CV</a>
         </div>
     </div>
@@ -33,7 +33,7 @@
     const nav = document.querySelector('nav')
     const menuBtn = document.querySelector('header p')
 
-    customGsapSet(["#links-list a div", "#infos p"], {   
+    customGsapSet(["#links-list a div", "#infos p", "#infos a"], {   
         opacity: 0,
     })
 
@@ -71,7 +71,7 @@
                 customGsapSet('header', {
                     pointerEvents: 'auto' // ajoute le clique
                 })
-                menuBtn.innerText = 'Close' // change le texte du bouton menu
+                menuBtn.innerText = 'Fermer' // change le texte du bouton menu
             })
         // si le menu est afficher
         } else {

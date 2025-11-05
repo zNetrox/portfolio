@@ -6,6 +6,8 @@
     list-style: none;
     text-decoration: none;
     box-sizing: border-box;
+
+    /* ---- debug responsive ----   border: 1px solid red !important; */ 
 }
 
 :root {
@@ -25,8 +27,8 @@ html {
 }
 
 body {
-    max-width: 100vw;
-    overflow-x: hidden;
+    max-width: 100%;
+    
 }
 
 .line {
@@ -279,12 +281,20 @@ body {
 #tiles-6 div:nth-child(6) { grid-area: 2 / 1 / 3 / 2; }
 
 @media (max-width: 635px) {
+    #tiles-6 {
+        grid-template-columns: repeat(4, var(--tile-width));
+    }
+
     #tiles-6 div:nth-child(5) {
         display: none;
     }
 }
 
 @media (max-width: 510px) {
+    #tiles-6 {
+        grid-template-columns: repeat(3, var(--tile-width));
+    }
+
     #tiles-6 div:nth-child(4) {
         display: none;
     }
@@ -446,7 +456,8 @@ footer .part-1 div:first-child p {
     font-size: clamp(1.375rem, 0.7946rem + 1.8571vw, 2.1875rem); /* 35 > 22 */
 }
 
-footer .part-1 div:first-child span {
+footer .part-1 div:first-child a {
+    color: var(--white);
     font-style: italic;
     text-decoration: underline;
 }
@@ -523,7 +534,7 @@ footer .part-3 div:last-child {
     white-space: nowrap;
 }
 
-footer .part-3 div:last-child a {
+footer .part-3 a {
     color: rgb(var(--white));
 }
 
@@ -567,8 +578,12 @@ footer .part-3 div:last-child:hover a::after {
     }
 
     footer .part-3 {
-        flex-direction: column-reverse;
+        flex-direction: column;
         align-items: start;
+    }
+
+    footer .part-3 p {
+        margin-bottom: 15px;
     }
 }
 
@@ -611,7 +626,7 @@ nav #links-list {
 
 nav #links-list a {
     font-weight: 800;
-    font-size: clamp(3.125rem, -0.5952rem + 11.9048vw, 10.9375rem);
+    font-size: clamp(2.5rem, -0.9517rem + 12.2727vw, 10.9375rem); /* 175 > 40 */
     color: rgb(var(--white));
     text-transform: uppercase;
     user-select: none;
@@ -638,14 +653,18 @@ nav #infos span {
     font-weight: 800;
 }
 
-nav #infos a:last-child {
+nav #infos > p a {
+    color: rgb(var(--white));
+}
+
+nav #infos > a:last-child {
     color: rgb(var(--white));
     cursor: pointer;
     width: min-content;
     white-space: nowrap;
 }
 
-nav #infos a:last-child::after {
+nav #infos > a:last-child::after {
     content: '';
     display: block;
     width: 100%;
@@ -656,7 +675,7 @@ nav #infos a:last-child::after {
     transition: transform 0.2s ease-out;
 }
 
-nav #infos a:last-child:hover::after {
+nav #infos > a:last-child:hover::after {
     transform: scaleX(0);
     transform-origin: right;
 }
@@ -695,7 +714,7 @@ nav #infos a:last-child:hover::after {
 }
 
 .list-link .title {
-    font-size: clamp(2.8125rem, 1.6406rem + 3.75vw, 4.6875rem); /* 75 > 45 */
+    font-size: clamp(2.5rem, 1.375rem + 4vw, 4.6875rem); /* 75 > 40 */
     font-weight: 200;
     font-weight: 200;
 }
@@ -748,7 +767,7 @@ nav #infos a:last-child:hover::after {
 }
 
 .list li p {
-    font-size: clamp(2.8125rem, 1.6406rem + 3.75vw, 4.6875rem); /* 75 > 45 */
+    font-size: clamp(2.5rem, 1.3068rem + 4.2424vw, 4.6875rem); /* 75 > 40 */
     font-weight: 200;
 }
 
@@ -961,7 +980,14 @@ nav #infos a:last-child:hover::after {
 
 @media (max-width: 800px) {
     .index-hero-banner p {
-        width: 96vw;
+        width: 100%;
+        padding: 0 2vw;
+    }
+}
+
+@media (max-width: 700px) {
+    .index-hero-banner h1 {
+        white-space: normal;
     }
 }
 
@@ -977,8 +1003,8 @@ nav #infos a:last-child:hover::after {
 .index-sec-1 .text {
     position: relative;
     top: 5vw;
-    left: 2vw;
     width: min-content;
+    padding: 0 2vw;
     color: rgb(var(--white));
 }
 
@@ -1010,7 +1036,17 @@ nav #infos a:last-child:hover::after {
         right: auto;
         left: 2vw;
     }
+  
+    .index-sec-1 h2 {
+        white-space: normal;
+    }
+
+    .index-sec-1 .text {
+        width: 100%;
+        
+    }
 }
+
 
 .index-sec-1 .rotating-text > div{
     position: relative;
@@ -1156,12 +1192,14 @@ nav #infos a:last-child:hover::after {
         flex-direction: column;
         gap: 15px;
         width: min-content;
+        width: 100%;
     }
 
     .index-sec-2 .my-projects > div:last-child {
         display: flex;
         justify-content: end;
         align-items: center;
+        padding-right: 2vw;
     }
 
     .index-sec-2 .my-projects .cercle-button {
@@ -1170,6 +1208,7 @@ nav #infos a:last-child:hover::after {
 
     .index-sec-2 .my-projects h2 {
         padding-top: 10px;
+        white-space: normal;
     }
 }
 
@@ -1261,7 +1300,7 @@ nav #infos a:last-child:hover::after {
 }
 
 .index-sec-2 .project-name p:first-child {
-    font-size: clamp(3.125rem, -0.9868rem + 13.1579vw, 10.9375rem); /* 175 > 50 */
+    font-size: clamp(2.5rem, -1.2969rem + 13.5vw, 10.9375rem); /* 175 > 40 */
     font-style: italic;
     color: rgb(var(--black));
 }
@@ -1284,7 +1323,7 @@ nav #infos a:last-child:hover::after {
 
 .skills-sec-1 .part-1 h1 {
     padding-left: 2vw;
-    font-size: clamp(3.4375rem,-0.0481rem + 11.1538vw,12.5rem);
+    font-size: clamp(2.5rem, -0.8333rem + 11.8519vw, 12.5rem); /* 200 > 40 */
     font-weight: 800;
 }
 
@@ -1363,7 +1402,13 @@ nav #infos a:last-child:hover::after {
     .project-sec-1 .part-1 {
       width: auto;
     }
-  }
+}
+
+@media (max-width: 700px) {
+    .project-sec-1 .part-1 h1 {
+        white-space: normal;
+    }
+}
 
 /* ----------- section 2 ----------- */
 
@@ -1638,6 +1683,12 @@ nav #infos a:last-child:hover::after {
 
     .description-sec-4 > div:first-child > div:last-child {
         align-items: end;
+    }
+}
+
+@media (max-width: 700px) {
+    .description-sec-4 h2 {
+        white-space: normal;
     }
 }
 
