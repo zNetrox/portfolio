@@ -7,8 +7,8 @@ export default [
     linkGit: null,
     nameImgFileTease:"saferace-home.png",
     listImgFile:["saferace-home.png", "saferace-planning.png"],
-    skills:["déploiement", "Gestion De Projet", "L'UI Design"],
-    tools:["Java", "JavaFX", "UML", "Architecture MVC", "GitLub"]
+    skills:["Déploiement", "Gestion De Projet", "L'UI Design"],
+    tools:["Java", "JavaFX", "UML", "Architecture MVC", "GitLab"]
   },
   {
     title: "Classification",
