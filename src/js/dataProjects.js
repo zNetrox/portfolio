@@ -18,24 +18,24 @@ export default [
     linkGit:"https://github.com/Filogigin/ClassificationAutomatique",
     nameImgFileTease:"classification.png",
     listImgFile:["classification.png"],
-    skills:["Developpement", "Gestion De Projet"],
+    skills:["Développement", "Gestion De Projet"],
     tools:["Java", "GitHub"]
   },
   {
     title: "Portfolio",
     slug: "portfolio",
-    description: "Un projet personnel et profesionnel commencé et terminé en janvier 2024. Puis repris en 2025 dans le cadre d'un projet univairsitaire.",
+    description: "Un projet personnel et professionnel commencé et terminé en janvier 2024. Puis repris en 2025 dans le cadre d'un projet universitaire.",
     date:"2024 - 2025",
     linkGit:"https://github.com/zNetrox/portfolio",
     nameImgFileTease:"portfolio.png",
     listImgFile:["portfolio.png"],
-    skills:["Conception UX/UI", "Developpement Web", "Gestion De Projet", "deploiment"],
+    skills:["Conception UX/UI", "Développement Web", "Gestion De Projet", "Déploiement"],
     tools:["Affinity Designer", "Gsap", "Astro", "GitHub"]
   },
   {
     title: "Picture Poker",
     slug: "picture-poker",
-    description: "Un projet qui consiste à recréer un concept d’un jeu vidéo accessible dpuis un navigateur web.",
+    description: "Un projet qui consiste à recréer un concept d’un jeu vidéo accessible depuis un navigateur web.",
     date:"2024",
     linkGit:"https://github.com/zNetrox/picture-poker",
     nameImgFileTease:"picture-poker.png",
@@ -46,45 +46,45 @@ export default [
   {
     title: "Aesthetic",
     slug: "aesthetic",
-    description: "Site web sur de la musique, éffectué en cours de SIN en terminal.",
+    description: "Site web sur de la musique, effectué en cours de SIN en terminal.",
     date:"2023",
     linkGit:"https://github.com/zNetrox/aesthetic",
     nameImgFileTease:"aesthetic.png",
     listImgFile:["aesthetic.png", "aesthetic-player.png"],
-    skills:["Conception UX/UI", "Developpement Web", "Gestion De Projet"],
+    skills:["Conception UX/UI", "Développement Web", "Gestion De Projet"],
     tools:["Affinity Designer", "HTML", "CSS", "JavaScript"]
   },
   {
     title: "Memory",
     slug: "memory",
-    description: "Projet personnel sur la création d'un mini jeu video sur la mémorisation.",
+    description: "Projet personnel sur la création d'un mini jeu vidéo sur la mémorisation.",
     date:"2023",
     linkGit:"https://github.com/zNetrox/memory",
     nameImgFileTease:"memory.png",
     listImgFile:["memory.png"],
-    skills:["Programmation", "Developpement Web"],
+    skills:["Programmation", "Développement Web"],
     tools:["HTML", "CSS", "JavaScript"]
   },
   {
     title: "Tic-Tac-Toe",
     slug: "tic-tac-toe",
-    description: "Projet personnel sur la création d'un mini jeu video sur de morpion.",
+    description: "Projet personnel sur la création d'un mini jeu vidéo sur le morpion.",
     date:"2023",
     linkGit:"https://github.com/zNetrox/tictactoe-pvp",
     nameImgFileTease:"tictactoe.png",
     listImgFile:["tictactoe.png"],
-    skills:["Programmation", "Developpement Web"],
+    skills:["Programmation", "Développement Web"],
     tools:["HTML", "CSS", "JavaScript"]
   },
   {
     title: "Calculateur Age",
     slug: "calculateur-age",
-    description: "Projet personnel sur la création d'une application qui calcul l'age d'une personne jour pour jour.",
+    description: "Projet personnel sur la création d'une application qui calcule l'âge d'une personne jour pour jour.",
     date:"2023",
     linkGit:"https://github.com/zNetrox/age-calculator",
     nameImgFileTease:"age-calculator.png",
     listImgFile:["age-calculator.png"],
-    skills:["Programmation", "Developpement Web"],
+    skills:["Programmation", "Développement Web"],
     tools:["HTML", "CSS", "JavaScript"]
   }
 ];
